@@ -1,0 +1,175 @@
+---
+- # ====== List of Values: LOGIN_REMEMBER_USERNAME =============
+  id: 5410046196378119
+  identification: 
+    name: LOGIN_REMEMBER_USERNAME
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Gebruikersnaam onthouden =====================
+    id: 5410424797378122
+    entry: 
+      sequence: 10
+      display: Gebruikersnaam onthouden
+      return: Y
+
+- # ====== List of Values: CF_STARTERS.TOKEN ===================
+  id: 5801099363181988
+  identification: 
+    name: CF_STARTERS.TOKEN
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: CF_STARTERS
+
+  column-mapping: 
+    return: ID
+    display: TOKEN
+    default-sort: TOKEN
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_POSITIONS =======================
+  id: 5813093282228557
+  identification: 
+    name: LOV_POSITIONS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select val.lov_value as d,
+                val.id as r
+         from cf_lov_domains dom
+         join cf_lov_values val on dom.id = val.fk_lov_domain_id
+         where dom.code = 'STARTER_POS'
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: D
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_LANGUAGES =======================
+  id: 5814530880356995
+  identification: 
+    name: LOV_LANGUAGES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select val.lov_value as d,
+                val.id as r
+         from cf_lov_domains dom
+         join cf_lov_values val on dom.id = val.fk_lov_domain_id
+         where dom.code = 'STARTER_LANG'
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: D
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_CHOICE_LAPTOP ===================
+  id: 6247635306152586
+  identification: 
+    name: LOV_CHOICE_LAPTOP
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select val.lov_value as d,
+                val.pk_id as r
+         from cf_lov_domains dom
+         join cf_lov_values val on dom.pk_id = val.fk_lov_domain_id
+         where dom.code_id = 'Laptop'
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: D
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_COUNTRIES =======================
+  id: 6905522078879801
+  identification: 
+    name: LOV_COUNTRIES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select val.lov_value as d,
+                val.code as r
+         from cf_lov_domains dom
+         join cf_lov_values val on dom.id = val.fk_lov_domain_id
+         where dom.code = 'COUNTRY'
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_COMPANIES =======================
+  id: 27903072446703152
+  identification: 
+    name: LOV_COMPANIES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select company.name as d,
+             company.id as r
+      from cf_companies company
+         
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: D
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: CF_EMPLOYEES.EMPLOYEE_EMAIL =========
+  id: 28493471359074535
+  identification: 
+    name: CF_EMPLOYEES.EMPLOYEE_EMAIL
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: CF_EMPLOYEES
+
+  column-mapping: 
+    return: ID
+    display: EMPLOYEE_EMAIL
+    default-sort: EMPLOYEE_EMAIL
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_PRIORITY ========================
+  id: 28523397762865863
+  identification: 
+    name: LOV_PRIORITY
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select val.lov_value as d,
+                val.id as r
+         from cf_lov_domains dom
+         join cf_lov_values val on dom.id = val.fk_lov_domain_id
+         where dom.code = 'PRIO'
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: D
+    sort-direction: Ascending (Nulls Last)
+

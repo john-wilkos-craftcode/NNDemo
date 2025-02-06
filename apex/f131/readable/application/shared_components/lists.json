@@ -1,0 +1,254 @@
+[
+  {
+    "id":"15226378232258763"
+   ,"Identification":{
+      "Name":"Navigation Menu"
+     ,"Type":"Static Values"
+    }
+   ,"Entries":[
+      {
+        "id":"15422594570259127"
+       ,"Label":{
+          "Label":"Home"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-home"
+        }
+       ,"Layout":{
+          "Sequence":10
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:1:\u0026APP_SESSION.::\u0026DEBUG.:"
+           ,"Page":"1"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"15431725467259183"
+       ,"Label":{
+          "Label":"Administration"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-user-wrench"
+        }
+       ,"Layout":{
+          "Sequence":10000
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:10000:\u0026APP_SESSION.::\u0026DEBUG.:"
+           ,"Page":"10000"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+       ,"Security":{
+          "Authorization Scheme":"Administration Rights (15416712617259081)"
+        }
+      }
+    ]
+  }
+ ,{
+    "id":"15413690650259050"
+   ,"Identification":{
+      "Name":"Navigation Bar"
+     ,"Type":"Static Values"
+    }
+   ,"Entries":[
+      {
+        "id":"5960396312952652"
+       ,"Label":{
+          "Label":"Enable notifications"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-bell-o"
+        }
+       ,"Layout":{
+          "Sequence":50
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":"javascript:pwa.notification.ask();"
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+         ,"2.":"pwa-subscribe-notification-btn"
+        }
+       ,"Server-side Condition":{
+          "Type":"Rows returned"
+         ,"SQL Query":"select endpoint\r\nfrom cf_starters\r\nwhere token = :APP_USER and endpoint = null;"
+        }
+      }
+     ,{
+        "id":"15429985799259180"
+       ,"Label":{
+          "Label":"Install App"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-cloud-download"
+        }
+       ,"Layout":{
+          "Sequence":10
+        }
+       ,"Is Current":{
+          "Type":"Never"
+        }
+       ,"Link":{
+          "Target":"#"
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+         ,"2.":"a-pwaInstall"
+        }
+      }
+     ,{
+        "id":"15430220304259181"
+       ,"Label":{
+          "Label":"\u0026NAME_USER."
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-user"
+        }
+       ,"Layout":{
+          "Sequence":20
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":"#"
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+         ,"2.":"user-nav-bar"
+        }
+       ,"Server-side Condition":{
+          "Type":"Current Page = Page"
+         ,"Page":"40"
+        }
+      }
+     ,{
+        "id":"15430799717259181"
+       ,"Label":{
+          "Label":"---"
+        }
+       ,"Layout":{
+          "Sequence":30
+         ,"Parent Entry":"\u0026NAME_USER. (15430220304259181)"
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":"separator"
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"15431100429259182"
+       ,"Label":{
+          "Label":"Sign Out"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-sign-out"
+        }
+       ,"Layout":{
+          "Sequence":40
+         ,"Parent Entry":"\u0026NAME_USER. (15430220304259181)"
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:600:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"600"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+    ]
+  }
+ ,{
+    "id":"15432857558259187"
+   ,"Identification":{
+      "Name":"User Interface"
+     ,"Type":"Static Values"
+    }
+   ,"Configuration":{
+      "Build Option":"Feature: Theme Style Selection (15416218202259080)"
+    }
+   ,"Entries":[
+      {
+        "id":"15433267427259187"
+       ,"Label":{
+          "Label":"Theme Style Selection"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-paint-brush"
+        }
+       ,"Layout":{
+          "Sequence":10
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:10010:\u0026SESSION.::\u0026DEBUG.:10010:::"
+           ,"Page":"10010"
+           ,"Clear Cache":"10010"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+         ,"1.":"Set the default application look and feel"
+        }
+       ,"Configuration":{
+          "Build Option":"Feature: Theme Style Selection (15416218202259080)"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id":"5815426664495367"
+   ,"Identification":{
+      "Name":"Send Notification"
+     ,"Static ID":"send-notification"
+    }
+   ,"Execution Options":{
+      "Type":"Scheduled"
+     ,"Schedule Expression":"FREQ=HOURLY;INTERVAL=24;BYMINUTE=0"
+     ,"Schedule Status":"Active"
+     ,"Actions Initiated On":"Rows returned"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Type":"SQL Query"
+     ,"SQL Query":"select id starter_id, endpoint starter_endpoint, p256dh starter_p256dh, auth starter_auth\r\nfrom cf_starters;"
+    }
+   ,"Action Execution":{
+      "Commit":"Once"
+     ,"Action Error Handling":"Ignore"
+    }
+   ,"Actions":[
+      {
+        "id":"5815713764495370"
+       ,"Identification":{
+          "Name":"insert notifications \u0026 delete"
+         ,"Type":"Execute Code"
+        }
+       ,"Source":{
+          "Location":"Local Database"
+         ,"Language":"PL\/SQL"
+         ,"PL\/SQL Code":"declare\r\n    l_starter_id number;\r\n    l_starter_days_until_start number;\r\n    l_count_history number;\r\n    l_first_name varchar2(50 char);\r\n    l_notification_history_id number;\r\n    l_who_am_i_check varchar2(1000 CHAR);\r\n    l_choices_check varchar2(100 CHAR);\r\n    l_profile_picture_check blob;\r\n    l_time_made number;\r\nbegin\r\n    select id, (start_date-sysdate) days, function_and_company, choice_laptop, profile_picture, first_name\r\n    into l_starter_id, l_starter_days_until_start, l_who_am_i_check, l_choices_check,l_profile_picture_check, l_first_name\r\n    from cf_starters\r\n    where id = :starter_id;\r\n\r\n    select count(*)\r\n    into l_count_history\r\n    from cf_notifications_pwa_history\r\n    where starter_id = l_starter_id;\r\n\r\n\r\n    if l_count_history \u003E 0 then\r\n        select id, (time_made-sysdate) days\r\n        into l_notification_history_id, l_time_made\r\n        from cf_notifications_pwa_history\r\n        where starter_id = l_starter_id\r\n        fetch next 1 row only;\r\n    end if;\r\n\r\n    \r\n\r\n    \/*if startdate is nearing x days, make a notification depending on \r\n    how long ago the last notification was\r\n    *\/\r\n\r\n    if l_starter_days_until_start  \u003C 5 then\r\n\r\n\r\n           \/*if form not filled in*\/\r\n           if l_who_am_i_check is null then\r\n                insert into cf_starters_notifications_pwa(starter_id,notification_id,time_received)\r\n                values(l_starter_id,1,sysdate);\r\n\r\n                declare\r\n                l_rest_return clob;\r\n  \r\n                begin\r\n                l_rest_return := apex_web_service.make_rest_request(\r\n                p_url =\u003E \u0027ctb-dev-app03.cbtdevprivsubn.ctbdevvcn.oraclevcn.com:5050\/push\u0027 -- My custom REST endpoint (1)\r\n                , p_http_method =\u003E \u0027GET\u0027\r\n                , p_parm_name =\u003E apex_util.string_to_table(\u0027title,body,endpoint,p256dh,auth\u0027,\u0027,\u0027) -- Notification structure (2)\r\n                , p_parm_value =\u003E apex_util.string_to_table(\u0027Hey \u0027 || l_first_name ||\u0027,Vul de wie ben ik form verder aan!,\u0027|| :starter_endpoint||\u0027,\u0027|| :starter_p256dh||\u0027,\u0027||:starter_auth||\u0027\u0027,\u0027,\u0027) -- Notification Content (3)\r\n                );\r\n                end;\r\n                \r\n           end if;\r\n           \/*if choices aren\u0027t filled in yet*\/\r\n            if l_who_am_i_check is null then\r\n                insert into cf_starters_notifications_pwa(starter_id,notification_id,time_received)\r\n                values(l_starter_id,2,sysdate);\r\n\r\n                declare\r\n                l_rest_return clob;\r\n  \r\n                begin\r\n                l_rest_return := apex_web_service.make_rest_request(\r\n                p_url =\u003E \u0027ctb-dev-app03.cbtdevprivsubn.ctbdevvcn.oraclevcn.com:5050\/push\u0027 -- My custom REST endpoint (1)\r\n                , p_http_method =\u003E \u0027GET\u0027\r\n                , p_parm_name =\u003E apex_util.string_to_table(\u0027title,body,endpoint,p256dh,auth\u0027,\u0027,\u0027) -- Notification structure (2)\r\n                , p_parm_value =\u003E apex_util.string_to_table(\u0027Hey \u0027 || l_first_name ||\u0027, geef je keuzes mee!,\u0027|| :starter_endpoint||\u0027,\u0027|| :starter_p256dh||\u0027,\u0027||:starter_auth||\u0027\u0027,\u0027,\u0027) -- Notification Content (3)\r\n                );\r\n                end;\r\n                \r\n           end if;\r\n           \/*if profile picture hasn\u0027t been uploaded*\/\r\n           if l_profile_picture_check is null then\r\n                insert into cf_starters_notifications_pwa(starter_id,notification_id,time_received)\r\n                values(l_starter_id,3,sysdate);\r\n                \r\n                declare\r\n                l_rest_return clob;\r\n  \r\n                begin\r\n                l_rest_return := apex_web_service.make_rest_request(\r\n                p_url =\u003E \u0027ctb-dev-app03.cbtdevprivsubn.ctbdevvcn.oraclevcn.com:5050\/push\u0027 -- My custom REST endpoint (1)\r\n                , p_http_method =\u003E \u0027GET\u0027\r\n                , p_parm_name =\u003E apex_util.string_to_table(\u0027title,body,endpoint,p256dh,auth\u0027,\u0027,\u0027) -- Notification structure (2)\r\n                , p_parm_value =\u003E apex_util.string_to_table(\u0027Hey \u0027 || l_first_name ||\u0027, vergeet je profiel foto niet te uploaden,\u0027|| :starter_endpoint||\u0027,\u0027|| :starter_p256dh||\u0027,\u0027||:starter_auth||\u0027\u0027,\u0027,\u0027) -- Notification Content (3)\r\n                );\r\n                end;\r\n                \r\n           end if;\r\n           \r\n        end if;\r\n   \r\nend;"
+        }
+       ,"Execution Options":{
+          "Sequence":10
+        }
+       ,"Error":{
+          "Stop Execution On Error":true
+        }
+      }
+    ]
+  }
+]

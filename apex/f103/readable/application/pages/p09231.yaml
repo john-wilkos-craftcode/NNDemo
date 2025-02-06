@@ -1,0 +1,825 @@
+---
+# ====== Page: Artikel =======================================
+id: 9231
+identification: 
+  name: Artikel
+  alias: ARTIKEL1
+  title: Artikel
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js'
+  - 'https://cdn.quilljs.com/1.3.6/quill.js'
+  function-and-global-variable-declaration: var quill1;
+  execute-when-page-loads: |
+    quill1 = new Quill('#editor_article', {
+        theme: 'snow',
+        modules: {
+            'syntax': true,
+            'toolbar': [
+              [{ 'size': [] }],
+              [ 'bold', 'italic', 'underline', 'strike' ],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'script': 'super' }, { 'script': 'sub' }],
+              [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+              [ {'direction': 'rtl'}, { 'align': [] }],
+              [ 'link', 'image', 'video', 'formula' ],
+              [ 'clean' ]
+            ]
+          }
+    });
+    
+    
+    
+
+css: 
+  file-urls: 
+  - 'https://cdn.quilljs.com/1.3.6/quill.snow.css'
+  - null
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: P9231_TEXT_CONTENT_QUILL ====================
+  id: 32697945297517475
+  identification: 
+    title: P9231_TEXT_CONTENT_QUILL
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          l_rte_text clob;
+      begin
+      
+          if not :P9231_ID is null then
+              select text_content
+              into l_rte_text
+              from cf_newsfeed_pwa
+              where id = :P9231_ID;
+          else
+              l_rte_text := null;
+          end if;
+      
+          if l_rte_text is null then
+              htp.p('<div id="editor_article"><br><br><br><br><br><br></div>');
+          else 
+              htp.p('<div id="editor_article">' || substr(l_rte_text, 1, 32767) || '</div>');
+      
+          end if;
+      
+      end;
+
+  layout: 
+    sequence: 40
+    parent-region: Artikel # 33391421767684229
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--hideHeader
+    - t-Region--noUI
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+- # ====== Region: Breadcrumb ==================================
+  id: 33390778733684210
+  identification: 
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 5217168177377672
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 5320018456377838
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 5382105676377986
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Artikel =====================================
+  id: 33391421767684229
+  identification: 
+    title: Artikel
+    type: Form
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ID,
+             TITLE,
+             TEXT_CONTENT,
+             THUMBNAIL,
+             FILENAME,
+             MIMETYPE
+        from CF_NEWSFEED_PWA
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+page-items: 
+- # ====== Page Item: P9231_ID =================================
+  id: 29560203875072425
+  identification: 
+    name: P9231_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Artikel # 33391421767684229
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Artikel # 33391421767684229
+    column: ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9231_TITLE ==============================
+  id: 29560639453072424
+  identification: 
+    name: P9231_TITLE
+    type: Text Field
+
+  label: 
+    label: Titel
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Artikel # 33391421767684229
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Artikel # 33391421767684229
+    column: TITLE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9231_TEXT_CONTENT =======================
+  id: 29561013057072424
+  identification: 
+    name: P9231_TEXT_CONTENT
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 30
+    region: Artikel # 33391421767684229
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Artikel # 33391421767684229
+    column: TEXT_CONTENT
+    data-type: CLOB
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9231_THUMBNAIL ==========================
+  id: 29561496249072423
+  identification: 
+    name: P9231_THUMBNAIL
+    type: File Browse...
+
+  label: 
+    label: Upload een thumbnail
+    alignment: Left
+
+  settings: 
+    display-as: Block Dropzone
+    storage-type: BLOB column specified in Item Source attribute
+    mime-type-column: MIMETYPE
+    filename-column: FILENAME
+    display-download-link: true
+    content-disposition: Attachment
+
+  layout: 
+    sequence: 50
+    region: Artikel # 33391421767684229
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Artikel # 33391421767684229
+    column: THUMBNAIL
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9231_FILENAME ===========================
+  id: 29561804216072423
+  identification: 
+    name: P9231_FILENAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: Artikel # 33391421767684229
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Artikel # 33391421767684229
+    column: FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9231_MIMETYPE ===========================
+  id: 29562208016072422
+  identification: 
+    name: P9231_MIMETYPE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: Artikel # 33391421767684229
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Artikel # 33391421767684229
+    column: MIMETYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 29558683629072427
+  identification: 
+    button-name: CANCEL
+    label: Annuleer
+
+  layout: 
+    sequence: 10
+    region: Artikel # 33391421767684229
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9230:&SESSION.::&DEBUG.:::'
+      page: 9230 # Nieuws
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DELETE ======================================
+  id: 29559076378072427
+  identification: 
+    button-name: DELETE
+    label: Verwijderen
+
+  layout: 
+    sequence: 20
+    region: Artikel # 33391421767684229
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9231_ID
+
+- # ====== Button: SAVE ========================================
+  id: 29559402029072426
+  identification: 
+    button-name: SAVE
+    label: Wijzigingen opslaan
+
+  layout: 
+    sequence: 30
+    region: Artikel # 33391421767684229
+    position: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9231_ID
+
+- # ====== Button: POST ========================================
+  id: 29559843006072426
+  identification: 
+    button-name: POST
+    label: Artikel toevoegen
+
+  layout: 
+    sequence: 120
+    region: Artikel # 33391421767684229
+    position: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-plus-square
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P9231_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: change content ======================
+  id: 29567024232072414
+  identification: 
+    name: change content
+
+  execution-options: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.KEYUP
+    selection-type: Region
+    region: P9231_TEXT_CONTENT_QUILL # 32697945297517475
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 29567541200072413
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.item('P9231_TEXT_CONTENT').setValue(quill1.root.innerHTML);
+
+    execution-options: 
+      sequence: 10
+      event: change content # 29567024232072414
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SAVE QUILL ==========================
+  id: 29567918207072412
+  identification: 
+    name: SAVE QUILL
+
+  execution-options: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SAVE # 29559402029072426
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 29568452223072412
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var editor1 = apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9231_ID"),
+            x02: "editor-content",
+            p_clob_01: quill1.root.innerHTML
+        } );
+        
+        Promise.all([editor1]).then((values) => {
+        apex.page.submit('SAVE');
+        } );
+
+    execution-options: 
+      sequence: 10
+      event: SAVE QUILL # 29567918207072412
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Initialize form Artikel ====================
+  id: 29564472349072418
+  identification: 
+    name: Initialize form Artikel
+    type: Form - Initialization
+    form-region: Artikel # 33391421767684229
+
+  execution-options: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Artikel =======================
+  id: 29564817297072418
+  identification: 
+    name: Process form Artikel
+    type: Form - Automatic Row Processing (DML)
+    form-region: Artikel # 33391421767684229
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution-options: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: INIT Quill Collection ======================
+  id: 29565824564072415
+  identification: 
+    name: INIT Quill Collection
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_ARTICLE_COLLECTION';
+      
+          l_text_content      clob;
+      begin
+          apex_collection.create_or_truncate_collection(
+              p_collection_name => lco_collection_name
+          );
+          
+          if :P9231_ID is not null then
+              select
+                  text_content
+              into
+                  l_text_content
+              from cf_newsfeed_pwa
+              where id = :P9231_ID;
+          end if;
+      
+          apex_collection.add_member(
+              p_collection_name => lco_collection_name,
+              p_c001 => 'ARTICLE_TEXT_CONTENT',
+              p_clob001 => l_text_content
+          );
+      end;
+
+  execution-options: 
+    sequence: 10
+    point: After Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: PROCESS_QUILL ==============================
+  id: 29566228105072415
+  identification: 
+    name: PROCESS_QUILL
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_ARTICLE_COLLECTION';
+      begin
+          if apex_application.g_x02 = 'editor-content' then
+              apex_collection.update_member(
+                  p_collection_name => lco_collection_name,
+                  p_seq => '1',
+                  p_c001 => 'text_content',
+                  p_clob001 => apex_application.g_clob_01
+              );
+          end if;
+      
+          htp.p('{}');
+      end;
+
+  execution-options: 
+    sequence: 20
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Update CLOB columns ========================
+  id: 29566665845072414
+  identification: 
+    name: Update CLOB columns
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_ARTICLE_COLLECTION';
+      
+          l_text_content      clob;
+          l_c001 varchar2(100 char);
+      begin
+      
+          select c001 ,clob001
+          into l_c001,l_text_content
+          from apex_collections
+          where collection_name = lco_collection_name;
+      
+          
+          update cf_newsfeed_pwa
+          set text_content = l_text_content
+          where id = :P9231_ID;
+         
+      end;
+
+  execution-options: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SAVE # 29559402029072426
+
+branches: 
+- # ====== Branch: Go To Page 9230 =============================
+  id: 29568940819072411
+  identification: 
+    name: Go To Page 9230
+
+  execution-options: 
+    sequence: 1
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:9230:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 9230 # Nieuws
+

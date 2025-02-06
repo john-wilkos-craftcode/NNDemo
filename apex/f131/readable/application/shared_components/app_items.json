@@ -1,0 +1,24 @@
+[
+  {
+    "id":"16791621794149877"
+   ,"Identification":{
+      "Name":"NAME_USER"
+     ,"Scope":"Application"
+    }
+   ,"Security":{
+      "Session State Protection":"Restricted - May not be set from browser"
+     ,"Escape special characters":true
+    }
+  }
+ ,{
+    "id":"16797073874317175"
+   ,"Identification":{
+      "Name":"USER_THEME_HEX"
+     ,"Scope":"Application"
+    }
+   ,"Security":{
+      "Session State Protection":"Restricted - May not be set from browser"
+     ,"Escape special characters":true
+    }
+  }
+]

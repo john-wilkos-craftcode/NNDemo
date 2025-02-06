@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <!-- Procedures -->
+   <!--changeSet id="send_push_notif" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/procedures/send_push_notif.sql" />
+  </changeSet-->
+  
+  <!-- Functions -->
+   <!--changeSet id="betwnstr" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/functions/betwnstr.sql" />
+  </changeSet-->
+
+  <!-- Packages -->
+  <changeSet id="pck_authentication" author="Kelly van Loon" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/packages/pck_authentication_spec.sql" />
+	  <sqlFile splitStatements="false" path="latest/package_bodies/pck_authentication_body.sql" />
+  </changeSet> 
+  
+<changeSet id="pck_utils" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/packages/pck_utils_spec.sql" />
+	  <sqlFile splitStatements="false" path="latest/package_bodies/pck_utils_body.sql" />
+  </changeSet> 
+
+  <!-- Triggers -->
+  <changeSet id="cf_lov_values_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_lov_values_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_companies_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_companies_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_notifications_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_notifications_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_c_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_c_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_lov_domains_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_lov_domains_briu_trg.sql" />
+  </changeSet>
+  <changeSet id="cf_newsfeed_pwa_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_newsfeed_pwa_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_starters_c_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_starters_c_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_starters_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_starters_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_starters_token_brui_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_starters_token_brui_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_starters_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_starters_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_cities_briu_trg" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_cities_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_notifications_pwa_history_briu_trg" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_notifications_pwa_history_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_notifications_pwa_briu_trg" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_notifications_pwa_briu_trg.sql" />
+  </changeSet> 
+   <changeSet id="cf_employees_briu_trg" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_employees_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_starters_notifications_pwa_briu_trg" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_starters_notifications_pwa_briu_trg.sql" />
+  </changeSet> 
+   <changeSet id="cf_employees_addresses_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_employees_addresses_biu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_performance_reviews_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_performance_reviews_biu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_tasks_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_tasks_biu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_training_employees_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_training_employees_biu_trg.sql" />
+  </changeSet>
+  <changeSet id="cf_trainings_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_trainings_biu_trg.sql" />
+  </changeSet>
+  <changeSet id="cf_trainings_dates_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_trainings_dates_biu_trg.sql" />
+  </changeSet>
+  <changeSet id="cf_trainings_wishlist_biu" author="Gijs Catsberg" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_trainings_wishlist_biu_trg.sql" />
+  </changeSet>
+
+
+
+
+  
+  
+
+  
+</databaseChangeLog>

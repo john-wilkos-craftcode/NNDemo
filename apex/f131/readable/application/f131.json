@@ -1,0 +1,145 @@
+{
+  "id":"131"
+ ,"Identification":{
+    "Name":"Centerfield Mobile"
+   ,"Alias":"CENTERFIELD-MOBILE"
+   ,"Version":"Release 1.0"
+  }
+ ,"Row Search":{
+    "Tokenize":false
+  }
+ ,"Availability":{
+    "Status":"Available with Developer Toolbar"
+   ,"Build Status":"Run and Build Application"
+  }
+ ,"Error Handling":{
+    "Default Display Location":"Inline with Field and in Notification"
+  }
+ ,"Report Printing":{
+    "Type":"Native Printing"
+  }
+ ,"Advanced":{
+    "Friendly URLs":true
+   ,"Allow Feedback":true
+   ,"Logging":true
+   ,"Debugging":true
+   ,"Compatibility Mode":"21.2 \/ 22.1"
+  }
+ ,"Authentication":{
+    "Public User":"APEX_PUBLIC_USER"
+   ,"Authentication Scheme":"Custom (15225506410258759)"
+  }
+ ,"Authorization":{
+    "Source for Role or Group Schemes":"Access Control User Role Assignments"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Disabled"
+   ,"Maximum Session Length":31536000
+   ,"Maximum Session Idle Time":31536000
+  }
+ ,"Session State Protection":{
+    "Enabled":true
+  }
+ ,"Security":{
+    "Deep Linking":"Disabled"
+   ,"Browser Cache":"Disabled"
+   ,"Embed in Frames":"Deny"
+   ,"Referrer Policy":"strict-origin"
+   ,"HTML Escaping Mode":"Extended"
+   ,"Runtime API Usage":[
+      "Modify This Application"
+    ]
+  }
+ ,"Database Session":{
+    "Parsing Schema":"CTB_CENTERFIELD"
+  }
+ ,"Globalization":{
+    "Primary Language":"Dutch (Belgium) (nl-be)"
+   ,"Document Direction":"Left-To-Right"
+   ,"Language Derived From":"Application Primary Language"
+   ,"Automatic Time Zone":false
+   ,"Automatic CSV Encoding":true
+  }
+ ,"Application Format Masks":{
+    "Date":"DS"
+   ,"Timestamp":"DS"
+   ,"Timestamp Time Zone":"DS"
+  }
+ ,"Character Value Comparison":{
+    "Behavior":"Database session NLS setting (default)"
+  }
+ ,"Logo":{
+    "Type":"Image"
+   ,"Image URL":"#APP_FILES#app-131-logo.png"
+  }
+ ,"Progressive Web App":{
+    "Enable":true
+   ,"Installable":true
+   ,"Display":"Standalone"
+   ,"Screen Orientation":"Any"
+   ,"iOS Status Bar Style":"Translucent"
+   ,"Custom Service Worker":"{\n\"EVENT_PUSH\":\"const data = event.data.json();\u005Cr\u005Cn  event.waitUntil(\u005Cr\u005Cn    \u005C\/\u005C\/ in here we pass showNotification, but if you pass a promise, like fetch,\u005Cr\u005Cn    \u005C\/\u005C\/ then you should return showNotification inside of it. like above example.\u005Cr\u005Cn    self.registration.showNotification(data.title, {\u005Cr\u005Cn        body: data.body,\u005Cr\u005Cn        icon: \u005Cu0027#APP_FILES#fieldside-green.png\u005Cu0027,\u005Cr\u005Cn        badge: \u005Cu0027#APP_FILES#fieldside-green.png\u005Cu0027\u005Cr\u005Cn    })\u005Cr\u005Cn  );\u005Cr\u005Cn  navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); \u005C\/\u005C\/ Vibrate \u005Cu0027SOS\u005Cu0027 in Morse.\u005Cr\u005Cn\"\n}\n"
+  }
+ ,"Substitutions":[
+    {
+      "id":"1"
+     ,"Identification":{
+        "Name":"APP_NAME"
+      }
+     ,"Value":{
+        "Static Value":"Centerfields Mobile"
+      }
+    }
+  ]
+ ,"User Interfaces":[
+    {
+      "id":"15413981414259052"
+     ,"Identification":{
+        "Name":"Desktop"
+      }
+     ,"Navigation":{
+        "Home URL":{
+          "url":"f?p=\u0026APP_ID.:1:\u0026SESSION."
+         ,"Page":"1"
+        }
+       ,"Login URL":{
+          "url":"f?p=\u0026APP_ID.:LOGIN:\u0026APP_SESSION.::\u0026DEBUG.:::"
+         ,"Page":"LOGIN"
+        }
+      }
+     ,"Navigation Menu":{
+        "List Template":"Top Navigation Menu (15375828928258988)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"js-tabLike"
+        ]
+       ,"List Position":"Top"
+      }
+     ,"Navigation Bar":{
+        "Implementation":"List"
+       ,"List":"Navigation Bar (15413690650259050)"
+       ,"List Template":"Navigation Bar (15376898177258989)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"JavaScript":{
+        "File URLs":[
+          "#APP_FILES#app.js"
+        ]
+       ,"Include jQuery Migrate":false
+      }
+     ,"CSS":{
+        "File URLs":[
+          "#APP_FILES#app-icon.css?version=#APP_VERSION#"
+        ]
+      }
+     ,"Attributes":{
+        "Theme":"Universal Theme (42)"
+       ,"Global Page":"0"
+       ,"Enable End Users to choose Theme Style":false
+       ,"Add \"Built with APEX\" to Footer":false
+      }
+    }
+  ]
+}

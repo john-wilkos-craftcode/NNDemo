@@ -1,0 +1,61 @@
+---
+- # ====== Application Item: CURRENT_USER_GROUPS ===============
+  id: 25412912215727022
+  identification: 
+    name: CURRENT_USER_GROUPS
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: AI_USER_ID ========================
+  id: 27405864558210055
+  identification: 
+    name: AI_USER_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: AI_INTERNALID =====================
+  id: 28371923658939562
+  identification: 
+    name: AI_INTERNALID
+    scope: Application
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    escape-special-characters: false
+
+- # ====== Application Item: AI_EMPLOYEE_ID ====================
+  id: 28490081824222777
+  identification: 
+    name: AI_EMPLOYEE_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    escape-special-characters: true
+
+- # ====== Application Item: AI_FULL_NAME ======================
+  id: 28552941701123023
+  identification: 
+    name: AI_FULL_NAME
+    scope: Application
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    escape-special-characters: true
+
+- # ====== Application Item: AI_LOV_DOMAIN =====================
+  id: 29705664207696163
+  identification: 
+    name: AI_LOV_DOMAIN
+    scope: Application
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    escape-special-characters: true
+

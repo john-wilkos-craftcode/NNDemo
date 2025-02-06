@@ -1,0 +1,22 @@
+[
+  {
+    "id":"15225506410258759"
+   ,"Identification":{
+      "Name":"Custom"
+    }
+   ,"Settings":{
+      "Type":"Custom"
+     ,"Authentication Function Name":"pck_authentication.token_authentication"
+     ,"Enable Legacy Authentication Attributes":false
+    }
+   ,"Session Not Valid":{
+      "Redirect to":"Login Page"
+    }
+   ,"Login Processing":{
+      "Switch in Session":false
+    }
+   ,"Real Application Security":{
+      "RAS Mode":"Disabled"
+    }
+  }
+]

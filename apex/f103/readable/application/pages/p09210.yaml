@@ -1,0 +1,615 @@
+---
+# ====== Page: Bedrijven =====================================
+id: 9210
+identification: 
+  name: Bedrijven
+  alias: BEDRIJVEN1
+  title: Bedrijven
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    #kleuren-row{
+        padding:0;
+    }
+    td[headers="logo"] img{
+        width:24px;
+    }
+    
+    .fa-check{
+      color: green !important;
+    }
+    
+    .fa-times{
+      color: red !important;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Administratie ===============================
+  id: 40887756128247329
+  identification: 
+    title: Administratie
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT id
+           , DBMS_LOB.GETLENGTH(logo) AS logo
+           , mimetype
+           , updated_logo
+           , filename
+           , name
+           , about
+           , 'KLEUR' kleur
+           , hex_code
+           , DECODE(active, 1, 'fa-check', 'fa-times') active
+        FROM cf_companies
+    page-items-to-submit: 
+    - P9210_ID
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 5303622844377817
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 40887781497247329
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:9211:&SESSION.::&DEBUG.:9211:P9211_ID:#ID#'
+        page: 9211 # Bedrijf details
+        clear-cache: 9211
+        values: 
+          p9211_id: '#ID#'
+
+      link-icon: <span aria-label="Edit"><span class="fa fa-edit" aria-hidden="true" title="Edit"></span></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: No data found.
+      when-more-data-found: 'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 40891358473248039
+      identification: 
+        name: Primary Report
+        alias: 55655
+
+    columns: 
+    - # ====== Column: ID ==========================================
+      id: 29502542417229771
+      identification: 
+        column-name: ID
+        type: Hidden Column
+
+      heading: 
+        heading: Id
+
+      layout: 
+        sequence: 1
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NAME ========================================
+      id: 29502950113229770
+      identification: 
+        column-name: NAME
+        type: Plain Text
+
+      heading: 
+        heading: Naam
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ABOUT =======================================
+      id: 29503341802229769
+      identification: 
+        column-name: ABOUT
+        type: Plain Text
+
+      heading: 
+        heading: Over
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 3
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: HEX_CODE ====================================
+      id: 29503700645229767
+      identification: 
+        column-name: HEX_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Hex Code
+
+      layout: 
+        sequence: 4
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: KLEUR =======================================
+      id: 29504116420229763
+      identification: 
+        column-name: KLEUR
+        type: Plain Text
+
+      heading: 
+        heading: Kleur
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 14
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-formatting: 
+        html-expression: |
+          <span style="height: 25px;width:25px;background-color: #HEX_CODE#;border-radius: 50%;display: inline-block;" class="circle"></span>
+          
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      advanced: 
+        static-id: kleuren-row
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MIMETYPE ====================================
+      id: 29504526024229760
+      identification: 
+        column-name: MIMETYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Mimetype
+
+      layout: 
+        sequence: 34
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: UPDATED_LOGO ================================
+      id: 29504954348229758
+      identification: 
+        column-name: UPDATED_LOGO
+        type: Hidden Column
+
+      heading: 
+        heading: Updated Logo
+
+      layout: 
+        sequence: 44
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FILENAME ====================================
+      id: 29505350108229757
+      identification: 
+        column-name: FILENAME
+        type: Hidden Column
+
+      heading: 
+        heading: Filename
+
+      layout: 
+        sequence: 54
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LOGO ========================================
+      id: 29505739634229755
+      identification: 
+        column-name: LOGO
+        type: Display Image
+
+      heading: 
+        heading: Logo
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 64
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      blob-attributes: 
+        table-owner: Parsing Schema
+        table-name: CF_COMPANIES
+        blob-column: LOGO
+        primary-key-column-1: ID
+        mime-type-column: MIMETYPE
+        filename-column: FILENAME
+        last-updated-column: UPDATED_LOGO
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      advanced: 
+        static-id: logo
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: ACTIVE ======================================
+      id: 29506199555229754
+      identification: 
+        column-name: ACTIVE
+        type: Plain Text
+
+      heading: 
+        heading: Actief
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 74
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-formatting: 
+        html-expression: '<span class="fa #ACTIVE#"></span>'
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Administratie
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Breadcrumb ==================================
+  id: 58986305909588006
+  identification: 
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 5217168177377672
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 5320018456377838
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 5382105676377986
+      template-options: 
+      - '#DEFAULT#'
+
+page-items: 
+- # ====== Page Item: P9210_ID =================================
+  id: 29507256649229732
+  identification: 
+    name: P9210_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Administratie # 40887756128247329
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: ADD_COMPANY =================================
+  id: 29506856860229735
+  identification: 
+    button-name: ADD_COMPANY
+    label: Bedrijf toevoegen
+
+  layout: 
+    sequence: 10
+    region: Administratie # 40887756128247329
+    position: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-plus-square
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9211:&SESSION.::&DEBUG.:9211::'
+      page: 9211 # Bedrijf details
+      clear-cache: 9211
+
+    warn-on-unsaved-changes: Do Not Check
+

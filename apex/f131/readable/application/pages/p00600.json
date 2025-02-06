@@ -1,0 +1,126 @@
+{
+  "id":"600"
+ ,"Identification":{
+    "Name":"Logout Page"
+   ,"Alias":"LOGOUT-PAGE"
+   ,"Title":"Logout Page"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Dynamic Actions":[
+    {
+      "id":"10013367185417540"
+     ,"Identification":{
+        "Name":"Redirect"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Advanced":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"17128079454773801"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"$(\"#apex_wait_overlay\").remove();\n$(\".u-Processing\").remove();\napex.navigation.redirect(\u0027https:\/\/apexdev.contribute.be\/ords\/ctb_stage_centerfield\/r\/centerfield-mobile\/login\u0027);\n"
+          }
+         ,"Execution Options":{
+            "Sequence":30
+           ,"Event":"Redirect (10013367185417540)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+       ,{
+          "id":"17128386279773804"
+         ,"Identification":{
+            "Action":"Execute Server-side Code"
+          }
+         ,"Settings":{
+            "Language":"PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D"
+           ,"PL\/SQL Code":"declare \nbegin\n\n     \/*OWA_COOKIE.REMOVE(\n                   name   =\u003E \u0027LOGIN_USERNAME_COOKIE\u0027,\n                   val    =\u003E NULL\n     );*\/\n\n    apex_authentication.logout(:SESSION, :APP_ID);\n\n     \nend;\n"
+          }
+         ,"Execution Options":{
+            "Sequence":20
+           ,"Event":"Redirect (10013367185417540)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+           ,"Stop Execution On Error":true
+           ,"Wait For Result":true
+          }
+        }
+       ,{
+          "id":"17128529440773806"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"var spinner = apex.util.showSpinner();"
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"Redirect (10013367185417540)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"17128273671773803"
+     ,"Identification":{
+        "Name":"Delete Login Cookie"
+       ,"Type":"Execute Code"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\nbegin \n     OWA_COOKIE.REMOVE(\n                   name   =\u003E \u0027LOGIN_USERNAME_COOKIE\u0027,\n                   val    =\u003E NULL\n     );\n\nend;\n\n"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+       ,"Point":"Before Header"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

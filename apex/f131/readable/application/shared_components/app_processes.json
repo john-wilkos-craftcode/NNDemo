@@ -1,0 +1,42 @@
+[
+  {
+    "id":"16791834253188920"
+   ,"Identification":{
+      "Name":"SET_USER_NAME"
+     ,"Type":"NATIVE_PLSQL"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Language":"PL\/SQL"
+     ,"PL\/SQL Code":"begin\r\n  \/* select initcap(first_name || \u0027 \u0027 || last_name) *\/\r\n  select first_name || \u0027 \u0027 || last_name\r\n  into :NAME_USER\r\n  from cf_starters\r\n  where token = :APP_USER;\r\nend;"
+    }
+   ,"Execution Options":{
+      "Sequence":1
+     ,"Point":"Before Header"
+    }
+   ,"Server-side Condition":{
+      "Type":"Current Page != Page"
+     ,"Page":"9999"
+    }
+  }
+ ,{
+    "id":"16797269784342206"
+   ,"Identification":{
+      "Name":"SET_USER_THEME_HEX"
+     ,"Type":"NATIVE_PLSQL"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Language":"PL\/SQL"
+     ,"PL\/SQL Code":"begin\r\n    select c.hex_code into :USER_THEME_HEX\r\n    from cf_starters s\r\n    join cf_companies  c on c.id = s.company_id\r\n    where token = :APP_USER;\r\nend;"
+    }
+   ,"Execution Options":{
+      "Sequence":1
+     ,"Point":"Before Header"
+    }
+   ,"Server-side Condition":{
+      "Type":"Current Page != Page"
+     ,"Page":"9999"
+    }
+  }
+]

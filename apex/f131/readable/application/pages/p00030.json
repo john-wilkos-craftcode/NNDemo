@@ -1,0 +1,620 @@
+{
+  "id":"30"
+ ,"Identification":{
+    "Name":"About"
+   ,"Alias":"ABOUT"
+   ,"Title":"About"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Execute when Page Loads":"let imgsrc =document.getElementById(\u0027report_table_hidden-logo\u0027).children.item(1).children.item(0).children.item(0).children.item(0).src\nif(imgsrc.length \u003E 2) {\n    document.getElementById(\u0027logo_company\u0027).src = imgsrc;\n};\n\nvar facebook = $(\u0027#facebook\u0027)[0]\nif(apex.item(\"P30_HIDDEN_FACEBOOK\").getValue().length \u003C 2){\n    $(\u0027#facebook\u0027).hide();\n}\n\nvar twitter = $(\u0027#twitter\u0027)[0]\nif(apex.item(\"P30_HIDDEN_TWITTER\").getValue().length \u003C 2){\n    console.log(\"hidden twitter\");\n    $(\u0027#twitter\u0027).hide();\n}\n\nvar linkedin = $(\u0027#linkedin\u0027)[0]\nif(apex.item(\"P30_HIDDEN_LINKEDIN\").getValue().length \u003C 2){\n    $(\u0027#linkedin\u0027).hide();\n}\n\nvar instagram = $(\u0027#instagram\u0027)[0]\nif(apex.item(\"P30_HIDDEN_INSTAGRAM\").getValue().length \u003C 2){\n    $(\u0027#instagram\u0027).hide();\n}\n\nvar youtube = $(\u0027#youtube\u0027)[0]\nif(apex.item(\"P30_HIDDEN_YOUTUBE\").getValue().length \u003C 2){\n    $(\u0027#youtube\u0027).hide();\n}\n\n"
+  }
+ ,"CSS":{
+    "File URLs":[
+      "https:\/\/use.fontawesome.com\/releases\/v5.0.8\/css\/all.css"
+     ,"https:\/\/fonts.googleapis.com\/css?family=Roboto:400,500,700,900\u0026display=swap"
+    ]
+   ,"Inline":"\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n\n#REGION_STATIC_ID{\n    display: none;\n}\n\n#hidden-logo{\n    display: none;\n}\n\n\/*opbouw text containers*\/\n.text-container{\n    margin:3vh auto 5vh;\n    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;\n    border-radius: 10px;\n    padding: 5px;\n    max-width: 690px;\n}\n.text-logo-container{\n    width:100%;\n}\n\n.logo-deelbedrijf{\n    width: 36px;\n    height:36px;\n\n}\n.header{\n    display: flex;\n    align-items: center;\n    border-bottom:1px solid #121212;\n    margin:0 5px;\n}\n\n.logo{\n    width: 10%;\n}\n\n.company-social-media{\n    display: flex;\n    margin: 5px;\n}\n.company-social-media img{\n    width: 36px;\n    \n}\n\n\nh1,h2,p, .text-logo-container{\n    margin:0 5px;\n}\n\np{\n    margin-top:10px;\n}\nh2{\n    border-bottom:1px solid #121212;\n}\n\n#cronos-header{\n    text-align: right;\n    justify-self: right;\n    border-bottom:1px solid #121212;\n    color:rgb(1, 158, 206);\n}\n\n\n\n\n\/*follow us css*\/\n.follow-widget {\n    text-align: center;\n    width: 100%;\n    margin: 50px auto;\n    display: table;\n    border: 1px solid #ddd;\n    padding: 10px 10px 20px;\n    border-radius: 10px;\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n    max-width: 690px;\n    \n}\n.follow-widget h2 {\n    border-bottom: 1px solid #ddd;\n    padding: 0px 0px 25px;\n    font-size: 26px;\n    letter-spacing: 1px;\n}\n.follow-widget ul{\n    padding: 0px;\n    margin: 0px;\n    display: flex;\n    justify-content: center;\n}\n.follow-widget li {\n    float: left;\n    list-style: none;\n    font-size: 20px;\n    text-align: center;\n    margin: 10px 0px 10px;\n    width: 16.666%;\n}\n.follow-widget li a i {\n    background-color: #f1f1f1;\n    color: #fff;\n    border-radius: 100%;\n    height: 40px;\n    width: 40px;\n    line-height: 43px !important;\n}\n.follow-widget li a i:hover{\n    opacity: 0.8;\n}\n.follow-widget li a i.fa.fa-facebook {\n    background-color: #3b5997;\n}\n.follow-widget li a i.fa.fa-twitter {\n    background-color: #57aced;\n}\n.follow-widget li a i.fa.fa-pintrest-p {\n    background-color: #cb2026;\n    background-image: url(\u0027#APP_FILES#White-Pinterest-Icon-793x1024.png\u0027);\n    background-position: center center;\n    background-repeat: no-repeat;\n    background-size: 30% 30%;\n\n}\n.follow-widget li a i.fa.fa-linkedin {\n    background-color: #0072b1;\n    background-position: center center;\n    background-repeat: no-repeat;\n    background-size: 30% 30%;\n\n}\n.follow-widget li a i.fa.fa-instagram {\n    background-color: #3e729a;\n    background-image: url(\u0027#APP_FILES#instagram-logo.png\u0027);\n    background-position: center center;\n    background-repeat: no-repeat;\n    background-size: 30% 30%;\n\n}\n.follow-widget li a i.fa.fa-google-plus {\n    background-color: #db4d41;\n}\n.follow-widget li a i.fa.fa-youtube-play {\n    background-color: #c42f2b;\n}\n\n\n\n\/*header css*\/\n.notification-header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n    border-bottom: none;\n    color:rgb(0, 0, 0);\n}\n.notification-header:after {\n    display: inline-block;\n    margin: 0 0 8px 20px;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n.notification-header:before {\n    display: inline-block;\n    margin: 0 20px 8px 0;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n\n@media only screen and (max-width: 530px) {\n    .notification-header{\n        margin-top: 20px;\n        font-size: 20px;\n    }\n    .notification-header:after {\n    height: 2px;\n\n}\n.notification-header:before {\n    height: 2px;\n}\n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"1410956361761513"
+     ,"Identification":{
+        "Title":"Over deelbedrijf"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cdiv\u003E\n    \u003Cdiv class=\"text-container\"\u003E\n        \u003Cdiv class=\"header\"\u003E\n        \u003Cimg src=\" \" id=\"logo_company\" class=\"logo-deelbedrijf\"\u003E\u003C\/img\u003E\n        \u003Ch1\u003E\u0026P30_HIDDEN_COMPANY_NAME.\u003C\/h1\u003E\n        \u003C\/div\u003E\n        \u003Cdiv class=\"text-logo-container\"\u003E\n            \u003Cp\u003E\u0026P30_HIDDEN_ABOUT_COMPANY.\u003C\/p\u003E\n        \u003C\/div\u003E\n    \u003C\/div\u003E\n    \u003Cdiv class=\"text-container\"\u003E\n        \u003Ch1 id=\"cronos-header\"\u003ECRONOS\u003C\/h1\u003E\n        \u003Cdiv class=\"text-logo-container\"\u003E\n            \u003Cp\u003EOorspronkelijk werd de groep opgericht voor en door technologie mensen met de uitdrukkelijke bedoeling om die mensen te helpen doorgroeien indien gewenst tot en met het ondernemerschap toe.\n                \u003Cbr\u003EOndertussen is dit mission statement verbreed en is de groep verrijkt met mensen uit de creatieve sector die goed communiceren met de \u2018business mensen\u2019 en die perfect samenwerken met De Cronos Groep IT-mensen om tot de meest creatieve en technologisch beste oplossing voor klanten te komen.\n                \u003Cbr\u003EDe groep is dan ook continu op zoek naar creatieve, gedreven mensen en is altijd bereid te luisteren naar innovatieve idee\u00EBn van potenti\u00EBle ondernemers.\n            \u003C\/p\u003E\n        \u003C\/div\u003E\n    \u003C\/div\u003E\n    \u003Cdiv class=\"follow-widget\"\u003E\n    \u003Ch2\u003EVolg ons\u003C\/h2\u003E\n  \u003Cp\u003EBlijf up-to-date met de recenste nieuwtjes over \u0026P30_HIDDEN_COMPANY_NAME.\u003C\/p\u003E\n  \u003Cul id=\"social-media-links\"\u003E\n    \u003Cli id=\"facebook\"\u003E\u003Ca href=\u0026P30_HIDDEN_FACEBOOK.\u003E\u003Ci class=\"fa fa-facebook\" aria-hidden=\"false\"\u003E\u003C\/i\u003E\u003C\/a\u003E\u003C\/li\u003E\n    \u003Cli id=\"twitter\"\u003E\u003Ca href=\u0026P30_HIDDEN_TWITTER.\u003E\u003Ci class=\"fa fa-twitter\" aria-hidden=\"false\"\u003E\u003C\/i\u003E\u003C\/a\u003E\u003C\/li\u003E\n    \u003Cli id=\"linkedin\"\u003E\u003Ca href=\u0026P30_HIDDEN_LINKEDIN.\u003E\u003Ci class=\"fa fa-linkedin\" aria-hidden=\"false\"\u003E\u003C\/i\u003E\u003C\/a\u003E\u003C\/li\u003E\n    \u003Cli id=\"instagram\"\u003E\u003Ca href=\u0026P30_HIDDEN_INSTAGRAM.\u003E\u003Ci class=\"fa fa-instagram\" aria-hidden=\"false\"\u003E\u003C\/i\u003E\u003C\/a\u003E\u003C\/li\u003E\n    \u003Cli id=\"youtube\"\u003E\u003Ca href=\u0026P30_HIDDEN_YOUTUBE.\u003E\u003Ci class=\"fa fa-youtube-play\" aria-hidden=\"false\"\u003E\u003C\/i\u003E\u003C\/a\u003E\u003C\/li\u003E\n  \u003C\/ul\u003E\n\u003C\/div\u003E\n\u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"1411458721761518"
+     ,"Identification":{
+        "Title":"P30_HIDDEN_LOGO_REGION"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select c.id, dbms_lob.getlength(c.logo) as logo, c.filename, c.mimetype\nfrom cf_starters s\njoin cf_companies c on c.id = s.company_id\nwhere token = :APP_USER;"
+      }
+     ,"Layout":{
+        "Sequence":60
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"hidden-logo"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":15
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Standard (15351659333258958)"
+         ,"Template Options":[
+            "#DEFAULT#"
+           ,"t-Report--altRowsDefault"
+           ,"t-Report--rowHighlight"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"Row Ranges X to Y (with next and previous links)"
+         ,"Display Position":"Bottom - Right"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"1411519575761519"
+         ,"Identification":{
+            "Column Name":"LOGO"
+           ,"Type":"Display Image"
+          }
+         ,"Heading":{
+            "Heading":"Logo"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":10
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"BLOB Attributes":{
+            "Table Owner":"Parsing Schema"
+           ,"Table Name":"CF_COMPANIES"
+           ,"BLOB Column":"LOGO"
+           ,"Primary Key Column 1":"ID"
+           ,"Mime Type Column":"MIMETYPE"
+           ,"Filename Column":"FILENAME"
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"1411696296761520"
+         ,"Identification":{
+            "Column Name":"FILENAME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Filename"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":20
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"1411781727761521"
+         ,"Identification":{
+            "Column Name":"MIMETYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Mimetype"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":30
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"1411828686761522"
+         ,"Identification":{
+            "Column Name":"ID"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Id"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":40
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"15360411344511145"
+     ,"Identification":{
+        "Title":"Header"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ch1 class=\"notification-header\"\u003EOver \u0026P30_HIDDEN_COMPANY_NAME.\u003C\/h1\u003E"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"35456523145443165"
+     ,"Identification":{
+        "Title":"Bottom Navigation"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cnav class=\"nav\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:1:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-home\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EHome\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:30:\u0026SESSION.\" class=\"nav-link active\"\u003E\n        \u003Ci class=\"nav-icons fa fa-building-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EOver\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:40:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-calendar-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EAgenda\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:50:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-rss\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003ENieuws\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/nav\u003E"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+         ,"t-Form--stretchInputs"
+         ,"margin-top-none"
+         ,"margin-bottom-none"
+         ,"margin-left-none"
+         ,"margin-right-sm"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"leesvoer-navigation"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"1411228389761516"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_ABOUT_COMPANY"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.about\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"1411324279761517"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_COMPANY_NAME"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.name\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"3136557360445009"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_FACEBOOK"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":70
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.facebook\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"3136662722445010"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_TWITTER"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":90
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.twitter\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"3136718878445011"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_LINKEDIN"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":100
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.linkedin\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"3136874848445012"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_INSTAGRAM"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":110
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.instagram\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"3136940642445013"
+     ,"Identification":{
+        "Name":"P30_HIDDEN_YOUTUBE"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":120
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.youtube\nfrom cf_starters s\njoin cf_companies c on s.company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+}

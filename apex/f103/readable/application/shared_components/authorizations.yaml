@@ -1,0 +1,46 @@
+---
+- # ====== Authorization: HR ===================================
+  id: 25410348820749678
+  identification: 
+    name: HR
+
+  authorization-scheme: 
+    type: Is In Role or Group
+
+  settings: 
+    type: Custom
+    name(s): CENTERFIELD_HR
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+- # ====== Authorization: COORDINATOR ==========================
+  id: 25410501437747400
+  identification: 
+    name: COORDINATOR
+
+  authorization-scheme: 
+    type: Is In Role or Group
+
+  settings: 
+    type: Custom
+    name(s): CENTERFIELD_COORDINATOR
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+- # ====== Authorization: ADMINISTRATIE_GEBRUIKER ==============
+  id: 25411034648743240
+  identification: 
+    name: ADMINISTRATIE_GEBRUIKER
+
+  authorization-scheme: 
+    type: Is In Role or Group
+
+  settings: 
+    type: Custom
+    name(s): CENTERFIELD_COORDINATOR, CENTERFIELD_HR
+
+  server-cache: 
+    evaluation-point: Once per Session
+

@@ -1,0 +1,547 @@
+---
+- # ====== Plugin: APEX Unleash RichTextEditor =================
+  id: 83795703015477900349
+  identification: 
+    name: APEX Unleash RichTextEditor
+
+  source: 
+    pl/sql-code: |
+      /* helper function to store an image */
+      PROCEDURE STORE_IMAGE(
+          P_IN_PLSQL_BLOCK CLOB,
+          P_IN_FILE_NAME VARCHAR2,
+          P_IN_MIME_TYPE VARCHAR2,
+          P_IN_BINARY_FILE BLOB,
+          P_OUT_PK OUT VARCHAR2
+      ) AS
+          VR_EXEC    BINARY_INTEGER;
+          VR_TMP_STR VARCHAR2(32767) := NULL;
+          VR_CURS    BINARY_INTEGER;
+          VR_BINDS   VARCHAR(100);
+          VR_BINDS_T SYS.DBMS_SQL.VARCHAR2_TABLE := WWV_FLOW_UTILITIES.GET_BINDS(P_IN_PLSQL_BLOCK);
+      BEGIN
+          VR_CURS   := DBMS_SQL.OPEN_CURSOR;
+          DBMS_SQL.PARSE(
+              VR_CURS,
+              P_IN_PLSQL_BLOCK,
+              DBMS_SQL.NATIVE
+          );
+          
+          FOR I IN 1..VR_BINDS_T.COUNT LOOP
+              /* TODO find out how to prevent ltrim */
+              VR_BINDS := LTRIM(VR_BINDS_T(I), ':');
+              CASE VR_BINDS
+                  WHEN 'FILE_NAME' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_IN_FILE_NAME
+                      );
+                  WHEN 'MIME_TYPE' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_IN_MIME_TYPE
+                      );
+                  WHEN 'BLOB' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_IN_BINARY_FILE
+                      );
+                  WHEN 'P_OUT_PK' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_OUT_PK,
+                          4000
+                      );
+                  ELSE
+                      /* get values for APEX items */
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          V(VR_BINDS)
+                      );
+              END CASE;
+      
+          END LOOP;
+      
+          VR_EXEC   := DBMS_SQL.EXECUTE(VR_CURS);
+          DBMS_SQL.VARIABLE_VALUE(
+              VR_CURS,
+              'P_OUT_PK',
+              P_OUT_PK
+          );
+      EXCEPTION
+          WHEN OTHERS THEN
+              IF DBMS_SQL.IS_OPEN(VR_CURS) THEN
+                  DBMS_SQL.CLOSE_CURSOR(VR_CURS);
+              END IF;
+              APEX_DEBUG.ERROR('APEX CLOB Load 2 - Error while try to store clob');
+              APEX_DEBUG.ERROR(SQLERRM);
+              APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+              RAISE;
+      END;
+      
+      /* helper function to store a note */
+      PROCEDURE STORE_CLOB(
+          P_IN_PLSQL_BLOCK CLOB,
+          P_IN_CLOB CLOB
+      ) AS
+          VR_EXEC    BINARY_INTEGER;
+          VR_TMP_STR VARCHAR2(32767) := NULL;
+          VR_CURS    BINARY_INTEGER;
+          VR_BINDS   VARCHAR(100);
+          VR_BINDS_T SYS.DBMS_SQL.VARCHAR2_TABLE := WWV_FLOW_UTILITIES.GET_BINDS(P_IN_PLSQL_BLOCK);
+      BEGIN
+          VR_CURS   := DBMS_SQL.OPEN_CURSOR;
+          DBMS_SQL.PARSE(
+              VR_CURS,
+              P_IN_PLSQL_BLOCK,
+              DBMS_SQL.NATIVE
+          );
+          
+          FOR I IN 1..VR_BINDS_T.COUNT LOOP
+              /* TODO find out how to prevent ltrim */
+              VR_BINDS := LTRIM(VR_BINDS_T(I), ':');
+              CASE VR_BINDS
+                  WHEN 'CLOB' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_IN_CLOB
+                      );
+                  ELSE
+                      /* get values for APEX items */
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          V(VR_BINDS)
+                      );
+              END CASE;
+      
+          END LOOP;
+      
+          VR_EXEC   := DBMS_SQL.EXECUTE(VR_CURS);
+      EXCEPTION
+          WHEN OTHERS THEN
+              IF DBMS_SQL.IS_OPEN(VR_CURS) THEN
+                  DBMS_SQL.CLOSE_CURSOR(VR_CURS);
+              END IF;
+              APEX_DEBUG.ERROR('APEX CLOB Load 2 - Error while try to store clob');
+              APEX_DEBUG.ERROR(SQLERRM);
+              APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+              RAISE;
+      END;
+      
+      /* helper function to load a image via plsql */
+      PROCEDURE GET_IMAGE(
+          P_IN_PLSQL_PRINT_IMG   VARCHAR2,
+          P_IN_PK                VARCHAR2,
+          P_OUT_BLOB             OUT   NOCOPY BLOB,
+          P_OUT_FILE_NAME        OUT   VARCHAR2,
+          P_OUT_MIME_TYPE        OUT   VARCHAR2,
+          P_OUT_CACHE_TIME       OUT   NUMBER
+      ) AS
+          VR_BINDS_T             SYS.DBMS_SQL.VARCHAR2_TABLE := WWV_FLOW_UTILITIES.GET_BINDS(P_IN_PLSQL_PRINT_IMG);
+          VR_CURS                BINARY_INTEGER;
+          VR_EXEC                BINARY_INTEGER;
+          VR_BINDS               VARCHAR(100);
+          VR_CACHE               BOOLEAN;
+      BEGIN
+          VR_CURS   := DBMS_SQL.OPEN_CURSOR;
+          DBMS_SQL.PARSE(
+              VR_CURS,
+              P_IN_PLSQL_PRINT_IMG,
+              DBMS_SQL.NATIVE
+          );
+          FOR I IN 1..VR_BINDS_T.COUNT LOOP
+              /* TODO find out how to prevent ltrim */
+              VR_BINDS := LTRIM(VR_BINDS_T(I), ':');
+              CASE VR_BINDS
+                  WHEN 'PK' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_IN_PK
+                      );
+                  WHEN 'FILE_NAME' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_OUT_FILE_NAME,
+                          4000
+                      );
+                  WHEN 'MIME_TYPE' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_OUT_MIME_TYPE,
+                          4000
+                      );
+                  WHEN 'BINARY_FILE' THEN
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_OUT_BLOB
+                      );
+                  WHEN 'CACHE_TIME' THEN
+                      VR_CACHE := TRUE;
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          P_OUT_CACHE_TIME
+                      );
+                  ELSE
+                      /* get values for APEX items */
+                      DBMS_SQL.BIND_VARIABLE(
+                          VR_CURS,
+                          VR_BINDS,
+                          V(VR_BINDS)
+                      );
+              END CASE;
+      
+          END LOOP;
+      
+          VR_EXEC   := DBMS_SQL.EXECUTE(VR_CURS);
+          DBMS_SQL.VARIABLE_VALUE(
+              VR_CURS,
+              'FILE_NAME',
+              P_OUT_FILE_NAME
+          );
+          DBMS_SQL.VARIABLE_VALUE(
+              VR_CURS,
+              'MIME_TYPE',
+              P_OUT_MIME_TYPE
+          );
+          DBMS_SQL.VARIABLE_VALUE(
+              VR_CURS,
+              'BINARY_FILE',
+              P_OUT_BLOB
+          );
+          IF VR_CACHE THEN
+              DBMS_SQL.VARIABLE_VALUE(
+                  VR_CURS,
+                  'CACHE_TIME',
+                  P_OUT_CACHE_TIME
+              );
+          END IF;
+      EXCEPTION
+          WHEN OTHERS THEN
+              IF DBMS_SQL.IS_OPEN(VR_CURS) THEN
+                  DBMS_SQL.CLOSE_CURSOR(VR_CURS);
+              END IF;
+              APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - Error while try to get image file');
+              APEX_DEBUG.ERROR(SQLERRM);
+              APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+              RAISE;
+      END;
+      
+      /* helper function to download a file */
+      PROCEDURE DOWNLOAD_FILE (
+          P_IN_BLOB           BLOB,
+          P_IN_MIME_TYPE      VARCHAR2,
+          P_IN_FILE_NAME      VARCHAR2,
+          P_IN_AJAX_REFERENCE VARCHAR2 := NULL,
+          P_IN_CACHE_TIME_S   NUMBER  := NULL
+      ) AS
+          VR_BLOB BLOB := P_IN_BLOB;
+      BEGIN
+          HTP.INIT;
+          OWA_UTIL.MIME_HEADER(
+              NVL(
+                  P_IN_MIME_TYPE,
+                  'application/octet'
+              ),
+              FALSE,
+              'UTF-8'
+          );
+          HTP.P('Content-length: ' || DBMS_LOB.GETLENGTH(P_IN_BLOB));
+          HTP.P('Content-Disposition: attachment; filename="'||APEX_ESCAPE.HTML_ATTRIBUTE(P_IN_FILE_NAME) ||'"');
+          IF P_IN_AJAX_REFERENCE IS NOT NULL THEN
+              HTP.P('ajax-reference: ' || P_IN_AJAX_REFERENCE);
+          END IF;
+          IF P_IN_CACHE_TIME_S IS NOT NULL THEN
+              HTP.P('Cache-Control: public, max-age=' || P_IN_CACHE_TIME_S);
+              HTP.P('Pragma: '); -- overrides the "no-cache" setting in the application
+          END IF;
+          OWA_UTIL.HTTP_HEADER_CLOSE;
+          WPG_DOCLOAD.DOWNLOAD_FILE(VR_BLOB);
+      EXCEPTION
+          WHEN OTHERS THEN
+              APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - Error while Execute File Download');
+              APEX_DEBUG.ERROR(SQLERRM);
+              APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+              RAISE;
+      END;
+      
+      FUNCTION SQL_TO_SYS_REFCURSOR (
+          P_IN_SQL_STATEMENT   CLOB,
+          P_IN_BINDS           SYS.DBMS_SQL.VARCHAR2_TABLE
+      ) RETURN SYS_REFCURSOR AS
+          VR_CURS         BINARY_INTEGER;
+          VR_REF_CURSOR   SYS_REFCURSOR;
+          VR_EXEC         BINARY_INTEGER;
+          /* TODO make size dynamic */
+          VR_BINDS        VARCHAR(100);
+      BEGIN
+          VR_CURS         := DBMS_SQL.OPEN_CURSOR;
+          DBMS_SQL.PARSE(
+              VR_CURS,
+              P_IN_SQL_STATEMENT,
+              DBMS_SQL.NATIVE
+          );
+          IF P_IN_BINDS.COUNT > 0 THEN
+              FOR I IN 1..P_IN_BINDS.COUNT LOOP
+                  /* TODO find out how to prevent ltrim */
+                  VR_BINDS := LTRIM(
+                      P_IN_BINDS(I),
+                      ':'
+                  );
+                  DBMS_SQL.BIND_VARIABLE(
+                      VR_CURS,
+                      VR_BINDS,
+                      V(VR_BINDS)
+                  );
+              END LOOP;
+          END IF;
+      
+          VR_EXEC         := DBMS_SQL.EXECUTE(VR_CURS);
+          VR_REF_CURSOR   := DBMS_SQL.TO_REFCURSOR(VR_CURS);
+          RETURN VR_REF_CURSOR;
+      EXCEPTION
+          WHEN OTHERS THEN
+              IF DBMS_SQL.IS_OPEN(VR_CURS) THEN
+                  DBMS_SQL.CLOSE_CURSOR(VR_CURS);
+              END IF;
+              RAISE;
+      END;
+      
+      FUNCTION F_AJAX (
+          P_DYNAMIC_ACTION   IN   APEX_PLUGIN.T_DYNAMIC_ACTION,
+          P_PLUGIN           IN   APEX_PLUGIN.T_PLUGIN
+      ) RETURN APEX_PLUGIN.T_DYNAMIC_ACTION_AJAX_RESULT IS
+      
+          VR_BIND_NAMES          SYS.DBMS_SQL.VARCHAR2_TABLE;
+          VR_BLOB                BLOB;
+          VR_CLOB                CLOB := NULL;
+          VR_CUR                 SYS_REFCURSOR;
+          VR_FILE_NAME           VARCHAR2(200);
+          VR_FUNCTION_TYPE       VARCHAR2(200) := APEX_APPLICATION.G_X01;
+          VR_MIME_TYPE           VARCHAR2(200);
+          VR_PK                  VARCHAR2(32767) := APEX_APPLICATION.G_X02;
+          VR_PLSQL_PRINT_IMG     P_DYNAMIC_ACTION.ATTRIBUTE_15%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_15;
+          VR_PLSQL_UPLOAD_CLOB   P_DYNAMIC_ACTION.ATTRIBUTE_06%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_06;
+          VR_PLSQL_UPLOAD_IMG    P_DYNAMIC_ACTION.ATTRIBUTE_14%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_14;
+          VR_RESULT              APEX_PLUGIN.T_DYNAMIC_ACTION_AJAX_RESULT;
+          VR_SQL                 P_DYNAMIC_ACTION.ATTRIBUTE_03%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_03;
+          VR_TMP_STR             VARCHAR2(32767);
+          VR_CACHE_TIME          NUMBER;
+      BEGIN
+          CASE
+              WHEN VR_FUNCTION_TYPE = 'PRINT_CLOB' THEN
+                  BEGIN
+                      /* undocumented function of APEX for get all bindings */
+                      VR_BIND_NAMES   := WWV_FLOW_UTILITIES.GET_BINDS(VR_SQL);
+                      VR_CUR          := SQL_TO_SYS_REFCURSOR(
+                          RTRIM(
+                              VR_SQL,
+                              ';'
+                          ),
+                          VR_BIND_NAMES
+                      );
+      
+                      /* create json */
+                      APEX_JSON.OPEN_OBJECT;
+                      APEX_JSON.WRITE(
+                          'row',
+                          VR_CUR
+                      );
+                      APEX_JSON.CLOSE_OBJECT;
+                  EXCEPTION
+                      WHEN OTHERS THEN
+                          IF VR_CUR%ISOPEN THEN
+                              CLOSE VR_CUR;
+                          END IF;
+                          APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - Error while execute clob download');
+                          APEX_DEBUG.ERROR(SQLERRM);
+                          APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                          RAISE;
+                  END;
+              WHEN VR_FUNCTION_TYPE = 'UPLOAD_CLOB' THEN
+                  BEGIN
+                      DBMS_LOB.CREATETEMPORARY(
+                          VR_CLOB,
+                          FALSE,
+                          DBMS_LOB.SESSION
+                      );
+                      FOR I IN 1..APEX_APPLICATION.G_F01.COUNT LOOP
+                          VR_TMP_STR := WWV_FLOW.G_F01(I);
+                          IF DBMS_LOB.GETLENGTH(VR_TMP_STR) > 0 THEN
+                              DBMS_LOB.WRITEAPPEND(
+                                  VR_CLOB,
+                                  DBMS_LOB.GETLENGTH(VR_TMP_STR),
+                                  VR_TMP_STR
+                              );
+                          END IF;
+      
+                      END LOOP;
+      
+                      STORE_CLOB(
+                          P_IN_PLSQL_BLOCK => VR_PLSQL_UPLOAD_CLOB,
+                          P_IN_CLOB => VR_CLOB
+                      );
+      
+                      APEX_DEBUG.INFO('APEX Unleash RichTextEditor - Upload and Execute of Dynamic PL/SQL Block successful with CLOB: ' ||
+                      DBMS_LOB.GETLENGTH(VR_CLOB) ||
+                      ' Bytes.');
+                      DBMS_LOB.FREETEMPORARY(VR_CLOB);
+                  EXCEPTION
+                      WHEN OTHERS THEN
+                          APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - Error while upload clob');
+                          APEX_DEBUG.ERROR(SQLERRM);
+                          APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                          RAISE;
+                  END;
+              WHEN VR_FUNCTION_TYPE = 'PRINT_IMAGE' THEN
+                  BEGIN
+                      GET_IMAGE(
+                          P_IN_PLSQL_PRINT_IMG   => VR_PLSQL_PRINT_IMG,
+                          P_IN_PK                => VR_PK,
+                          P_OUT_BLOB             => VR_BLOB,
+                          P_OUT_FILE_NAME        => VR_FILE_NAME,
+                          P_OUT_MIME_TYPE        => VR_MIME_TYPE,
+                          P_OUT_CACHE_TIME       => VR_CACHE_TIME
+                      );
+                  EXCEPTION
+                      WHEN OTHERS THEN
+                          APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - Error while executing dynamic PL/SQL Block to get Blob Source for Image Download.');
+                          APEX_DEBUG.ERROR(SQLERRM);
+                          APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                          RAISE;
+                  END;
+      
+                  IF VR_FILE_NAME IS NOT NULL THEN
+                      DOWNLOAD_FILE(
+                          P_IN_BLOB        => VR_BLOB,
+                          P_IN_FILE_NAME   => VR_FILE_NAME,
+                          P_IN_MIME_TYPE   => VR_MIME_TYPE,
+                          P_IN_CACHE_TIME_S  => VR_CACHE_TIME
+                      );
+                  END IF;
+      
+              WHEN VR_FUNCTION_TYPE = 'UPLOAD_IMAGE' THEN
+                  BEGIN
+                      VR_FILE_NAME   := APEX_APPLICATION.G_X02;
+                      VR_MIME_TYPE   := NVL(
+                          APEX_APPLICATION.G_X03,
+                          'application/octet-stream'
+                      );
+                      DBMS_LOB.CREATETEMPORARY(
+                          VR_BLOB,
+                          FALSE,
+                          DBMS_LOB.SESSION
+                      );
+                      FOR I IN 1..APEX_APPLICATION.G_F01.COUNT LOOP
+                          VR_TMP_STR := APEX_APPLICATION.G_F01(I);
+                          IF DBMS_LOB.GETLENGTH(VR_TMP_STR) > 0 THEN
+                              DBMS_LOB.APPEND(
+                                  DEST_LOB   => VR_BLOB,
+                                  SRC_LOB    => TO_BLOB(
+                                      UTL_ENCODE.BASE64_DECODE(
+                                          UTL_RAW.CAST_TO_RAW(VR_TMP_STR)
+                                      )
+                                  )
+                              );
+      
+                          END IF;
+      
+                      END LOOP;
+      
+                      IF DBMS_LOB.GETLENGTH(VR_BLOB) IS NOT NULL THEN
+                          STORE_IMAGE(
+                              P_IN_PLSQL_BLOCK => VR_PLSQL_UPLOAD_IMG,
+                              P_IN_FILE_NAME => VR_FILE_NAME,
+                              P_IN_MIME_TYPE => VR_MIME_TYPE,
+                              P_IN_BINARY_FILE => VR_BLOB,
+                              P_OUT_PK => VR_PK
+                          );
+                          
+                          APEX_DEBUG.INFO('APEX Unleash RichTextEditor - Upload and Execute of Dynamic PL/SQL Block successful with Image: ' ||
+                          DBMS_LOB.GETLENGTH(VR_BLOB) ||
+                          ' Bytes and returned pk: ' ||
+                          VR_PK);
+      
+                      END IF;
+      
+                      APEX_JSON.OPEN_OBJECT;
+                      APEX_JSON.WRITE(
+                          P_NAME    => 'pk',
+                          P_VALUE   => VR_PK
+                      );
+                      APEX_JSON.WRITE(
+                          P_NAME    => 'result',
+                          P_VALUE   => 'ok'
+                      );
+                      APEX_JSON.CLOSE_OBJECT;
+                      DBMS_LOB.FREETEMPORARY(VR_BLOB);
+                  EXCEPTION
+                      WHEN OTHERS THEN
+                          DBMS_LOB.FREETEMPORARY(VR_BLOB);
+                          APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - Error while Uploading Image');
+                          APEX_DEBUG.ERROR(SQLERRM);
+                          APEX_DEBUG.ERROR(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                          RAISE;
+                  END;
+              ELSE
+                  APEX_DEBUG.ERROR('APEX Unleash RichTextEditor - No Case found in F_AJAX');
+          END CASE;
+      
+          RETURN VR_RESULT;
+      END;
+      
+      FUNCTION F_RENDER (
+          P_DYNAMIC_ACTION   IN                 APEX_PLUGIN.T_DYNAMIC_ACTION,
+          P_PLUGIN           IN                 APEX_PLUGIN.T_PLUGIN
+      ) RETURN APEX_PLUGIN.T_DYNAMIC_ACTION_RENDER_RESULT IS
+      
+          VR_ESCAPE_HTML          P_DYNAMIC_ACTION.ATTRIBUTE_08%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_08;
+          VR_FUNCTION_TYPE        P_DYNAMIC_ACTION.ATTRIBUTE_01%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_01;
+          VR_IMG_WIDTH            P_DYNAMIC_ACTION.ATTRIBUTE_02%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_02;
+          VR_ITEMS_2_SUBMIT       P_DYNAMIC_ACTION.ATTRIBUTE_07%TYPE := APEX_PLUGIN_UTIL.PAGE_ITEM_NAMES_TO_JQUERY(P_DYNAMIC_ACTION.ATTRIBUTE_07);
+          VR_ITEMS_2_SUBMIT_IU    P_DYNAMIC_ACTION.ATTRIBUTE_04%TYPE := APEX_PLUGIN_UTIL.PAGE_ITEM_NAMES_TO_JQUERY(P_DYNAMIC_ACTION.ATTRIBUTE_04);
+          VR_ITEMS_2_SUBMIT_ID    P_DYNAMIC_ACTION.ATTRIBUTE_05%TYPE := APEX_PLUGIN_UTIL.PAGE_ITEM_NAMES_TO_JQUERY(P_DYNAMIC_ACTION.ATTRIBUTE_05);
+          VR_RESULT               APEX_PLUGIN.T_DYNAMIC_ACTION_RENDER_RESULT;
+          VR_SANITIZE_HTML        P_DYNAMIC_ACTION.ATTRIBUTE_10%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_10;
+          VR_SANITIZE_HTML_OPT    P_DYNAMIC_ACTION.ATTRIBUTE_11%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_11;
+          VR_SHOW_LOADER          P_DYNAMIC_ACTION.ATTRIBUTE_12%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_12;
+          VR_UN_ESCAPE_HTML       P_DYNAMIC_ACTION.ATTRIBUTE_09%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_09;
+          VR_USE_IMAGE_UPLOADER   P_DYNAMIC_ACTION.ATTRIBUTE_13%TYPE := P_DYNAMIC_ACTION.ATTRIBUTE_13;
+      BEGIN
+          APEX_JAVASCRIPT.ADD_LIBRARY(
+              P_NAME                  => 'unleashrte.pkgd',
+              P_DIRECTORY             => P_PLUGIN.FILE_PREFIX,
+              P_CHECK_TO_ADD_MINIFIED => TRUE,
+              P_VERSION               => NULL,
+              P_KEY                   => 'unleashrtejssrc'
+          );
+      
+          VR_RESULT.JAVASCRIPT_FUNCTION   := 'function () { var self = this; unleashRTE.initialize( self, { ' ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'ajaxID', APEX_PLUGIN.GET_AJAX_IDENTIFIER ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'functionType', VR_FUNCTION_TYPE ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'items2Submit', VR_ITEMS_2_SUBMIT ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'items2SubmitImgDown', VR_ITEMS_2_SUBMIT_ID ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'items2SubmitImgUp', VR_ITEMS_2_SUBMIT_IU ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'escapeHTML', VR_ESCAPE_HTML ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'unEscapeHTML', VR_UN_ESCAPE_HTML ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'sanitize', VR_SANITIZE_HTML ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'sanitizeOptions', VR_SANITIZE_HTML_OPT ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'useImageUploader', VR_USE_IMAGE_UPLOADER ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'imgWidth', VR_IMG_WIDTH ) ||
+          APEX_JAVASCRIPT.ADD_ATTRIBUTE( 'showLoader', VR_SHOW_LOADER, TRUE, FALSE ) ||
+          '}); }';
+      
+          RETURN VR_RESULT;
+      END F_RENDER;
+

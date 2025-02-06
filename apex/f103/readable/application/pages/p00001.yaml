@@ -1,0 +1,944 @@
+---
+# ====== Page: Home ==========================================
+id: 1
+identification: 
+  name: Home
+  alias: HOME
+  title: CenterField BackOffice
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    meter::-webkit-meter-optimum-value {
+      background: #28a235;
+    }
+    meter::-moz-meter-bar { /* Firefox Pseudo Class */
+      background: #28a235;
+    }
+    
+    meter {
+        width: 200px;
+        height: 25px;
+    }
+    
+    .t-Region-headerItems--title {
+        display: block; 
+        text-align: center;
+    }
+    
+    
+    
+    .t-Report-cell[headers="TITLE"]{
+        height:43.1px;
+    }
+    
+    .heading-link{
+        color: #121212;
+        transition: all .3s;
+    }
+    
+    .heading-link:hover{
+        color: #28a235;
+    }
+    
+    text:after {
+        content:"test";
+    }
+    
+    
+    .t-Alert-title a{
+        color:#121212;
+        transition: 0.3s all ease-in-out
+    
+    }
+    .t-Alert-title a:hover{
+        color:#28a235;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: CenterField BackOffice ======================
+  id: 5414562149378139
+  identification: 
+    title: CenterField BackOffice
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    render-components: Above Content
+
+  advanced: 
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: <a class="heading-link" href="f?p=&APP_ID.:30
+  id: 9528815333530506
+  identification: 
+    title: '<a class="heading-link" href="f?p=&APP_ID.:30:&SESSION.">Overzicht Starters</a><span class="fa fa-user" style="padding-left:10px;padding-top:4px;" ></span>'
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT s.id
+           , first_name || ' ' || last_name name
+           , SUM(ts.checked) checks
+           , 'Onboaring' onboarding
+           , ROUND((start_date - sysdate)) days_to_go
+           , COUNT(checked) maxvalue
+        FROM cf_starters s
+          LEFT JOIN cf_todos_starters ts on (s.id = ts.starter_id)
+        GROUP BY s.id
+               , first_name
+               , last_name
+               , start_date 
+        ORDER BY start_date;
+
+  layout: 
+    sequence: 20
+    parent-region: CenterField BackOffice # 5414562149378139
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 5
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 5342953137377872
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--stretch
+      - t-Report--staticRowColors
+      - t-Report--rowHighlight
+      - t-Report--horizontalBorders
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ONBOARDING ==================================
+    id: 9529906973530517
+    identification: 
+      column-name: ONBOARDING
+      type: Plain Text
+
+    heading: 
+      heading: Vooruitgang
+      alignment: center
+
+    layout: 
+      sequence: 20
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    column-formatting: 
+      html-expression: |
+        <meter align="center" class="progress"
+               min="0" max="#MAXVALUE#"
+               value=#CHECKS#>
+        </meter>
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+      table-name: CF_TODOS_STARTERS
+      column: CHECKED
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CHECKS ======================================
+    id: 9530062601530518
+    identification: 
+      column-name: CHECKS
+      type: Hidden Column
+
+    layout: 
+      sequence: 40
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NAME ========================================
+    id: 9530150885530519
+    identification: 
+      column-name: NAME
+      type: Link
+
+    heading: 
+      heading: Naam
+      alignment: start
+
+    layout: 
+      sequence: 10
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: true
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:32:&SESSION.::&DEBUG.:32:P32_ID:#ID#'
+        page: 32 # Starter Details
+        clear-cache: 32
+        values: 
+          p32_id: '#ID#'
+
+      link-text: '#NAME#'
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ID ==========================================
+    id: 9530338572530521
+    identification: 
+      column-name: ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 50
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: MAXVALUE ====================================
+    id: 10010675387417513
+    identification: 
+      column-name: MAXVALUE
+      type: Hidden Column
+
+    layout: 
+      sequence: 60
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: DAYS_TO_GO ==================================
+    id: 22307835097727717
+    identification: 
+      column-name: DAYS_TO_GO
+      type: Plain Text
+
+    heading: 
+      heading: Dagen Tot Start
+      alignment: start
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: <a class="heading-link" href="f?p=&APP_ID.:60
+  id: 9529279914530510
+  identification: 
+    title: '<a class="heading-link" href="f?p=&APP_ID.:60:&SESSION.">Takenlijst</a><span class="fa fa-clipboard-list" style="padding-left:10px;padding-top:4px;" ></span>'
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT s.first_name ||' '||s.last_name alert_title
+           , t.name alert_desc
+           , ROUND((start_date - sysdate)) alert_action
+           , CASE 
+              WHEN ROUND((start_date - sysdate)) < 1 THEN 
+                'danger'
+              WHEN ROUND((start_date - sysdate)) BETWEEN 1 AND 5 THEN
+                'warning'
+              ELSE
+                'success' 
+             END alert_type
+            , s.id starter_id
+        FROM cf_todos_starters
+          LEFT JOIN cf_starters s ON (s.id = starter_id)
+          LEFT JOIN cf_todos t ON (t.id = todo_id)
+        WHERE checked = 0
+        ORDER BY s.start_date;
+
+  layout: 
+    sequence: 30
+    parent-region: CenterField BackOffice # 5414562149378139
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: todo
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 4
+
+    appearance: 
+      template-type: Theme
+      template: Alerts # 5346718188377878
+      template-options: 
+      - '#DEFAULT#'
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ALERT_TITLE =================================
+    id: 10010220243417509
+    identification: 
+      column-name: ALERT_TITLE
+      type: Link
+
+    heading: 
+      heading: Alert Title
+      alignment: center
+
+    layout: 
+      sequence: 10
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: true
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:32:&SESSION.::&DEBUG.:32:P32_ID:#STARTER_ID#'
+        page: 32 # Starter Details
+        clear-cache: 32
+        values: 
+          p32_id: '#STARTER_ID#'
+
+      link-text: '#ALERT_TITLE#'
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ALERT_DESC ==================================
+    id: 10010398048417510
+    identification: 
+      column-name: ALERT_DESC
+      type: Plain Text
+
+    heading: 
+      heading: Alert Desc
+      alignment: center
+
+    layout: 
+      sequence: 20
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ALERT_ACTION ================================
+    id: 10010410904417511
+    identification: 
+      column-name: ALERT_ACTION
+      type: Plain Text
+
+    heading: 
+      heading: Alert Action
+      alignment: center
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ALERT_TYPE ==================================
+    id: 10010559157417512
+    identification: 
+      column-name: ALERT_TYPE
+      type: Plain Text
+
+    heading: 
+      heading: Alert Type
+      alignment: center
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: STARTER_ID ==================================
+    id: 10010740130417514
+    identification: 
+      column-name: STARTER_ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 50
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Meldingen<span class="fa fa-bell-o" style="pa
+  id: 9529566000530513
+  identification: 
+    title: 'Meldingen<span class="fa fa-bell-o" style="padding-left:10px;padding-top:4px;" ></span>'
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT title
+           , s.id starter_id
+           , text_message
+           , notification_time
+        FROM cf_notifications cntm
+          JOIN cf_starters s on (s.id = cntm.starter_id)
+        ORDER BY notification_time DESC
+
+  layout: 
+    sequence: 10
+    parent-region: CenterField BackOffice # 5414562149378139
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 5
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 5342953137377872
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--stretch
+      - t-Report--staticRowColors
+      - t-Report--rowHighlight
+      - t-Report--horizontalBorders
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: TITLE =======================================
+    id: 9531045033530528
+    identification: 
+      column-name: TITLE
+      type: Link
+
+    heading: 
+      heading: Type
+      alignment: start
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: true
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:32:&SESSION.::&DEBUG.:32:P32_ID:#STARTER_ID#'
+        page: 32 # Starter Details
+        clear-cache: 32
+        values: 
+          p32_id: '#STARTER_ID#'
+
+      link-text: '#TITLE#'
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TEXT_MESSAGE ================================
+    id: 9531112067530529
+    identification: 
+      column-name: TEXT_MESSAGE
+      type: Plain Text
+
+    heading: 
+      heading: Bericht
+      alignment: center
+
+    layout: 
+      sequence: 50
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NOTIFICATION_TIME ===========================
+    id: 9531279477530530
+    identification: 
+      column-name: NOTIFICATION_TIME
+      type: Plain Text
+
+    heading: 
+      heading: Ontvangen
+      alignment: center
+
+    layout: 
+      sequence: 60
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: SINCE
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: STARTER_ID ==================================
+    id: 9900129473537743
+    identification: 
+      column-name: STARTER_ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 70
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Actieve starters<span class="fa fa-pie-chart"
+  id: 9531739545530535
+  identification: 
+    title: 'Actieve starters<span class="fa fa-pie-chart" style="padding-left:10px;padding-top:4px;" ></span>'
+    type: Chart
+
+  layout: 
+    sequence: 40
+    parent-region: CenterField BackOffice # 5414562149378139
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 9899113417537733
+    chart: 
+      type: Pie
+
+    layout: 
+      height: 400
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    settings: 
+      pie-selection-effect: Highlight
+
+    value: 
+      pie-chart-other-threshold: 0
+      format: Decimal
+      decimal-places: 0
+      format-scaling: None
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-value: true
+
+    legend: 
+      show: true
+      position: Automatic
+      hide-and-show-behavior: Rescale
+
+    series: 
+    - # ====== Series: active starters =============================
+      id: 9899216228537734
+      identification: 
+        name: active starters
+
+      execution-options: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          SELECT COUNT(is_active) value
+               , CASE is_active
+                  WHEN 1 THEN 
+                    'Actief'
+                  ELSE 
+                    'Inactief'
+                 END label
+               , CASE is_active
+                  WHEN 1 THEN 
+                    '#0cc42a'
+                  ELSE
+                    '#c2c4bc'
+                 END color
+            FROM cf_starters
+            GROUP BY is_active
+
+      column-mapping: 
+        series-name: LABEL
+        label: LABEL
+        value: VALUE
+
+      appearance: 
+        color: '&COLOR.'
+
+      label: 
+        show: true
+        position: Automatic
+        display-as: Percentage
+

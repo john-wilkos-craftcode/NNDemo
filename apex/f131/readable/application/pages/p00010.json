@@ -1,0 +1,595 @@
+{
+  "id":"10"
+ ,"Identification":{
+    "Name":"Onboarding Progression"
+   ,"Alias":"ONBOARDING-PROGRESSION"
+   ,"Title":"Onboarding Progression"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "File URLs":[
+      "https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/jquery-circle-progress\/1.2.0\/circle-progress.min.js"
+    ]
+   ,"Execute when Page Loads":"let imgsrc =document.getElementById(\u0027report_table_hidden-profile-pic\u0027).children.item(1).children.item(0).children.item(2).children.item(0).src\nif(imgsrc.length \u003E 2) {\n    document.getElementById(\u0027profile_picture_user\u0027).src = imgsrc;\n}"
+  }
+ ,"CSS":{
+    "Inline":"\/*show or don\u0027t show pwa install button*\/\n.user-nav-bar {\n    display:none;\n}\n\n#hidden-profile-pic{\n    display: none;\n}\n\n.notification {\n  color:#121212;\n  text-decoration: none;\n  padding: 15px 26px;\n  position: relative;\n  display: inline-block;\n  border-radius: 2px;\n  float:right;\n  z-index: 2;\n}\n\n.notification:hover {\n    color: var(--ut-link-text-color);\n}\n\n.notification .badge {\n  position: absolute;\n  top: 5px;\n  right: 10px;\n  padding: 5px 10px;\n  border-radius: 50%;\n  background: red;\n  color: white;\n  border:#121212 1px solid;\n  z-index: 1;\n}\n\n.apex-icons-fontapex .fa-bell{\nfont-size: 30px;\n}\n\n\/*Introduction region css*\/\n.introduction{\n}\nh1{\n    margin: 15px auto 0;\n    font-weight: bold;\n    color:var(--ut-link-text-color);\n    border-bottom: 1px solid var(--ut-link-text-color);\n    max-width: 690px;\n}\n\n\/*bottom buttons*\/\n\n.bottom-buttons{\n    display: flex;\n    justify-content: space-around;\n    align-items: stretch;\n    margin-bottom:30px;\n    width:100%;\n}\n.bottom-buttons div,.bottom-buttons a{\n    width: 80%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    color:#121212;\n}\n\n.bottom-buttons a{\n        border: 1px solid rgba(14, 30, 37, 0.12);\n}\n\n.bottom-buttons a:hover{\n    color:var(--ut-link-text-color);\n}\n.onboarding-progress{\n    width:30%;\n    display: inline-block !important;\n    overflow: hidden;\n    position: relative;\n    align-self: center;\n    justify-self: center;\n    margin-left: 5px;\n    margin-right:5px;\n\n}\n\n.onboarding-link{\n    border:none;\n    color:var(--ut-link-text-color);\n}\n\n.round{\n    border: none !important;\n    max-width: 108.8px;\n    max-height:108.8px;\n    margin:auto;\n}\n.round canvas {\n    width:100% !important;\n    height:100% !important;\n    padding-left: 0;\n    padding-right: 0;\n    display: block;\n}\n.onboarding-percentage{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n}\n.progress-logo{\n    max-width: 100%;\n    max-height: 100%;\n    margin: auto;\n    display: block;\n    position: absolute !important;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n.round span {\n  display: block;\n  color: #999;\n  font-size: 16px;\n  margin-top: 10px;\n}\n.round span i {\n  color: var(--ut-link-text-color);\n  font-size: 22px;\n  margin-right: 6px;\n}\n\n.number-days{\n    font-size: 26px;\n    font-weight: bold;\n}\n\n\/**\/\n.profile-button {\n    margin-top:8px;\n    width:50px;\n    height:50px;\n    border-radius: 50%;\n    object-fit: cover;\n}\n\n#profile-region {\n    width:100%;\n    margin:0;\n}\n\n#notifcation-region {\n    width:40%;\n}\n\n\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n    z-index: 2;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n\n.textprogress-container{\n    display: flex;\n    justify-content: stretch;\n    align-content: center;\n    align-items: stretch;\n    margin: 25px auto;\n    width: 100%;\n    margin-bottom: 5vh;\n    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;\n    border-radius:20px;\n    max-width: 690px;\n    }\n\np{\n    width: 100%;\n    padding: 8px;\n}\n\n.progress-profile-button{\n    width: 35%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    color:#121212;\n    border:#7a7a7a 1px solid;\n}\n\n.progress-profile-button:hover{\n    border:var(--ut-link-text-color) 1px solid;\n    color:var(--ut-link-text-color);\n\n}\n\ni.fa.fa-user-wrench.fa-2x.progress-logo:before{\n    position: absolute!important;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    \n}\ni.fa.fa-user-wrench.fa-2x.progress-logo:hover{\n    color:var(--ut-link-text-color);\n}\n\ni.fa.fa-clipboard-list.fa-2x.progress-logo:before{\n    position: absolute!important;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n}\ni.fa.fa-clipboard-list.fa-2x.progress-logo:hover{\n    color:var(--ut-link-text-color);\n}\n\n.ql-video{\n    width: 100%;\n}\n\n#user-task{\n    border-radius:20px 0 0 20px;\n}\n#user-profile{\n    border-radius:0 20px 20px 0;\n}\n\n\n@media only screen and (max-width: 600px) {\n  h1 {\n      font-size: 24px;\n  }\n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"18714495713955246"
+     ,"Identification":{
+        "Title":"Onboarding progressie"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cdiv\u003E\n    \u003Ch1 id=\"progression-header\"\u003E\n        Jouw onboarding vooruitgang\n    \u003C\/h1\u003E\n    \u003Cdiv class=\"textprogress-container\"\u003E\n    \u003Cdiv class=\"onboarding-progress\"\u003E\n        \u003Cdiv class=\"round\"\n          data-value=\u0026P10_HIDDEN_TODO_VALUES.\n          data-size=\"100\"\n          data-thickness=\"5\"\u003E\n        \u003Cstrong class=\"onboarding-percentage\"\u003E\u003C\/strong\u003E\n        \u003C\/div\u003E\n    \u003C\/div\u003E\n        \u003Cp\u003EHoi \u0026P10_HIDDEN_FIRST_NAME., \u003Cbr\u003E\n            Op deze pagina kan je jouw persoonlijke onboarding vooruitgang bemachtigen.\n            De cirkel vult verder aan naarmate de formulieren op jouw profiel ingevuld worden en de hr-dienst \n            jouw profiel verder uitbreiden.\n        \u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv class=\"textprogress-container\"\u003E\n        \u003Cp\u003ENeem een kijkje naar jouw profiel pagina!\u003Cbr\u003E\n            Op je profiel pagina kan je formulieren invullen en je keuzes meegeven. Naarmate hoe snel je deze invult zal jouw onboaring progressie ook sneller opvullen, laat het zeker niet te lang liggen.\n        \u003C\/p\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:60:\u0026SESSION.\" class=\"progress-profile-button\" id=\"user-profile\"\u003E\n        \u003Ci class=\"fa fa-user-wrench fa-2x\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"\"\u003EJouw profiel\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003C\/div\u003E\n    \u003Cdiv class=\"textprogress-container\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:60:\u0026SESSION.\" class=\"progress-profile-button\" id=\"user-task\"\u003E\n        \u003Ci class=\"fa fa-tasks-alt fa-2x\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"\"\u003ETakenlijst\u003C\/span\u003E\n    \u003C\/a\u003E\n        \u003Cp\u003EJouw takenlijst\u003Cbr\u003E\n            Op deze pagina vindt je een overzicht van je taken.\n            Dit geeft een indicatie van wat er nog moet gebeuren zodat de hr-dienst spoedig aan jouw onboarding kan beginnen.\n        \u003C\/p\u003E\n    \u003C\/div\u003E\n\u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"36488766497466246"
+     ,"Identification":{
+        "Title":"Profiel pagina"
+       ,"Type":"PL\/SQL Dynamic Content"
+      }
+     ,"Source":{
+        "PL\/SQL Code":"declare\n    l_picture blob;\n    l_mimetype varchar2(50 char);\n    l_filename varchar2(200 char);\n    l_id number;\nbegin\n\n    select id, profile_picture, mimetype, filename\n    into l_id,l_picture, l_mimetype, l_filename\n    from cf_starters\n    where token = :APP_USER;\n    \n        htp.p(\u0027\u003Ca href=\"f?p=\u0026APP_ID.:60:\u0026SESSION.\"\u003E\u003Cimg id=\"profile_picture_user\" src=\"#APP_FILES#Portrait_Placeholder.png\" class=\"profile-button\";\u003E\u003C\/a\u003E\u003Ca href=\"f?p=\u0026APP_ID.:20:\u0026SESSION.\" class=\"notification\"\u003E\n        \u003Cspan class=\"fa fa-bell\" aria-hidden=\"true\"\u003E\u003C\/span\u003E  \n        \u003Cspan class=\"badge\"\u003E\u0026P10_HIDDEN_COUNT_NOTIFICATIONS.\u003C\/span\u003E\n        \u003C\/a\u003E\u0027);\n\nend;"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":false
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"profile-region"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+    }
+   ,{
+      "id":"36490472321481356"
+     ,"Identification":{
+        "Title":"Bottom Navigation"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cnav class=\"nav\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:1:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-home\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EHome\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:30:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-building-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EOver\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:40:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-calendar-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EAgenda\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:50:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-rss\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003ENieuws\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/nav\u003E"
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+         ,"t-Form--stretchInputs"
+         ,"margin-top-none"
+         ,"margin-bottom-none"
+         ,"margin-left-none"
+         ,"margin-right-sm"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"leesvoer-navigation"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"38066128905645632"
+     ,"Identification":{
+        "Title":"HIDDEN_PROFILE_PICTURE"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select\nid, dbms_lob.getlength(profile_picture) as profile_picture, mimetype, filename,created_date_pic\nfrom cf_starters\nwhere token = :APP_USER;"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"hidden-profile-pic"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":15
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Standard (15351659333258958)"
+         ,"Template Options":[
+            "#DEFAULT#"
+           ,"t-Report--altRowsDefault"
+           ,"t-Report--rowHighlight"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"Row Ranges X to Y (with next and previous links)"
+         ,"Display Position":"Bottom - Right"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"19356370172690432"
+         ,"Identification":{
+            "Column Name":"ID"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Id"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":60
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"19356706742690433"
+         ,"Identification":{
+            "Column Name":"MIMETYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Mimetype"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":20
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"19357115529690433"
+         ,"Identification":{
+            "Column Name":"FILENAME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Filename"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":30
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"19357555079690434"
+         ,"Identification":{
+            "Column Name":"PROFILE_PICTURE"
+           ,"Type":"Display Image"
+          }
+         ,"Heading":{
+            "Heading":"Profile Picture"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":40
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"BLOB Attributes":{
+            "Table Owner":"Parsing Schema"
+           ,"Table Name":"CF_STARTERS"
+           ,"BLOB Column":"PROFILE_PICTURE"
+           ,"Primary Key Column 1":"ID"
+           ,"Mime Type Column":"MIMETYPE"
+           ,"Filename Column":"FILENAME"
+           ,"Last Updated Column":"CREATED_DATE_PIC"
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"19357918908690435"
+         ,"Identification":{
+            "Column Name":"CREATED_DATE_PIC"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Created Date Pic"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":50
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"4384983549519444"
+     ,"Identification":{
+        "Name":"P10_HIDDEN_COUNT_NOTIFICATIONS"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":80
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select count(*)\nfrom cf_starters_notifications_pwa\njoin cf_starters on cf_starters.id = starter_id\nwhere cf_starters.token = :APP_USER and seen = 0;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"18714561578955247"
+     ,"Identification":{
+        "Name":"P10_HIDDEN_FIRST_NAME"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select first_name\nfrom cf_starters\nwhere token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"18714605608955248"
+     ,"Identification":{
+        "Name":"P10_HIDDEN_COMPLETED_TODOS"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":60
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select count(ts.id)\nfrom cf_starters s\njoin cf_todos_starters ts on s.id = ts.starter_id\nwhere token = :APP_USER and ts.checked = 1;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"18714768329955249"
+     ,"Identification":{
+        "Name":"P10_HIDDEN_TODO_VALUES"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":70
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select to_char(:P10_HIDDEN_COMPLETED_TODOS\/count(*),\u00270.00\u0027)\nfrom cf_todos;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"19361374186730913"
+     ,"Identification":{
+        "Name":"FILL CIRCLE"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Advanced":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"19361760821730916"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"let colorvar = document.getElementById(\"progression-header\");\nconsole.log(window.getComputedStyle(colorvar).color);\n\n\n$(\u0027.round\u0027).circleProgress({fill: {color: window.getComputedStyle(colorvar).color}})\n    .on(\u0027circle-animation-progress\u0027, function(event, progress, stepValue){\n  $(this).find(\u0027strong\u0027).text(String(stepValue.toFixed(2)).substr(2)+\u0027%\u0027);\n  });  \n"
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"FILL CIRCLE (19361374186730913)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+}

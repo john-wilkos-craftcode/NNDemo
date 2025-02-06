@@ -1,0 +1,99 @@
+---
+- # ====== Authentication: Application Express Accounts ========
+  id: 5216877220377667
+  identification: 
+    name: Application Express Accounts
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  source: 
+    pl/sql-code: |
+      procedure post_auth as
+        l_companies apex_t_varchar2;
+      begin
+        apex_authorization.enable_dynamic_groups(p_group_names => apex_t_varchar2('CENTERFIELD_HR', 'CENTERFIELD_COORDINATOR'));
+      
+        l_companies := apex_t_varchar2('RKITEK', 'Contribute');
+        :CURRENT_USER_GROUPS := apex_string.join(l_companies, ':');
+        :AI_USER_ID := 348;
+      end post_auth;
+      
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    post-authentication-procedure-name: post_auth
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: IDCS ================================
+  id: 25428750571428226
+  identification: 
+    name: IDCS
+
+  settings: 
+    type: Social Sign-In
+    credential-store: 25428564948435730
+    authentication-provider: Generic OAuth2 Provider
+    authorization-endpoint-url: 'https://idcs-ac586b3a35ae4f059c712b6ef0ccc9f7.identity.oraclecloud.com:443/oauth2/v1/authorize'
+    token-endpoint-url: 'https://idcs-ac586b3a35ae4f059c712b6ef0ccc9f7.identity.oraclecloud.com:443/oauth2/v1/token'
+    user-info-endpoint-url: 'https://idcs-ac586b3a35ae4f059c712b6ef0ccc9f7.identity.oraclecloud.com:443/oauth2/v1/userinfo'
+    token-authentication-method: Basic Authentication and Client ID in Body
+    scope: openid,profile,groups
+    username: sub
+    convert-username-to-upper-case: false
+    additional-user-attributes: groups
+    verify-attributes: true
+
+  source: 
+    pl/sql-code: |
+      procedure load_dynamic_groups as
+          l_group_names apex_t_varchar2;
+          l_group_count number;
+          l_token apex_jwt.t_token;
+          l_keys apex_t_varchar2;
+          l_companies apex_t_varchar2;
+      
+      
+          l_email varchar2(200 char);
+          l_id number;
+      begin
+          -- add all group names to l_group_names
+          l_group_count := apex_json.get_count('groups');
+          if l_group_count > 0 then
+              for i in 1 .. l_group_count loop
+                  apex_string.push(l_group_names, apex_json.get_varchar2(p_path => 'groups[%d].name', p0 => i));
+              end loop;
+          end if;
+          -- save group names in session
+          apex_authorization.enable_dynamic_groups(p_group_names => l_group_names);
+          apex_debug.error(apex_string.join(l_group_names, ':'));
+          
+          -- process additional data
+          l_token := apex_jwt.decode(p_value => apex_json.get_varchar2(p_path => 'id_token', p_values => apex_json.G_VALUES));
+          apex_json.parse(l_token.payload);
+      
+      
+          l_companies := apex_json.get_t_varchar2(p_path => 'Company', p_values => APEX_JSON.G_VALUES);
+          :CURRENT_USER_GROUPS := apex_string.join(l_companies, ':');    
+      end;
+      
+      
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    post-authentication-procedure-name: load_dynamic_groups
+    switch-in-session: false
+
+  post-logout-url: 
+    post-logout-url: 'https://idcs-ac586b3a35ae4f059c712b6ef0ccc9f7.identity.oraclecloud.com:443/oauth2/v1/userlogout'
+
+  real-application-security: 
+    ras-mode: Disabled
+

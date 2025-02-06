@@ -1,0 +1,131 @@
+---
+# ====== Application: CenterField BackOffice =================
+id: 103
+identification: 
+  name: CenterField BackOffice
+  alias: CENTERFIELD-BACKOFFICE
+  version: Release 1.0
+
+row-search: 
+  tokenize: false
+
+availability: 
+  status: Available with Developer Toolbar
+  build-status: Run and Build Application
+
+error-handling: 
+  default-display-location: Inline with Field and in Notification
+
+report-printing: 
+  type: Native Printing
+
+advanced: 
+  friendly-urls: true
+  allow-feedback: true
+  logging: true
+  debugging: true
+  compatibility-mode: 21.2 / 22.1
+
+authentication: 
+  public-user: APEX_PUBLIC_USER
+  authentication-scheme: Application Express Accounts # 5216877220377667
+
+authorization: 
+  source-for-role-or-group-schemes: Access Control User Role Assignments
+
+session-management: 
+  rejoin-sessions: Disabled
+
+session-state-protection: 
+  enabled: true
+
+security: 
+  deep-linking: Disabled
+  browser-cache: Disabled
+  embed-in-frames: Deny
+  referrer-policy: strict-origin
+  html-escaping-mode: Extended
+
+database-session: 
+  parsing-schema: CTB_CENTERFIELD
+
+globalization: 
+  primary-language: Dutch (Belgium) (nl-be)
+  document-direction: Left-To-Right
+  language-derived-from: Application Primary Language
+  automatic-time-zone: false
+  automatic-csv-encoding: true
+
+application-format-masks: 
+  date: DS
+  timestamp: DS
+  timestamp-time-zone: DS
+
+character-value-comparison: 
+  behavior: Database session NLS setting (default)
+
+logo: 
+  type: Image and Text
+  image-url: '#APP_FILES#app-103-logo.png'
+  text: CenterField BackOffice
+
+progressive-web-app: 
+  enable: true
+  installable: false
+  display: Standalone
+  screen-orientation: Any
+  ios-status-bar-style: Translucent
+
+substitutions: 
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  value: 
+    static-value: CenterField BackOffice
+
+user-interfaces: 
+- # ====== User Interface: Desktop =============================
+  id: 5405277273378058
+  identification: 
+    name: Desktop
+
+  navigation: 
+    home-url: 
+      url: 'f?p=&APP_ID.:1:&SESSION.'
+      page: 1 # Home
+
+    login-url: 
+      url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+      page: LOGIN
+
+  navigation-menu: 
+    list-template: Side Navigation Menu # 5365306915377928
+    template-options: 
+    - '#DEFAULT#'
+    - t-TreeNav--styleA
+    - js-navCollapsed--hidden
+    list-position: Side
+    list: Navigation Menu # 5217694139377677
+
+  navigation-bar: 
+    implementation: List
+    list: Navigation Bar # 5404981542378056
+    list-template: Navigation Bar # 5368110609377941
+    template-options: 
+    - '#DEFAULT#'
+
+  javascript: 
+    include-jquery-migrate: false
+
+  css: 
+    file-urls: 
+    - '#APP_FILES#app-icon.css?version=#APP_VERSION#'
+
+  attributes: 
+    theme: Universal Theme # 42
+    global-page: 0
+    enable-end-users-to-choose-theme-style: false
+    add-"built-with-apex"-to-footer: false
+
