@@ -1,0 +1,36 @@
+---
+- # ====== Static Application File: app-icon.svg ===============
+  id: 5406209274378085
+  identification: 
+    file-name: app-icon.svg
+
+  attributes: 
+    mime-type: image/svg+xml
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-icon.css ===============
+  id: 5406520377378088
+  identification: 
+    file-name: app-icon.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-103-logo.png ===========
+  id: 7475623755462896
+  identification: 
+    file-name: app-103-logo.png
+
+  attributes: 
+    mime-type: image/png
+
+- # ====== Static Application File: Icon-color.png =============
+  id: 17485569571848275
+  identification: 
+    file-name: Icon-color.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+

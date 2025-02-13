@@ -1,0 +1,467 @@
+---
+# ====== Page: Voorbeeld agenda ==============================
+id: 33
+identification: 
+  name: Voorbeeld agenda
+  alias: VOORBEELD-AGENDA
+  title: Voorbeeld agenda
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    #report_agenda div{
+        width: 100%;
+    }
+    
+    #report_table_agenda {
+        width: 100%
+    }
+    
+    .t-Card-body div img {
+     width: 170px;
+    }
+    
+    .ql-video {
+        width:100% !important;
+        height:350px !important;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Modal region ================================
+  id: 8143430714844222
+  identification: 
+    title: Modal region
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Wie ben ik? =================================
+  id: 8144820344844236
+  identification: 
+    title: Wie ben ik?
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select C002 filename , C003 mimetype, C005 CARD_TITLE, dbms_lob.getlength(BLOB001) CARD_TEXT, C004 email, c004 CARD_SUBTEXT
+      from APEX_COLLECTIONS
+      WHERE COLLECTION_NAME = 'QUILL_EMP_AGENDA_COLLECTION' and C001 ='emp_profile_pic';
+
+  layout: 
+    sequence: 20
+    parent-region: Modal region # 8143430714844222
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container # 5260613574377766
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    static-id: whoami
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Cards # 5346947395377879
+      template-options: 
+      - '#DEFAULT#'
+      - t-Cards--basic
+      - t-Cards--3cols
+      - t-Cards--animColorFill
+      - t-Report--hideNoPagination
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: FILENAME ====================================
+    id: 8569009351146002
+    identification: 
+      column-name: FILENAME
+      type: Plain Text
+
+    heading: 
+      heading: Filename
+      alignment: center
+
+    layout: 
+      sequence: 10
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: MIMETYPE ====================================
+    id: 8569101068146003
+    identification: 
+      column-name: MIMETYPE
+      type: Plain Text
+
+    heading: 
+      heading: Mimetype
+      alignment: center
+
+    layout: 
+      sequence: 20
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_TITLE ==================================
+    id: 8569568071146007
+    identification: 
+      column-name: CARD_TITLE
+      type: Plain Text
+
+    heading: 
+      heading: Card Title
+      alignment: center
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_TEXT ===================================
+    id: 8569691500146008
+    identification: 
+      column-name: CARD_TEXT
+      type: Display Image
+
+    heading: 
+      heading: Card Text
+      alignment: center
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    blob-attributes: 
+      table-owner: Parsing Schema
+      table-name: CF_EMPLOYEES
+      blob-column: CONTENT
+      primary-key-column-1: EMAIL
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+  - # ====== Column: EMAIL =======================================
+    id: 8569715167146009
+    identification: 
+      column-name: EMAIL
+      type: Hidden Column
+
+    layout: 
+      sequence: 70
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_SUBTEXT ================================
+    id: 8569853067146010
+    identification: 
+      column-name: CARD_SUBTEXT
+      type: Plain Text
+
+    heading: 
+      heading: Card Subtext
+      alignment: center
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Agenda starter ==============================
+  id: 8144965781844237
+  identification: 
+    title: Agenda starter
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          l_rte_text clob;
+          l_heading varchar2(200 CHAR);
+      begin
+          select clob001 as agenda_starter
+          into l_rte_text
+          from APEX_COLLECTIONS
+          where COLLECTION_NAME ='QUILL_EMP_AGENDA_COLLECTION' AND C001 = 'agenda_starter';
+          
+          htp.p(l_rte_text);
+          htp.p('<h1 style="border-bottom:1px solid #121212">Gekozen medewerkers</h1>');
+      end;
+
+  layout: 
+    sequence: 10
+    parent-region: Modal region # 8143430714844222
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 12
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: agenda
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+page-items: 
+- # ====== Page Item: P33_STARTER_ID ===========================
+  id: 8144392003844231
+  identification: 
+    name: P33_STARTER_ID
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: Modal region # 8143430714844222
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P33_STARTER_NAME =========================
+  id: 8569938754146011
+  identification: 
+    name: P33_STARTER_NAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Modal region # 8143430714844222
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+

@@ -1,0 +1,157 @@
+---
+- # ====== Text Message: APEX.SINCE.SHORT.HOURS_AGO ============
+  id: 4199837986470991
+  identification: 
+    name: APEX.SINCE.SHORT.HOURS_AGO
+
+  message: 
+    text: '%0 uren geleden'
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_DAYS_AGO ========================
+  id: 4202777414524979
+  identification: 
+    name: SINCE_DAYS_AGO
+
+  message: 
+    text: '%0 dagen geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_HOURS_AGO =======================
+  id: 4202947368527091
+  identification: 
+    name: SINCE_HOURS_AGO
+
+  message: 
+    text: '%0 uren geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_MINUTES_AGO =====================
+  id: 4203163926528695
+  identification: 
+    name: SINCE_MINUTES_AGO
+
+  message: 
+    text: '%0 minuten geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_MONTHS_AGO ======================
+  id: 4203368310529689
+  identification: 
+    name: SINCE_MONTHS_AGO
+
+  message: 
+    text: '%0 maanden geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_NOW =============================
+  id: 4203551330531244
+  identification: 
+    name: SINCE_NOW
+
+  message: 
+    text: net
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_SECONDS_AGO =====================
+  id: 4203924935533075
+  identification: 
+    name: SINCE_SECONDS_AGO
+
+  message: 
+    text: '%0 seconden geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_WEEKS_AGO =======================
+  id: 4204323422534394
+  identification: 
+    name: SINCE_WEEKS_AGO
+
+  message: 
+    text: '%0 weken geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: SINCE_YEARS_AGO =======================
+  id: 4204708696535647
+  identification: 
+    name: SINCE_YEARS_AGO
+
+  message: 
+    text: '%0 jaren geleden'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: INVALID_CREDENTIALS ===================
+  id: 6769464858830690
+  identification: 
+    name: INVALID_CREDENTIALS
+
+  message: 
+    text: Ongeldige gebruikersnaam en/of wachtwoord
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: false
+
+- # ====== Text Message: APEX.PAGE_ITEM_IS_REQUIRED ============
+  id: 7221684366496277
+  identification: 
+    name: APEX.PAGE_ITEM_IS_REQUIRED
+
+  message: 
+    text: '#LABEL# heeft een geldige waarde nodig.'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: true
+
+- # ====== Text Message: FLOW.VALIDATION_ERROR =================
+  id: 7222571934543022
+  identification: 
+    name: FLOW.VALIDATION_ERROR
+
+  message: 
+    text: '%0 errors zijn opgetreden.'
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: true
+
+- # ====== Text Message: FLOW.SINGLE_VALIDATION_ERROR ==========
+  id: 7222709551545784
+  identification: 
+    name: FLOW.SINGLE_VALIDATION_ERROR
+
+  message: 
+    text: 1 error is opgetreden.
+
+  attributes: 
+    language: Dutch (Belgium) (nl-be)
+    used-in-javascript: true
+

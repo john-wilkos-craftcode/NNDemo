@@ -1,0 +1,510 @@
+{
+  "id":"50"
+ ,"Identification":{
+    "Name":"News"
+   ,"Alias":"NEWS"
+   ,"Title":"News"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Execute when Page Loads":"var hiddenlinkdivs = document.getElementsByClassName(\"hidden-link-div\");\nvar headline = document.getElementsByClassName(\"headline\");\nlet i = 0;\nArray.from(hiddenlinkdivs).forEach((hiddenlinkdiv) =\u003E {\n    headline[i].href = hiddenlinkdiv.childNodes[1].href;\n    i++;\n});\n\nvar authorcut = document.getElementsByClassName(\"post-author\");\nfor (let i = 0; i\u003C authorcut.length; i++){\n    console.log(authorcut[i].innerHTML);\n    authorcut[i].textContent = authorcut[i].innerHTML.substring(0, authorcut[i].innerHTML.indexOf(\u0027@\u0027));\n    console.log(\"author after cut: \" +authorcut[i].innerHTML);\n}"
+  }
+ ,"CSS":{
+    "File URLs":[
+      "https:\/\/fonts.googleapis.com\/css?family=Ubuntu"
+    ]
+   ,"Inline":"\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);;\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n\n\n\/*header css*\/\n.notification-header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n}\n.notification-header:after {\n    display: inline-block;\n    margin: 0 0 8px 20px;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n.notification-header:before {\n    display: inline-block;\n    margin: 0 20px 8px 0;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n\n@media only screen and (max-width: 500px) {\n    .notification-header{\n        margin-top: 20px;\n        font-size: 20px;\n    }\n    .notification-header:after {\n    height: 2px;\n\n}\n.notification-header:before {\n    height: 2px;\n}\n}\n\n\/*newsfeed css*\/\n.single-article{\n    position: relative;\n    z-index: 1;\n    max-width: 800px;\n    margin: 20px auto;\n    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;\n    }\n.post-thumbnail{\n    box-sizing: border-box;\n    position: relative;\n    z-index: 1;\n    flex: 0 0 97px;\n    display: flex;\n    align-items: center;\n    min-width: 97px;\n    margin-right: 15px;\n    width: 100%;\n    height: 100%;\n}\n.post-thumbnail img{\n    width: 100px;\n    height:100px;\n    object-fit: cover;\n}\n.post-content{\n    padding: 5px 30px 5px 5px;\n    display: block;\n    width: 100%;\n}\n.headline{\n    text-decoration: none;\n    outline: none;\n    font-size: 14px;\n    font-weight: 400;\n    font-family: \"Ubuntu\", sans-serif;\n    align-items: center;\n    display: flex!important;\n}\n.headline h2{\n    font-size: 14px;\n    margin-bottom: 10px;\n    color: #000000;\n    font-weight: 500;\n    line-height: 1.3;\n    font-family: \"Ubuntu\", sans-serif;\n}\n\n.post-meta{\n    display: block;\n}\n\n.post-meta p{\n    margin-bottom: 0;\n    font-size: 12px;\n    color:#8d8d8d;\n    display: flex;\n    justify-content: space-between;\n}\n.post-date{\n    text-align: right;\n    margin-left: auto;\n}\n.hidden-link-div{\n    display: none;\n}\n\n@media only screen and (max-width: 800px){\n.single-article{\n    margin: 20px;\n    }\n}\n\n@media only screen and (max-width: 500px){\n.single-article{\n    margin: 20px 5px;\n    }\n\n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"3846841532760527"
+     ,"Identification":{
+        "Title":"New"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select id,\n        dbms_lob.getlength(thumbnail) as thumbnail,\n        filename, mimetype, date_created, \n        title as ARTICLE_TITLE, \n        lower(author) as ARTICLE_AUTHOR, \n        time_posted as ARTICLE_UPLOAD_TIME, \n        text_content,\n        \u0027link\u0027 link\nfrom cf_newsfeed_pwa\norder by time_posted desc;"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":15
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Newsfeed (3870576261349863)"
+         ,"Template Options":[
+            "#DEFAULT#"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"No Pagination (Show All Rows)"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"3847032358760529"
+         ,"Identification":{
+            "Column Name":"FILENAME"
+           ,"Type":"Hidden Column"
+          }
+         ,"Layout":{
+            "Sequence":20
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3847160547760530"
+         ,"Identification":{
+            "Column Name":"MIMETYPE"
+           ,"Type":"Hidden Column"
+          }
+         ,"Layout":{
+            "Sequence":30
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3847250760760531"
+         ,"Identification":{
+            "Column Name":"DATE_CREATED"
+           ,"Type":"Hidden Column"
+          }
+         ,"Layout":{
+            "Sequence":40
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3847619690760535"
+         ,"Identification":{
+            "Column Name":"TEXT_CONTENT"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Text Content"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":80
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3847702897760536"
+         ,"Identification":{
+            "Column Name":"ID"
+           ,"Type":"Hidden Column"
+          }
+         ,"Layout":{
+            "Sequence":90
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3847969965760538"
+         ,"Identification":{
+            "Column Name":"THUMBNAIL"
+           ,"Type":"Display Image"
+          }
+         ,"Heading":{
+            "Heading":"Thumbnail"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":100
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"BLOB Attributes":{
+            "Table Owner":"Parsing Schema"
+           ,"Table Name":"CF_NEWSFEED_PWA"
+           ,"BLOB Column":"THUMBNAIL"
+           ,"Primary Key Column 1":"ID"
+           ,"Mime Type Column":"MIMETYPE"
+           ,"Filename Column":"FILENAME"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"3848029179760539"
+         ,"Identification":{
+            "Column Name":"ARTICLE_TITLE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Title"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":110
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3848187880760540"
+         ,"Identification":{
+            "Column Name":"ARTICLE_AUTHOR"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Author"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":120
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3848290766760541"
+         ,"Identification":{
+            "Column Name":"ARTICLE_UPLOAD_TIME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Upload Time"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":130
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Appearance":{
+            "Format Mask":"SINCE"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3849003855760549"
+         ,"Identification":{
+            "Column Name":"LINK"
+           ,"Type":"Link"
+          }
+         ,"Heading":{
+            "Heading":"Link"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":140
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Link":{
+            "Target":{
+              "url":"f?p=\u0026APP_ID.:51:\u0026SESSION.::\u0026DEBUG.:51:P51_HIDDEN_ARTICLE_ID:#ID#"
+             ,"Page":"51"
+             ,"Clear Cache":"51"
+             ,"Values":{
+                "P51_HIDDEN_ARTICLE_ID":"#ID#"
+              }
+            }
+           ,"Link Text":"#LINK#"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"7010487373882083"
+     ,"Identification":{
+        "Title":"Newsfeed"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ch1 class=\"notification-header\"\u003ENieuwsfeed\u003C\/h1\u003E"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"35456816454444241"
+     ,"Identification":{
+        "Title":"Bottom Navigation"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cnav class=\"nav\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:1:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-home\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EHome\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:30:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-building-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EOver\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:40:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-calendar-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EAgenda\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:50:\u0026SESSION.\" class=\"nav-link active\"\u003E\n        \u003Ci class=\"nav-icons fa fa-rss\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003ENieuws\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/nav\u003E"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+         ,"t-Form--stretchInputs"
+         ,"margin-top-none"
+         ,"margin-bottom-none"
+         ,"margin-left-none"
+         ,"margin-right-sm"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"leesvoer-navigation"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+}

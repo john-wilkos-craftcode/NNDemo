@@ -1,0 +1,1772 @@
+---
+# ====== Page: Bedrijf details ===============================
+id: 9211
+identification: 
+  name: Bedrijf details
+  alias: BEDRIJF-DETAILS1
+  title: Bedrijf details
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js'
+  - 'https://cdn.quilljs.com/1.3.6/quill.js'
+  function-and-global-variable-declaration: |
+    var quill1;
+    var quill2;
+    var quill3;
+  execute-when-page-loads: |
+    quill1 = new Quill('#editor_startday_m', {
+        theme: 'snow',
+        modules: {
+            'syntax': true,
+            'toolbar': [
+              [{ 'size': [] }],
+              [ 'bold', 'italic', 'underline', 'strike' ],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'script': 'super' }, { 'script': 'sub' }],
+              [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+              [ {'direction': 'rtl'}, { 'align': [] }],
+              [ 'link', 'image', 'video', 'formula' ],
+              [ 'clean' ]
+            ]
+          }
+      });
+    
+    quill2 = new Quill('#editor_startday_e', {
+        theme: 'snow',
+        modules: {
+            'syntax': true,
+            'toolbar': [
+              [{ 'size': [] }],
+              [ 'bold', 'italic', 'underline', 'strike' ],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'script': 'super' }, { 'script': 'sub' }],
+              [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+              [ {'direction': 'rtl'}, { 'align': [] }],
+              [ 'link', 'image', 'video', 'formula' ],
+              [ 'clean' ]
+            ],
+          },
+      });
+    
+    quill3 = new Quill('#editor_welcometext', {
+        theme: 'snow',
+        modules: {
+            'syntax': true,
+            'toolbar': [
+              [{ 'size': [] }],
+              [ 'bold', 'italic', 'underline', 'strike' ],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'script': 'super' }, { 'script': 'sub' }],
+              [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+              [ {'direction': 'rtl'}, { 'align': [] }],
+              [ 'link', 'image', 'video', 'formula' ],
+              [ 'clean' ]
+            ],
+          },
+      });
+
+css: 
+  file-urls: 
+  - 'https://cdn.quilljs.com/1.3.6/quill.snow.css'
+  - 'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
+  - null
+  inline: |
+    #report_table_videocontent div{
+        width: 100%;
+    }
+    
+    .t-TabsRegion-items {
+        min-height: 0 !important;
+    }
+    
+    .ql-video{
+        width:100%;
+        height:600px;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Always
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 29525037288224927
+  identification: 
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 5217168177377672
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 5320018456377838
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 5382105676377986
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Bedrijf Details =============================
+  id: 35354107510023744
+  identification: 
+    title: Bedrijf Details
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: CF_COMPANIES
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: '&P9211_NAME.' # 36949402480207172
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 5317427051377835
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Details =====================================
+  id: 36949145614207169
+  identification: 
+    title: Details
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Bedrijf Details # 35354107510023744
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Socials =====================================
+  id: 36949227707207170
+  identification: 
+    title: Socials
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Bedrijf Details # 35354107510023744
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Itembeheer ==================================
+  id: 36949354329207171
+  identification: 
+    title: Itembeheer
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: Bedrijf Details # 35354107510023744
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: &P9211_NAME. ================================
+  id: 36949402480207172
+  identification: 
+    title: '&P9211_NAME.'
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--hiddenOverflow
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: startdag voormiddag =========================
+  id: 37170515251151767
+  identification: 
+    title: startdag voormiddag
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          l_rte_text clob;
+      begin
+      
+          if not :P9211_ID is null then
+              select startday_morning 
+              into l_rte_text
+              from cf_companies
+              where id = :P9211_ID;
+          else
+              l_rte_text := null;
+          end if;
+      
+          if l_rte_text is null then
+              htp.p('<div id="editor_startday_m"><b><h2>Startdag ochtend</h2></b><p>Een klein overzichtje over de startdag...</p></div>');
+          else 
+              htp.p('<div id="editor_startday_m">' || substr(l_rte_text, 1, 32767) || '</div>');
+      
+          end if;
+      
+      end;
+
+  layout: 
+    sequence: 20
+    parent-region: Itembeheer # 36949354329207171
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+- # ====== Region: startdag namiddag ===========================
+  id: 37171527325151777
+  identification: 
+    title: startdag namiddag
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          l_rte_text clob;
+      begin
+      
+          if not :P9211_ID is null then
+              select startday_evening
+              into l_rte_text
+              from cf_companies
+              where id = :P9211_ID;
+          else
+              l_rte_text := null;
+          end if;
+      
+          if l_rte_text is null then
+              htp.p('<div id="editor_startday_e"><b><h2>Startdag namiddag</h2></b><p>Een klein overzichtje over de startdag...</p></div>');
+          else 
+              htp.p('<div id="editor_startday_e">' || substr(l_rte_text, 1, 32767) || '</div>');
+      
+          end if;
+      
+      end;
+
+  layout: 
+    sequence: 40
+    parent-region: Itembeheer # 36949354329207171
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+- # ====== Region: welkomsttekst ===============================
+  id: 37171638094151778
+  identification: 
+    title: welkomsttekst
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          l_rte_id constant varchar2(50 char) := 'editor_welcometext';
+          l_rte_text clob;
+      begin
+          select clob001
+          into l_rte_text
+          from apex_collections
+          where collection_name = 'QUILL_COMPANY_COLLECTION'
+          and c001 = 'WELCOMETEXT';
+      
+          if l_rte_text is null then
+              htp.p('<div id="' || l_rte_id || '"><b><h2>Welkomsttekst</h2></b><p>Een welkomst bericht voor de starter over het deelbedrijf</p></div>');
+          else 
+              htp.p('<div id="' || l_rte_id || '">' || substr(l_rte_text, 1, 32767) || '</div>');
+          end if;
+      end;
+
+  layout: 
+    sequence: 10
+    parent-region: Itembeheer # 36949354329207171
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+page-items: 
+- # ====== Page Item: P9211_QUILL1 =============================
+  id: 29512434948224949
+  identification: 
+    name: P9211_QUILL1
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 60
+    region: Itembeheer # 36949354329207171
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_QUILL2 =============================
+  id: 29512807870224948
+  identification: 
+    name: P9211_QUILL2
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 70
+    region: Itembeheer # 36949354329207171
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_QUILL3 =============================
+  id: 29513252295224948
+  identification: 
+    name: P9211_QUILL3
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 80
+    region: Itembeheer # 36949354329207171
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_FACEBOOK ===========================
+  id: 29514831548224944
+  identification: 
+    name: P9211_FACEBOOK
+    type: Text Field
+
+  label: 
+    label: Facebook
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Socials # 36949227707207170
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: FACEBOOK
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_TWITTER ============================
+  id: 29515276989224943
+  identification: 
+    name: P9211_TWITTER
+    type: Text Field
+
+  label: 
+    label: Twitter
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Socials # 36949227707207170
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: TWITTER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_LINKEDIN ===========================
+  id: 29515661106224943
+  identification: 
+    name: P9211_LINKEDIN
+    type: Text Field
+
+  label: 
+    label: Linkedin
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Socials # 36949227707207170
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: LINKEDIN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_INSTAGRAM ==========================
+  id: 29516078092224942
+  identification: 
+    name: P9211_INSTAGRAM
+    type: Text Field
+
+  label: 
+    label: Instagram
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Socials # 36949227707207170
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: INSTAGRAM
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_YOUTUBE ============================
+  id: 29516417494224942
+  identification: 
+    name: P9211_YOUTUBE
+    type: Text Field
+
+  label: 
+    label: Youtube
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 60
+    region: Socials # 36949227707207170
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: YOUTUBE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_HEX_CODE ===========================
+  id: 29518693277224937
+  identification: 
+    name: P9211_HEX_CODE
+    type: Color Picker
+
+  label: 
+    label: Hex Code
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 10
+    region: Details # 36949145614207169
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 7
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: HEX_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_ID =================================
+  id: 29519025629224937
+  identification: 
+    name: P9211_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Details # 36949145614207169
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_LOGO ===============================
+  id: 29519457159224936
+  identification: 
+    name: P9211_LOGO
+    type: File Browse...
+
+  label: 
+    label: Logo
+    alignment: Left
+
+  settings: 
+    display-as: Block Dropzone
+    storage-type: BLOB column specified in Item Source attribute
+    mime-type-column: MIMETYPE
+    filename-column: FILENAME
+    blob-last-updated-column: UPDATED_LOGO
+    display-download-link: true
+    content-disposition: Attachment
+    file-types: image/*
+
+  layout: 
+    sequence: 20
+    region: Details # 36949145614207169
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: LOGO
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_MIMETYPE ===========================
+  id: 29519851263224935
+  identification: 
+    name: P9211_MIMETYPE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Details # 36949145614207169
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: MIMETYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_NAME ===============================
+  id: 29520222658224935
+  identification: 
+    name: P9211_NAME
+    type: Text Field
+
+  label: 
+    label: Naam
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Details # 36949145614207169
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 5377828068377967
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_ABOUT ==============================
+  id: 29520675291224934
+  identification: 
+    name: P9211_ABOUT
+    type: Textarea
+
+  label: 
+    label: Over
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 10
+    region: Details # 36949145614207169
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+    height: 4
+
+  validation: 
+    value-required: false
+    maximum-length: 4000
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: ABOUT
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_FILENAME ===========================
+  id: 29521010370224934
+  identification: 
+    name: P9211_FILENAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Details # 36949145614207169
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_UPDATED_LOGO =======================
+  id: 29521449858224933
+  identification: 
+    name: P9211_UPDATED_LOGO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: Details # 36949145614207169
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: UPDATED_LOGO
+    data-type: DATE
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9211_ACTIVE =============================
+  id: 29521880304224933
+  identification: 
+    name: P9211_ACTIVE
+    type: Checkbox
+
+  label: 
+    label: Actief?
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: 1
+    unchecked-value: 0
+
+  layout: 
+    sequence: 50
+    region: Details # 36949145614207169
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Bedrijf Details # 35354107510023744
+    column: ACTIVE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  default: 
+    type: Static
+    static-value: 1
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CREATE ======================================
+  id: 29509409956224955
+  identification: 
+    button-name: CREATE
+    label: Bedrijf toevoegen
+
+  layout: 
+    sequence: 40
+    region: '&P9211_NAME.' # 36949402480207172
+    position: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-plus-square
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P9211_ID
+
+- # ====== Button: SAVE ========================================
+  id: 29509869274224954
+  identification: 
+    button-name: SAVE
+    label: Wijzigingen opslaan
+
+  layout: 
+    sequence: 30
+    region: '&P9211_NAME.' # 36949402480207172
+    position: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-chevron-down
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9211_ID
+
+- # ====== Button: CANCEL ======================================
+  id: 29510240029224953
+  identification: 
+    button-name: CANCEL
+    label: Annuleer
+
+  layout: 
+    sequence: 10
+    region: '&P9211_NAME.' # 36949402480207172
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9210:&SESSION.::&DEBUG.:::'
+      page: 9210 # Bedrijven
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: PREVIEW =====================================
+  id: 29512006202224949
+  identification: 
+    button-name: PREVIEW
+    label: Voorbeeld
+
+  layout: 
+    sequence: 90
+    region: Itembeheer # 36949354329207171
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:52:&SESSION.::&DEBUG.:52::'
+      page: 52 # Voorbeeld
+      clear-cache: 52
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: SAVE QUILL ==========================
+  id: 29526847057224924
+  identification: 
+    name: SAVE QUILL
+
+  execution-options: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SAVE # 29509869274224954
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 29527377242224922
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var editor1 = apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9211_ID"),
+            x02: "STARTDAY_MORNING",
+            p_clob_01: quill1.root.innerHTML
+        } );
+        var editor2 = apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9211_ID"),
+            x02: "STARTDAY_EVENING",
+            p_clob_01: quill2.root.innerHTML
+        } );
+        var editor3 = apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9211_ID"),
+            x02: "WELCOMETEXT",
+            p_clob_01: quill3.root.innerHTML
+        } );
+        
+        Promise.all([editor1, editor2, editor3]).then((values) => {
+            apex.page.submit('SAVE');
+        });
+
+    execution-options: 
+      sequence: 20
+      event: SAVE QUILL # 29526847057224924
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 29527807553224921
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.item("P9211_QUILL1").setValue(quill1.root.innerHTML);
+        apex.item("P9211_QUILL2").setValue(quill2.root.innerHTML);
+        apex.item("P9211_QUILL3").setValue(quill3.root.innerHTML);
+        
+        
+        apex.server.process('POPULATE_QUILL_COLLECTION', {
+              pageItems: '#P9211_QUILL1,#P9211_QUILL2, #P9211_QUILL3, #P9211_ID'
+           }, {
+              dataType: 'text',
+              success: function (data) {
+                 if (data != 'SUCCESS');
+              }
+        });
+
+    execution-options: 
+      sequence: 10
+      event: SAVE QUILL # 29526847057224924
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    server-side-condition: 
+      type: Never
+
+- # ====== Dynamic Action: UPDATE QUILL COLLECTION =============
+  id: 29528237575224920
+  identification: 
+    name: UPDATE QUILL COLLECTION
+
+  execution-options: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: PREVIEW # 29512006202224949
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 29528753719224920
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9211_ID"),
+            x02: "STARTDAY_MORNING",
+            p_clob_01: quill1.root.innerHTML
+        } );
+        apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9211_ID"),
+            x02: "STARTDAY_EVENING",
+            p_clob_01: quill2.root.innerHTML
+        } );
+        apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P9211_ID"),
+            x02: "WELCOMETEXT",
+            p_clob_01: quill3.root.innerHTML
+        } );
+
+    execution-options: 
+      sequence: 10
+      event: UPDATE QUILL COLLECTION # 29528237575224920
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Initialize form Add Company ================
+  id: 29510931749224952
+  identification: 
+    name: Initialize form Add Company
+    type: Form - Initialization
+    form-region: Bedrijf Details # 35354107510023744
+
+  execution-options: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Add Company ===================
+  id: 29511385388224951
+  identification: 
+    name: Process form Add Company
+    type: Form - Automatic Row Processing (DML)
+    form-region: Bedrijf Details # 35354107510023744
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution-options: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: '&P9211_NAME. is gewijzigd'
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Init Quill Collection ======================
+  id: 29525633701224926
+  identification: 
+    name: Init Quill Collection
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_COMPANY_COLLECTION';
+      
+          l_welcometext      clob;
+          l_startday_morning clob;
+          l_startday_evening clob;
+      begin
+          apex_collection.create_or_truncate_collection(
+              p_collection_name => lco_collection_name
+          );
+          
+          if :P9211_ID is not null then
+              select
+                  welcometext,
+                  startday_morning,
+                  startday_evening
+              into
+                  l_welcometext,
+                  l_startday_morning,
+                  l_startday_evening
+              from cf_companies
+              where id = :P9211_ID;
+          end if;
+      
+          apex_collection.add_member(
+              p_collection_name => lco_collection_name,
+              p_c001 => 'WELCOMETEXT',
+              p_clob001 => l_welcometext
+          );
+          apex_collection.add_member(
+              p_collection_name => lco_collection_name,
+              p_c001 => 'STARTDAY_MORNING',
+              p_clob001 => l_startday_morning
+          );
+          apex_collection.add_member(
+              p_collection_name => lco_collection_name,
+              p_c001 => 'STARTDAY_EVENING',
+              p_clob001 => l_startday_evening
+          );
+      end;
+
+  execution-options: 
+    sequence: 20
+    point: After Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Update CLOB columns ========================
+  id: 29526058247224925
+  identification: 
+    name: Update CLOB columns
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_COMPANY_COLLECTION';
+      
+          l_welcometext      clob;
+          l_startday_morning clob;
+          l_startday_evening clob;
+      begin
+          select clob001
+          into l_welcometext
+          from apex_collections
+          where collection_name = lco_collection_name
+          and seq_id = '1';
+      
+          select clob001
+          into l_startday_morning
+          from apex_collections
+          where collection_name = lco_collection_name
+          and seq_id = '2';
+      
+          select clob001
+          into l_startday_evening
+          from apex_collections
+          where collection_name = lco_collection_name
+          and seq_id = '3';
+      
+          update cf_companies
+          set welcometext = l_welcometext,
+              startday_morning = l_startday_morning,
+              startday_evening = l_startday_evening
+          where id = :P9211_ID;
+      end;
+
+  execution-options: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: PROCESS_QUILL ==============================
+  id: 29526464216224925
+  identification: 
+    name: PROCESS_QUILL
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_COMPANY_COLLECTION';
+      begin
+          if apex_application.g_x02 = 'WELCOMETEXT' then
+              apex_collection.update_member(
+                  p_collection_name => lco_collection_name,
+                  p_seq => '1',
+                  p_c001 => 'WELCOMETEXT',
+                  p_clob001 => apex_application.g_clob_01
+              );
+          elsif apex_application.g_x02 = 'STARTDAY_MORNING' then
+              apex_collection.update_member(
+                  p_collection_name => lco_collection_name,
+                  p_seq => '2',
+                  p_c001 => 'STARTDAY_MORNING',
+                  p_clob001 => apex_application.g_clob_01
+              );
+          elsif apex_application.g_x02 = 'STARTDAY_EVENING' then
+              apex_collection.update_member(
+                  p_collection_name => lco_collection_name,
+                  p_seq => '3',
+                  p_c001 => 'STARTDAY_EVENING',
+                  p_clob001 => apex_application.g_clob_01
+              );
+          end if;
+      
+          htp.p('{}');
+      end;
+
+  execution-options: 
+    sequence: 20
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
+
+branches: 
+- # ====== Branch: Go To Page 9210 =============================
+  id: 29529299316224919
+  identification: 
+    name: Go To Page 9210
+
+  execution-options: 
+    sequence: 1
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:9210:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 9210 # Bedrijven
+

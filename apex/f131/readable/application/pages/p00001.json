@@ -1,0 +1,875 @@
+{
+  "id":"1"
+ ,"Identification":{
+    "Name":"Home"
+   ,"Alias":"HOME"
+   ,"Title":"Centerfields Mobile"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "File URLs":[
+      "https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/jquery-circle-progress\/1.2.0\/circle-progress.min.js"
+     ,null
+    ]
+   ,"Execute when Page Loads":"let slideIndex = 0;\nshowSlides();\n\nfunction showSlides() {\n  let i;\n  let slides = document.getElementsByClassName(\"mySlides\");\n  for (i = 0; i \u003C slides.length; i++) {\n    slides[i].style.display = \"none\";\n  }\n  slideIndex++;\n  if (slideIndex \u003E slides.length) {slideIndex = 1}\n  slides[slideIndex-1].style.display = \"block\";\n  setTimeout(showSlides, 5000); \n}\n\n\nlet imgsrc =document.getElementById(\u0027report_table_hidden-profile-pic\u0027).children.item(1).children.item(0).children.item(2).children.item(0).src\nif(imgsrc.length \u003E 2) {\n    document.getElementById(\u0027profile_picture_user\u0027).src = imgsrc;\n}\n"
+  }
+ ,"CSS":{
+    "File URLs":[
+      "#APP_FILES#modal-box.min.css"
+    ]
+   ,"Inline":"\/*show or don\u0027t show pwa install button*\/\nt-Header-controls{\n    display: none;\n}\n\n#profile-region .t-Region-bodyWrap .t-Region-body{\n    padding-bottom: 0;\n}\n\n#hidden-profile-pic{\n    display: none;\n}\n\n.notification {\n  color:#121212;\n  text-decoration: none;\n  padding: 15px 26px;\n  position: relative;\n  display: inline-block;\n  border-radius: 2px;\n  float:right;\n  z-index: 2;\n}\n\n.notification:hover {\n    color: var(--ut-link-text-color);\n}\n\n.notification .badge {\n  position: absolute;\n  top: 5px;\n  right: 10px;\n  padding: 5px 10px;\n  border-radius: 50%;\n  background: red;\n  color: white;\n  border:#121212 1px solid;\n  z-index: 1;\n}\n\n.apex-icons-fontapex .fa-bell{\n    font-size: 30px;\n}\n\n\/*Introduction region css*\/\n.introduction{\n\n}\n#welcome-header{\n    margin-top: 15px;\n    font-weight: bold;\n    color:var(--ut-link-text-color);\n    border-bottom: 1px solid var(--ut-link-text-color);\n}\n\n\/*bottom buttons*\/\n\n.bottom-buttons{\n    display: flex;\n    justify-content: space-around;\n    align-items: stretch;\n    width:100%;\n    margin: 0 auto 5vh;\n    max-width: 800px;\n}\n.bottom-buttons div,.bottom-buttons a{\n    width: 80%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    color:#121212;\n}\n\n.bottom-buttons a{\n        border: 1px solid rgba(14, 30, 37, 0.12);\n}\n\n.bottom-buttons a:hover{\n    color:var(--ut-link-text-color);\n}\n.onboarding-progress{\n    width:100%;\n    display: inline-block !important;\n    overflow: hidden;\n    position: relative;\n}\n\n.round{\n    border: none !important;\n    margin: 0 auto;\n}\n\n.onboarding-link{\n    border: none !important;\n}\n.round canvas {\n    width:100% !important;\n    height:100% !important;\n    padding-left: 0;\n    padding-right: 0;\n    margin-left: auto;\n    margin-right: auto;\n    display: inline-block;\n}\n\n\n.progress-logo{\n    max-width: 100%;\n    max-height: 100%;\n    margin: auto;\n    display: block;\n    position: absolute !important;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n\n.onboarding-percentage{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    font-size: 24px;\n}\n.onboarding-percentage:hover{\n    color:var(--ut-link-text-color);\n}\n.round span {\n  display: block;\n  color: #999;\n  font-size: 16px;\n  margin-top: 10px;\n}\n.round span i {\n  color: var(--ut-link-text-color);\n  font-size: 22px;\n  margin-right: 6px;\n}\n\n.number-days{\n    font-size: 26px;\n    font-weight: bold;\n}\n\n\/**\/\n.profile-button {\n    margin-top:8px;\n    width:50px;\n    height:50px;\n    border-radius: 50%;\n    object-fit: cover;\n}\n\n#profile-region {\n    width:100%;\n    margin:0;\n}\n\n#notifcation-region {\n    width:40%;\n}\n\n\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n\n\/*slideshow css*\/\n* {box-sizing:border-box}\n\n\/* Slideshow container *\/\n.slideshow-container {\n  max-width: 800px;\n  position: relative;\n  margin: auto;\n}\n\n\/* Hide the images by default *\/\n.mySlides {\n  display: none;\n}\n\n\/* Next \u0026 previous buttons *\/\n.prev, .next {\n  cursor: pointer;\n  position: absolute;\n  top: 50%;\n  width: auto;\n  margin-top: -22px;\n  padding: 16px;\n  color: white;\n  font-weight: bold;\n  font-size: 18px;\n  transition: 0.6s ease;\n  border-radius: 0 3px 3px 0;\n  user-select: none;\n}\n\n\/* Position the \"next button\" to the right *\/\n.next {\n  right: 0;\n  border-radius: 3px 0 0 3px;\n}\n\n\/* On hover, add a black background color with a little bit see-through *\/\n.prev:hover, .next:hover {\n  background-color: rgba(0,0,0,0.8);\n}\n\n\/* Caption text *\/\n.text {\n  color: #f2f2f2;\n  font-size: 15px;\n  padding: 8px 12px;\n  position: absolute;\n  bottom: 8px;\n  width: 100%;\n  text-align: center;\n}\n\n\/* Number text (1\/3 etc) *\/\n.numbertext {\n  color: #f2f2f2;\n  font-size: 12px;\n  padding: 8px 12px;\n  position: absolute;\n  top: 0;\n}\n\n\/* The dots\/bullets\/indicators *\/\n.dot {\n  cursor: pointer;\n  height: 15px;\n  width: 15px;\n  margin: 0 2px;\n  background-color: #bbb;\n  border-radius: 50%;\n  display: inline-block;\n  transition: background-color 0.6s ease;\n}\n\n\n\/* Fading animation *\/\n.fade {\n  animation-name: fade;\n  animation-duration: 2s;\n}\n\n@keyframes fade {\n  from {opacity: .8}\n  to {opacity: 1}\n}\n\n\/*css for higher screen width*\/\n  p,h1{\n      max-width:800px;\n      margin:0 auto;\n\n}\n\n\n@media only screen and (max-width: 500px) {\n    h1{\n        margin: 55px auto 0 !important;\n    }\n    .bottom-buttons{\n        margin-top: 20px;\n    }\n    \n}\n\n\/*Notification modal css*\/\n\n.t-notification-header{\n    border-bottom:#121212 1px solid;\n    color:#121212;\n}\n\na:hover .t-notification-header{\n    border-bottom:var(--ut-link-text-color)1px solid;\n    color:var(--ut-link-text-color);\n}\n.notification-container{\n    display: flex;\n    justify-content: space-between;\n}\n\n.t-Alert-body{\n    color:#121212;\n    font-size: 14px;\n}\n.t-Alert-buttons{\n    color:#585656;\n    font-size: 12px;\n    margin-left:20px;\n}\n.t-notification-header{\n    margin:0;\n    font-size:16px;\n}\n\n@media only screen and (max-width: 500px) {\n    .notification-header{\n        margin-top: 20px;\n        font-size: 20px;\n    }\n    \n}\n\n.nodatafound{\n    font-size: 21px;\n    color:#474747;\n    text-align: center;\n    margin: auto;\n    padding: 30px;\n\n}\n\n\/*modal css*\/\n.ui-dialog{\n    max-width: 75% !important;\n    right:50px !important;\n    left:auto !important;\n    top: 85px !important;\n}\n\n.ui-dialog-titlebar{\n    background-color:var(--ut-link-text-color);\n    color:#fff;\n    border-bottom: 1px solid #fff;\n}\n\n.ui-dialog-title{\n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"17130454999773825"
+     ,"Identification":{
+        "Title":"Profiel pagina"
+       ,"Type":"PL\/SQL Dynamic Content"
+      }
+     ,"Source":{
+        "PL\/SQL Code":"declare\n    l_picture blob;\n    l_mimetype varchar2(50 char);\n    l_filename varchar2(200 char);\n    l_id number;\n    l_modal_url varchar2(500 char);\nbegin\n\n    l_modal_url := APEX_UTIL.PREPARE_URL(\n\n        p_url =\u003E \u0027f?p=\u0027 || :APP_ID || \u0027:21:\u0027||:APP_SESSION ||\u0027::NO:::\u0027,\n        p_checksum_type =\u003E \u0027SESSION\u0027\n    );\n\n    select id, profile_picture, mimetype, filename\n    into l_id,l_picture, l_mimetype, l_filename\n    from cf_starters\n    where token = :APP_USER;\n\n    \/*f?p=\u0026APP_ID.:20:\u0026SESSION.*\/\n    \n        htp.p(\u0027\u003Ca href=\"f?p=\u0026APP_ID.:60:\u0026SESSION.\"\u003E\u003Cimg id=\"profile_picture_user\" src=\"#APP_FILES#Portrait_Placeholder.png\" class=\"profile-button\";\u003E\u003C\/a\u003E\u003Ca href=\"\u0027||l_modal_url||\u0027\" class=\"notification\"\u003E\n        \u003Cspan class=\"fa fa-bell\" aria-hidden=\"true\"\u003E\u003C\/span\u003E  \n        \u003Cspan class=\"badge\"\u003E\u0026P1_HIDDEN_COUNT_NOTIFICATIONS.\u003C\/span\u003E\n        \u003C\/a\u003E\u0027);\n\nend;"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":false
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"profile-region"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+    }
+   ,{
+      "id":"17130661808773827"
+     ,"Identification":{
+        "Title":"Bottom Navigation"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cnav class=\"nav\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:1:\u0026SESSION.\" class=\"nav-link active\"\u003E\n        \u003Ci class=\"nav-icons fa fa-home\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EHome\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:30:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-building-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EOver\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:40:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-calendar-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EAgenda\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:50:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-rss\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003ENieuws\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/nav\u003E"
+      }
+     ,"Layout":{
+        "Sequence":60
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+         ,"t-Form--stretchInputs"
+         ,"margin-top-none"
+         ,"margin-bottom-none"
+         ,"margin-left-none"
+         ,"margin-right-sm"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"leesvoer-navigation"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"17130709680773828"
+     ,"Identification":{
+        "Title":"Bottom Buttons"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cdiv class=\"bottom-buttons\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:60:\u0026SESSION.\" class=\"bottom-profile-button\"\u003E\n        \u003Ci class=\"fa fa-user-wrench fa-2x\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"\"\u003EJouw profiel\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca class=\"onboarding-link\" href=\"f?p=\u0026APP_ID.:10:\u0026SESSION.\"\u003E\n    \u003Cdiv class=\"onboarding-progress\"\u003E\n        \u003Cdiv class=\"round\"\n          data-value=\u0026P1_HIDDEN_TODO_VALUE.\n          data-size=\"100\"\n          data-thickness=\"5\"\u003E\n        \u003Cstrong class=\"onboarding-percentage\"\u003E\u003C\/strong\u003E\n        \u003C\/div\u003E\n    \u003C\/div\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:90:\u0026SESSION.\" class=\"bottom-days-to-go\"\u003E\n        \u003Cspan class=\"number-days\"\u003E\u0026P1_HIDDEN_COUNT_DAYS.\u003C\/span\u003E\n        \u003Cspan class=\"\"\u003EDays to go\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"17131569339773836"
+     ,"Identification":{
+        "Title":"Introductie"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cdiv class=\"introduction\"\u003E\n    \u003Ch1 id=\"welcome-header\"\u003EWelkom \u0026P1_HIDDEN_FIRST_NAME.!\u003C\/h1\u003E\n    \u003Cp\u003EOp deze applicatie krijg je een overzicht te zien van jouw \u003Ca href=\"f?p=\u0026APP_ID.:90:\u0026SESSION.\"\u003Eagenda\u003C\/a\u003E, medewerkers, ...\u003Cbr\u003E\n    Onderaan de pagina heb je een overzicht van test knoppen, waaronder, jouw profiel, jouw persoonlijke progressie, het aantal dagen tot je start!\u003C\/p\u003E\n    \u003Cdiv class=\"slideshow-container\"\u003E\n\n    \u003C!-- Full-width images with number and caption text --\u003E\n    \u003Cdiv class=\"mySlides fade\"\u003E\n    \u003Cimg src=\"#APP_FILES#DSC_0382.jpg\" style=\"width:100%\"\u003E\n    \u003C\/div\u003E\n\n    \u003Cdiv class=\"mySlides fade\"\u003E\n    \u003Cimg src=\"#APP_FILES#DSC_0541.jpg\" style=\"width:100%\"\u003E\n    \u003C\/div\u003E\n\n    \u003Cdiv class=\"mySlides fade\"\u003E\n    \u003Cimg src=\"#APP_FILES#DSC_0566.jpg\" style=\"width:100%\"\u003E\n    \u003C\/div\u003E\n\n    \u003Cdiv class=\"mySlides fade\"\u003E\n    \u003Cimg src=\"#APP_FILES#DSC_0590.jpg\" style=\"width:100%\"\u003E\n    \u003C\/div\u003E\n\n\u003C\/div\u003E\n\u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"18710064994955202"
+     ,"Identification":{
+        "Title":"HIDDEN_PROFILE_PICTURE"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select\nid, dbms_lob.getlength(profile_picture) as profile_picture, mimetype, filename,created_date_pic\nfrom cf_starters\nwhere token = :APP_USER;"
+      }
+     ,"Layout":{
+        "Sequence":150
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"hidden-profile-pic"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":15
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Standard (15351659333258958)"
+         ,"Template Options":[
+            "#DEFAULT#"
+           ,"t-Report--altRowsDefault"
+           ,"t-Report--rowHighlight"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"Row Ranges X to Y (with next and previous links)"
+         ,"Display Position":"Bottom - Right"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"18710280812955204"
+         ,"Identification":{
+            "Column Name":"MIMETYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Mimetype"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":20
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"18710327034955205"
+         ,"Identification":{
+            "Column Name":"FILENAME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Filename"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":30
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"18710540674955207"
+         ,"Identification":{
+            "Column Name":"PROFILE_PICTURE"
+           ,"Type":"Display Image"
+          }
+         ,"Heading":{
+            "Heading":"Profile Picture"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":40
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"BLOB Attributes":{
+            "Table Owner":"Parsing Schema"
+           ,"Table Name":"CF_STARTERS"
+           ,"BLOB Column":"PROFILE_PICTURE"
+           ,"Primary Key Column 1":"ID"
+           ,"Mime Type Column":"MIMETYPE"
+           ,"Filename Column":"FILENAME"
+           ,"Last Updated Column":"CREATED_DATE_PIC"
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"18710651823955208"
+         ,"Identification":{
+            "Column Name":"CREATED_DATE_PIC"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Created Date Pic"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":50
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"18710792448955209"
+         ,"Identification":{
+            "Column Name":"ID"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Id"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":60
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":true
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"3139385894445037"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_COUNT_NOTIFICATIONS"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":160
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select count(*)\nfrom cf_starters_notifications_pwa\njoin cf_starters on cf_starters.id = starter_id\nwhere cf_starters.token = :APP_USER and seen = 0;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"17132029641773841"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_FIRST_NAME"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":70
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select first_name \nfrom cf_starters\nwhere token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"17132187772773842"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_COMPANY_NAME"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":80
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select c.name\nfrom cf_starters s\njoin cf_companies c on company_id = c.id\nwhere s.token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"17132255280773843"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_COUNT_DAYS"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":90
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select round(start_date-sysdate)\nfrom cf_starters\nwhere token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"17132490397773845"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_COMPLETED_TODOS"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":100
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select count(ts.id)\nfrom cf_starters s\njoin cf_todos_starters ts on s.id = ts.starter_id\nwhere token = :APP_USER and ts.checked = 1;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"17132579025773846"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_TODO_VALUE"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":120
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Appearance":{
+        "Format Mask":"0.0"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select to_char(:P1_HIDDEN_COMPLETED_TODOS\/count(*),\u00270.0\u0027)\nfrom cf_todos;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"17132914315773850"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_ID"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":130
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select id\nfrom cf_starters\nwhere token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+   ,{
+      "id":"18709946021955201"
+     ,"Identification":{
+        "Name":"P1_HIDDEN_PROFILE_PIC"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":140
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select profile_picture\nfrom cf_starters\nwhere id= :P1_HIDDEN_ID;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"24613115454020419"
+     ,"Identification":{
+        "Name":"FILL CIRCLE_1"
+      }
+     ,"Execution Options":{
+        "Sequence":30
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Client-side Condition":{
+        "Type":"Item != Value"
+       ,"Item":"P1_HIDDEN_TODO_VALUE"
+       ,"Value":"1.0"
+      }
+     ,"Advanced":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"24613316339020421"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"let colorvar = document.getElementById(\"welcome-header\");\nconsole.log(window.getComputedStyle(colorvar).color);\n\n$(\u0027.round\u0027).circleProgress({fill: {color: window.getComputedStyle(colorvar).color}})\n    .on(\u0027circle-animation-progress\u0027, function(event, progress, stepValue){\n  $(this).find(\u0027strong\u0027).text(String(stepValue.toFixed(3)* 100).substr(0)+\u0027%\u0027);\n  });  \n\nconsole.log(apex.item(\u0027P1_HIDDEN_TODO_VALUE\u0027).getValue())\nconsole.log(\u0027test true\u0027)"
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"FILL CIRCLE_1 (24613115454020419)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+       ,{
+          "id":"24613473228020422"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"console.log(apex.item(\u0027P1_HIDDEN_TODO_VALUE\u0027).getValue())"
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"FILL CIRCLE_1 (24613115454020419)"
+           ,"Fire When Event Result Is":"False"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"25285470385354101"
+     ,"Identification":{
+        "Name":"FILL CIRCLE"
+      }
+     ,"Execution Options":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Client-side Condition":{
+        "Type":"Item = Value"
+       ,"Item":"P1_HIDDEN_COMPLETED_TODOS"
+       ,"Value":"0"
+      }
+     ,"Advanced":{
+        "Event Scope":"Static"
+      }
+     ,"Server-side Condition":{
+        "Type":"Never"
+      }
+     ,"Actions":[
+        {
+          "id":"24612554504020413"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"let colorvar = document.getElementById(\"welcome-header\");\nconsole.log(window.getComputedStyle(colorvar).color);\n\n$(\u0027.round\u0027).circleProgress({fill: {color: window.getComputedStyle(colorvar).color}})\n    .on(\u0027circle-animation-progress\u0027, function(event, progress, stepValue){\n  $(this).find(\u0027strong\u0027).text(String(stepValue.toFixed(2)).substr(2)+\u0027%\u0027);\n  });  \n\nconsole.log(apex.item(\u0027P1_HIDDEN_TODO_VALUE\u0027).getValue())"
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"FILL CIRCLE (25285470385354101)"
+           ,"Fire When Event Result Is":"False"
+           ,"Fire on Initialization":false
+          }
+        }
+       ,{
+          "id":"25285540923354102"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"let colorvar = document.getElementById(\"welcome-header\");\nconsole.log(window.getComputedStyle(colorvar).color);\n\n$(\u0027.round\u0027).circleProgress({fill: {color: window.getComputedStyle(colorvar).color}})\n    .on(\u0027circle-animation-progress\u0027, function(event, progress, stepValue){\n  $(this).find(\u0027strong\u0027).text(String(stepValue.toFixed(1)).substr(2)+\u0027%\u0027);\n  });  \n\nconsole.log(apex.item(\u0027P1_HIDDEN_TODO_VALUE\u0027).getValue())"
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"FILL CIRCLE (25285470385354101)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"5905257012706576"
+     ,"Identification":{
+        "Name":"Change User Theme Style"
+       ,"Type":"Execute Code"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"DECLARE\n    l_company_name varchar2(50 CHAR);\n    l_company_id number;\n    l_current_theme_number number;\n    l_theme_style_id       number;\n    l_new_theme_style_id   number;\n\nBEGIN\n\n    \/*SELECT THE STARTERS COMPANY*\/\n\n    select cf_companies.name, cf_companies.id\n    into l_company_name, l_company_id\n    from cf_starters\n    join cf_companies on cf_companies.id = company_id\n    where token = :APP_USER;\n\n    \/*SELECT THEME ID*\/\n\n    select theme_number \n    into l_current_theme_number \n    from apex_application_themes \n    where application_id = :app_id \n    and ui_type_name   = \u0027DESKTOP\u0027 \n    and is_current = \u0027Yes\u0027;  \n \n    \/*DEPENDING ON COMPANY SELECT STYLE ID*\/\n    if l_company_name = \u0027FieldSide\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name = \u0027FieldSide\u0027;\n    elsif l_company_name = \u0027Contribute\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027Contribute\u0027;\n    elsif l_company_name = \u0027Bryxx\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027BRYXX\u0027;\n    elsif l_company_name = \u0027Zebanza\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027Zebanza\u0027;\n    elsif l_company_name = \u0027RKITEK\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027RKITEK\u0027;\n    elsif l_company_name = \u0027Craftcode\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027CraftCode\u0027;\n    elsif l_company_name = \u0027Diferenco\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027DIFERENCO\u0027;\n    elsif l_company_name = \u0027Droppar\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027Droppar\u0027;\n    elsif l_company_name = \u0027Equalminds\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027Equalminds\u0027;\n    elsif l_company_name = \u0027Tripwire Solutions\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027Tripwire Solutions\u0027;\n    elsif l_company_name = \u0027Exitas\u0027 then\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name= \u0027Exitas\u0027;\n    else\n        select s.theme_style_id \n        into l_new_theme_style_id \n        from apex_application_theme_styles s\n        where s.application_id = :APP_ID\n        and s.name = \u0027FieldSide\u0027;\n    end if;\n \n        APEX_THEME.SET_USER_STYLE( \n            p_application_id =\u003E 131,\n            p_user           =\u003E :APP_USER,\n            p_theme_number   =\u003El_current_theme_number,\n            p_id             =\u003E l_new_theme_style_id \n           );\nEND;"
+      }
+     ,"Execution Options":{
+        "Sequence":20
+       ,"Point":"Before Header"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+   ,{
+      "id":"5951299772246705"
+     ,"Identification":{
+        "Name":"NOTIFICATION_KEYS"
+       ,"Type":"Execute Code"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\nbegin\n    update cf_starters\n    set \n        endpoint = apex_application.g_x01,\n        p256dh = apex_application.g_x02,\n        auth = apex_application.g_x03\n    where token = :APP_USER;\n    htp.p(\u0027{}\u0027);\nend;"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+liquibase --changeLogFile=changelogs/master.xml migrate

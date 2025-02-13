@@ -1,0 +1,172 @@
+---
+# ====== Page: Werknemer details =============================
+id: 401
+identification: 
+  name: Werknemer details
+  alias: WERKNEMER-DETAILS
+  title: Werknemer details
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    #person_name_heading {
+    font-size: 2.5rem;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 28228924871726504
+  identification: 
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 5217168177377672
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 5320018456377838
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 5382105676377986
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Overzicht Werknemers ========================
+  id: 32487565305104143
+  identification: 
+    title: Overzicht Werknemers
+    type: List
+
+  source: 
+    list: Overview Employees # 5820482594441547
+
+  layout: 
+    sequence: 50
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 12
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      list-template: Cards # 5368546230377943
+      template-options: 
+      - '#DEFAULT#'
+      - t-Cards--featured force-fa-lg
+      - t-Cards--displayIcons
+      - t-Cards--3cols
+      - t-Cards--hideBody
+      - t-Cards--animColorFill
+
+buttons: 
+- # ====== Button: BACK ========================================
+  id: 28229064062726505
+  identification: 
+    button-name: BACK
+    label: Overzicht werknemers
+
+  layout: 
+    sequence: 10
+    region: Breadcrumb # 28228924871726504
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-angle-left
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:400:&SESSION.::&DEBUG.:RP,400,401:AI_INTERNALID,AI_USER_ID:,'
+      page: 400 # Overzicht werknemers
+      clear-cache: RP,400,401
+      values: 
+
+    warn-on-unsaved-changes: Do Not Check
+

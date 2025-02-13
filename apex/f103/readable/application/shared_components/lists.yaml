@@ -1,0 +1,737 @@
+---
+- # ====== List: Navigation Menu ===============================
+  id: 5217694139377677
+  identification: 
+    name: Navigation Menu
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Nieuws =======================================
+    id: 3828680466607213
+    label: 
+      label: Nieuws
+
+    icon: 
+      image/icon-css-classes: fa-rss
+
+    layout: 
+      sequence: 9230
+      parent-entry: Starters # 29496473584272550
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9230
+      - 9231
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9230:&SESSION.::&DEBUG.::::'
+        page: 9230 # Nieuws
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Home =========================================
+    id: 5413666890378135
+    label: 
+      label: Home
+
+    icon: 
+      image/icon-css-classes: fa-home
+
+    layout: 
+      sequence: 1
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Overzicht Starters ===========================
+    id: 5421303257604612
+    label: 
+      label: Overzicht Starters
+
+    icon: 
+      image/icon-css-classes: fa-users
+
+    layout: 
+      sequence: 100
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 30
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:30:&SESSION.::&DEBUG.::::'
+        page: 30 # Overzicht Starters
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Administratie ================================
+    id: 5560705743558387
+    label: 
+      label: Administratie
+
+    icon: 
+      image/icon-css-classes: fa-gear
+
+    layout: 
+      sequence: 9000
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9000:&SESSION.::&DEBUG.::::'
+        page: 9000 # Administratie
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Bedrijven ====================================
+    id: 5822292340455703
+    label: 
+      label: Bedrijven
+
+    icon: 
+      image/icon-css-classes: fa-building-o
+
+    layout: 
+      sequence: 9210
+      parent-entry: Starters # 29496473584272550
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9210
+      - 9211
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9210:&SESSION.::&DEBUG.::::'
+        page: 9210 # Bedrijven
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Takenlijst ===================================
+    id: 7474564484398947
+    label: 
+      label: Takenlijst
+
+    icon: 
+      image/icon-css-classes: fa-clipboard-list
+
+    layout: 
+      sequence: 9220
+      parent-entry: Starters # 29496473584272550
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9220
+      - 9221
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9220:&SESSION.::&DEBUG.::::'
+        page: 9220 # Takenlijst
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Meldingen ====================================
+    id: 25306678480685022
+    label: 
+      label: Meldingen
+
+    icon: 
+      image/icon-css-classes: fa-alert
+
+    layout: 
+      sequence: 9240
+      parent-entry: Starters # 29496473584272550
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9240
+      - 9241
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9240:&SESSION.::&DEBUG.::::'
+        page: 9240 # Meldingen
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Overzicht werknemers =========================
+    id: 26697137926966453
+    label: 
+      label: Overzicht werknemers
+
+    icon: 
+      image/icon-css-classes: fa-briefcase
+
+    layout: 
+      sequence: 400
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 400
+      - 401
+      - 410
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:400:&SESSION.::&DEBUG.::::'
+        page: 400 # Overzicht werknemers
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Werknemer taken ==============================
+    id: 28504519304074498
+    label: 
+      label: Werknemer taken
+
+    icon: 
+      image/icon-css-classes: fa-tasks
+
+    layout: 
+      sequence: 410
+      parent-entry: Overzicht werknemers # 26697137926966453
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 410
+      - 411
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:410:&APP_SESSION.::&DEBUG.:::'
+        page: 410 # Werknemer taken
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Persoonlijke gegevens ========================
+    id: 28568842692891493
+    label: 
+      label: Persoonlijke gegevens
+
+    icon: 
+      image/icon-css-classes: fa-forms
+
+    layout: 
+      sequence: 401
+      parent-entry: Overzicht werknemers # 26697137926966453
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 402
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:402:&SESSION.::&DEBUG.::P402_ID,P402_INTERNALID:&AI_EMPLOYEE_ID.,&AI_INTERNALID.:'
+        page: 402 # Persoonlijke gegevens
+        values: 
+          p402_id: '&AI_EMPLOYEE_ID.'
+          p402_internalid: '&AI_INTERNALID.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Algemeen =====================================
+    id: 29496194679274225
+    label: 
+      label: Algemeen
+
+    layout: 
+      sequence: 9100
+      parent-entry: Administratie # 5560705743558387
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9000:&SESSION.::&DEBUG.::::'
+        page: 9000 # Administratie
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Starters =====================================
+    id: 29496473584272550
+    label: 
+      label: Starters
+
+    layout: 
+      sequence: 9200
+      parent-entry: Administratie # 5560705743558387
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9000:&SESSION.::&DEBUG.::::'
+        page: 9000 # Administratie
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Werknemers ===================================
+    id: 29496766724270807
+    label: 
+      label: Werknemers
+
+    layout: 
+      sequence: 9300
+      parent-entry: Administratie # 5560705743558387
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9000:&SESSION.::&DEBUG.::::'
+        page: 9000 # Administratie
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: LOV's ========================================
+    id: 29610220571976375
+    label: 
+      label: LOV's
+
+    icon: 
+      image/icon-css-classes: fa-tasks-alt
+
+    layout: 
+      sequence: 9110
+      parent-entry: Algemeen # 29496194679274225
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9110
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9110:&SESSION.::&DEBUG.::::'
+        page: 9110 # LOV's
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Navigation Bar ================================
+  id: 5404981542378056
+  identification: 
+    name: Navigation Bar
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: &APP_USER. ===================================
+    id: 5415128922378155
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 5415621651378156
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 20
+      parent-entry: '&APP_USER.' # 5415128922378155
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Sign Out =====================================
+    id: 5416031439378156
+    label: 
+      label: Sign Out
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 5415128922378155
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Overview Employees ============================
+  id: 5820482594441547
+  identification: 
+    name: Overview Employees
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Assets =======================================
+    id: 3840546204621976
+    label: 
+      label: Assets
+
+    icon: 
+      image/icon-css-classes: fa-laptop
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:80:&SESSION.::&DEBUG.::::'
+        page: 80
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Persoonlijke gegevens ========================
+    id: 5820659296441548
+    label: 
+      label: Persoonlijke gegevens
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:402:&SESSION.::&DEBUG.::P402_ID,P402_INTERNALID:&AI_EMPLOYEE_ID.,&AI_INTERNALID.:'
+        page: 402 # Persoonlijke gegevens
+        values: 
+          p402_id: '&AI_EMPLOYEE_ID.'
+          p402_internalid: '&AI_INTERNALID.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Takenlijst ===================================
+    id: 7123886845545372
+    label: 
+      label: Takenlijst
+
+    icon: 
+      image/icon-css-classes: fa-clipboard-list
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:410:&SESSION.::&DEBUG.::::'
+        page: 410 # Werknemer taken
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Opleidingen ==================================
+    id: 25312627815660603
+    label: 
+      label: Opleidingen
+
+    icon: 
+      image/icon-css-classes: fa-graduation-cap
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:70:&SESSION.::&DEBUG.::::'
+        page: 70
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Functioneringsgesprekken =====================
+    id: 27419902359863118
+    label: 
+      label: Functioneringsgesprekken
+
+    icon: 
+      image/icon-css-classes: fa-users-chat
+
+    layout: 
+      sequence: 60
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::::'
+        page: 100
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Admin Topics - Starters =======================
+  id: 27421698260832754
+  identification: 
+    name: Admin Topics - Starters
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Bedrijven ====================================
+    id: 27421855465832753
+    label: 
+      label: Bedrijven
+
+    icon: 
+      image/icon-css-classes: fa-building-o
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9210:&SESSION.::&DEBUG.::::'
+        page: 9210 # Bedrijven
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Takenlijst ===================================
+    id: 27422200965832751
+    label: 
+      label: Takenlijst
+
+    icon: 
+      image/icon-css-classes: fa-clipboard-list
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9220:&SESSION.::&DEBUG.::::'
+        page: 9220 # Takenlijst
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Nieuws =======================================
+    id: 27422630061832751
+    label: 
+      label: Nieuws
+
+    icon: 
+      image/icon-css-classes: fa-rss
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9230:&SESSION.::&DEBUG.::::'
+        page: 9230 # Nieuws
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Meldingen ====================================
+    id: 27429583507618246
+    label: 
+      label: Meldingen
+
+    icon: 
+      image/icon-css-classes: fa-alert
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9240:&SESSION.::&DEBUG.::::'
+        page: 9240 # Meldingen
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Admin Topics - Algemeen =======================
+  id: 29703099370717976
+  identification: 
+    name: Admin Topics - Algemeen
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: LOV's ========================================
+    id: 29703292905717972
+    label: 
+      label: LOV's
+
+    icon: 
+      image/icon-css-classes: fa-tasks-alt
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9110:&SESSION.::&DEBUG.::::'
+        page: 9110 # LOV's
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+

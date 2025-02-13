@@ -1,0 +1,973 @@
+{
+  "id":"51"
+ ,"Identification":{
+    "Name":"Article"
+   ,"Alias":"ARTICLE"
+   ,"Title":"Article"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Execute when Page Loads":"var hiddenlinkdivs = document.getElementsByClassName(\"hidden-link-overview\");\nvar headline = document.getElementsByClassName(\"overview-heading\");\nlet i = 0;\nArray.from(hiddenlinkdivs).forEach((hiddenlinkdiv) =\u003E {\n    console.log(\"hidden links: \"+hiddenlinkdiv.childNodes[1].href);\n    headline[i].href = hiddenlinkdiv.childNodes[1].href;\n    console.log(\"headlines: \"+ headline[i].href)\n    i++;\n});"
+  }
+ ,"CSS":{
+    "File URLs":[
+      "https:\/\/fonts.googleapis.com\/css?family=Ubuntu"
+    ]
+   ,"Inline":"\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n\n\/*header css*\/\n.notification-header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n    color:rgb(0, 0, 0);\n}\n.notification-header:after {\n    display: inline-block;\n    margin: 0 0 8px 20px;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n.notification-header:before {\n    display: inline-block;\n    margin: 0 20px 8px 0;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n\n@media only screen and (max-width: 500px) {\n    .notification-header{\n        margin-top: 20px;\n        font-size: 20px;\n    }\n    .notification-header:after {\n    height: 2px;\n\n}\n.notification-header:before {\n    height: 2px;\n}\n}\n\n\n\/*article css*\/\n.article-container{\n    margin-bottom: 25px;\n    font-family: \"Ubuntu\", sans-serif;\n    margin-left: auto;\n    margin-right: auto;\n    max-width: 600px;\n    width: 90%;\n}\n.thumbnail-container{\n    width: 100%;\n}\n\n.thumbnail-container img{\n    width: 100%;\n    height:250px;\n    object-fit: cover;\n    object-position: 10% 10%;\n}\n.heading-article{\n    margin:0;\n    font-size: 22px;\n    font-weight: bold;\n}\n\n.article-meta{\n    color:#7a7a7a;\n    font-size: 10px;\n    margin-bottom: 5px;\n}\n.article-meta p{\n    display: flex;\n    justify-content: space-between;\n}\n\n\/*overview css*\/\n.article-overview-container{\n    width: 45% !important;\n    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;\n    max-width: 300px;\n    max-height: 300px;\n    font-family: \"Ubuntu\", sans-serif;\n  }\n.article-overview-container a{\n    width: 100%;\n\n}\n.article-overview-content{\n    margin:0 auto !important;\n}\n\n.thumbnail-overview-container{\n    width: 100%;\n    display: flex;\n}\n\n.thumbnail-overview-container img{\n    width: 100%;\n    height:150px;\n    object-fit: cover;\n    object-position: 10% 10%;\n}\n#report_4005064838536814_catch{\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    width: 90%;\n    max-width: 600px;\n    margin:0 auto 40px;\n    \n}\n.heading-overview{\n    font-size: 12px;\n    font-weight: bold;\n    color:rgb(0, 0, 0);\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    padding:10px;\n}\n.hidden-link-overview{\n    display: none !important;\n}\n\n\n@media only screen and (max-width: 500px) {\n    #report_4005064838536814_catch{\n    width: 100%;\n    margin:0 0 40px;\n    }\n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"3997046896173219"
+     ,"Identification":{
+        "Title":"Article"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select \"ID\",\"TITLE\" ARTICLE_TITLE,\"TEXT_CONTENT\" ARTICLE_CONTENT,lower(\"AUTHOR\") ARTICLE_AUTHOR,\"TIME_POSTED\",sys.dbms_lob.getlength(\"THUMBNAIL\")\"THUMBNAIL\",\"FILENAME\",\"MIMETYPE\",\"DATE_CREATED\"\nfrom \"CF_NEWSFEED_PWA\"\nwhere id = :P51_HIDDEN_ARTICLE_ID\norder by time_posted desc;"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--noPadding"
+         ,"t-Region--hideHeader"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":50
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"News Article (4033113927488389)"
+         ,"Template Options":[
+            "#DEFAULT#"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"No Pagination (Show All Rows)"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+         ,"Maximum Rows to Process":500
+        }
+       ,"Messages":{
+          "When No Data Found":"no data found"
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"3997426818173238"
+         ,"Identification":{
+            "Column Name":"ID"
+           ,"Type":"Hidden Column"
+          }
+         ,"Layout":{
+            "Sequence":0
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3999016927173241"
+         ,"Identification":{
+            "Column Name":"TIME_POSTED"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Time Posted"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":5
+           ,"Column Alignment":"center"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Appearance":{
+            "Format Mask":"SINCE"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3999427442173241"
+         ,"Identification":{
+            "Column Name":"THUMBNAIL"
+           ,"Type":"Display Image"
+          }
+         ,"Heading":{
+            "Heading":"Thumbnail"
+           ,"Alignment":"start"
+          }
+         ,"Layout":{
+            "Sequence":6
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"BLOB Attributes":{
+            "Table Owner":"Parsing Schema"
+           ,"Table Name":"CF_NEWSFEED_PWA"
+           ,"BLOB Column":"THUMBNAIL"
+           ,"Primary Key Column 1":"ID"
+           ,"Mime Type Column":"MIMETYPE"
+           ,"Filename Column":"FILENAME"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":false
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"3999856187173242"
+         ,"Identification":{
+            "Column Name":"FILENAME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Filename"
+           ,"Alignment":"start"
+          }
+         ,"Layout":{
+            "Sequence":7
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4000224880173243"
+         ,"Identification":{
+            "Column Name":"MIMETYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Mimetype"
+           ,"Alignment":"start"
+          }
+         ,"Layout":{
+            "Sequence":8
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4000625132173243"
+         ,"Identification":{
+            "Column Name":"DATE_CREATED"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Date Created"
+           ,"Alignment":"start"
+          }
+         ,"Layout":{
+            "Sequence":9
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4004734790536811"
+         ,"Identification":{
+            "Column Name":"ARTICLE_TITLE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Title"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":19
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4004845364536812"
+         ,"Identification":{
+            "Column Name":"ARTICLE_CONTENT"
+           ,"Type":"Rich Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Content"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":29
+           ,"Column Alignment":"start"
+          }
+         ,"Settings":{
+            "Format":"HTML"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"4004960328536813"
+         ,"Identification":{
+            "Column Name":"ARTICLE_AUTHOR"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Author"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":39
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"4005064838536814"
+     ,"Identification":{
+        "Title":"Next Articles"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select \"ID\",\"TITLE\" ARTICLE_TITLE,\"TEXT_CONTENT\" ARTICLE_CONTENT,lower(\"AUTHOR\") ARTICLE_AUTHOR,\"TIME_POSTED\",sys.dbms_lob.getlength(\"THUMBNAIL\")\"THUMBNAIL\",\"FILENAME\",\"MIMETYPE\",\"DATE_CREATED\",\u0027LINK\u0027 LINK\nfrom \"CF_NEWSFEED_PWA\"\nwhere id != :P51_HIDDEN_ARTICLE_ID\norder by time_posted asc;"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"overview"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":2
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Article Overview (4047223000136977)"
+         ,"Template Options":[
+            "#DEFAULT#"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"No Pagination (Show All Rows)"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"4005185111536815"
+         ,"Identification":{
+            "Column Name":"ID"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Id"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":10
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005231715536816"
+         ,"Identification":{
+            "Column Name":"ARTICLE_TITLE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Title"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":20
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005388377536817"
+         ,"Identification":{
+            "Column Name":"ARTICLE_CONTENT"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Content"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":30
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005486473536818"
+         ,"Identification":{
+            "Column Name":"ARTICLE_AUTHOR"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Article Author"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":40
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005584902536819"
+         ,"Identification":{
+            "Column Name":"TIME_POSTED"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Time Posted"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":50
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005662946536820"
+         ,"Identification":{
+            "Column Name":"THUMBNAIL"
+           ,"Type":"Display Image"
+          }
+         ,"Heading":{
+            "Heading":"Thumbnail"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":60
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"BLOB Attributes":{
+            "Table Owner":"Parsing Schema"
+           ,"Table Name":"CF_NEWSFEED_PWA"
+           ,"BLOB Column":"THUMBNAIL"
+           ,"Primary Key Column 1":"ID"
+           ,"Mime Type Column":"MIMETYPE"
+           ,"Filename Column":"FILENAME"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+        }
+       ,{
+          "id":"4005727053536821"
+         ,"Identification":{
+            "Column Name":"FILENAME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Filename"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":70
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005896907536822"
+         ,"Identification":{
+            "Column Name":"MIMETYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Mimetype"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":80
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4005945241536823"
+         ,"Identification":{
+            "Column Name":"DATE_CREATED"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Date Created"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":90
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"4006062607536824"
+         ,"Identification":{
+            "Column Name":"LINK"
+           ,"Type":"Link"
+          }
+         ,"Heading":{
+            "Heading":"Link"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":100
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Link":{
+            "Target":{
+              "url":"f?p=\u0026APP_ID.:51:\u0026SESSION.::\u0026DEBUG.:51:P51_HIDDEN_ARTICLE_ID:#ID#"
+             ,"Page":"51"
+             ,"Clear Cache":"51"
+             ,"Values":{
+                "P51_HIDDEN_ARTICLE_ID":"#ID#"
+              }
+            }
+           ,"Link Text":"#LINK#"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"11051419972876311"
+     ,"Identification":{
+        "Title":"Newsfeed"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"f?p=\u0026APP_ID.:51:\u0026SESSION.\"\u003E\u003Ch1 class=\"notification-header\"\u003ENieuwsfeed\u003C\/h1\u003E\u003C\/a\u003E"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"39476291711403260"
+     ,"Identification":{
+        "Title":"Bottom Navigation"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cnav class=\"nav\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:1:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-home\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EHome\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:30:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-building-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EOver\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:40:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-calendar-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EAgenda\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:50:\u0026SESSION.\" class=\"nav-link active\"\u003E\n        \u003Ci class=\"nav-icons fa fa-rss\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003ENieuws\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/nav\u003E"
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+         ,"t-Form--stretchInputs"
+         ,"margin-top-none"
+         ,"margin-bottom-none"
+         ,"margin-left-none"
+         ,"margin-right-sm"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"leesvoer-navigation"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"3848981521760548"
+     ,"Identification":{
+        "Name":"P51_HIDDEN_ARTICLE_ID"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"Null"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+}

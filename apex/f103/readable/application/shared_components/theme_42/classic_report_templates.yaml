@@ -1,0 +1,71 @@
+---
+- # ====== Classic Report Template: Newsfeed ===================
+  id: 3908095873507873
+  identification: 
+    name: Newsfeed
+
+- # ====== Classic Report Template: Timeline ===================
+  id: 5327364100377848
+  identification: 
+    name: Timeline
+
+- # ====== Classic Report Template: Content Row ================
+  id: 5327980002377852
+  identification: 
+    name: Content Row
+
+- # ====== Classic Report Template: Media List =================
+  id: 5331182769377857
+  identification: 
+    name: Media List
+
+- # ====== Classic Report Template: Value Attribute Pairs - Row 
+  id: 5334531407377862
+  identification: 
+    name: Value Attribute Pairs - Row
+
+- # ====== Classic Report Template: Value Attribute Pairs - Colu
+  id: 5336587524377864
+  identification: 
+    name: Value Attribute Pairs - Column
+
+- # ====== Classic Report Template: Badge List =================
+  id: 5338321630377867
+  identification: 
+    name: Badge List
+
+- # ====== Classic Report Template: Contextual Info ============
+  id: 5341953621377871
+  identification: 
+    name: Contextual Info
+
+- # ====== Classic Report Template: Standard ===================
+  id: 5342953137377872
+  identification: 
+    name: Standard
+
+- # ====== Classic Report Template: Comments ===================
+  id: 5345530694377877
+  identification: 
+    name: Comments
+
+- # ====== Classic Report Template: Alerts =====================
+  id: 5346718188377878
+  identification: 
+    name: Alerts
+
+- # ====== Classic Report Template: Cards ======================
+  id: 5346947395377879
+  identification: 
+    name: Cards
+
+- # ====== Classic Report Template: Search Results =============
+  id: 5352100787377894
+  identification: 
+    name: Search Results
+
+- # ====== Classic Report Template: Notification List ==========
+  id: 5639836004782533
+  identification: 
+    name: Notification List
+

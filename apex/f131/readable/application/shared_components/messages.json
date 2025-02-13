@@ -1,0 +1,93 @@
+[
+  {
+    "id":"4200044974476033"
+   ,"Identification":{
+      "Name":"APEX.SINCE.SHORT.HOURS_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 uren geleden"
+    }
+   ,"Attributes":{
+      "Language":"Dutch (Belgium) (nl-be)"
+     ,"Used in JavaScript":false
+    }
+  }
+ ,{
+    "id":"4200398898483998"
+   ,"Identification":{
+      "Name":"SINCE_HOURS_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 uren geleden"
+    }
+   ,"Attributes":{
+      "Language":"Dutch (Belgium) (nl-be)"
+     ,"Used in JavaScript":false
+    }
+  }
+ ,{
+    "id":"4200574442488394"
+   ,"Identification":{
+      "Name":"SINCE_MINUTES_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 minuten geleden"
+    }
+   ,"Attributes":{
+      "Language":"Dutch (Belgium) (nl-be)"
+     ,"Used in JavaScript":false
+    }
+  }
+ ,{
+    "id":"4200996957490471"
+   ,"Identification":{
+      "Name":"SINCE_MONTHS_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 maanden geleden"
+    }
+   ,"Attributes":{
+      "Language":"Dutch (Belgium) (nl-be)"
+     ,"Used in JavaScript":false
+    }
+  }
+ ,{
+    "id":"4201566684493376"
+   ,"Identification":{
+      "Name":"SINCE_WEEKS_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 weken geleden"
+    }
+   ,"Attributes":{
+      "Language":"Dutch (Belgium) (nl-be)"
+     ,"Used in JavaScript":false
+    }
+  }
+ ,{
+    "id":"4201973410494725"
+   ,"Identification":{
+      "Name":"SINCE_YEARS_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 jaren geleden"
+    }
+   ,"Attributes":{
+      "Language":"Dutch (Belgium) (nl-be)"
+     ,"Used in JavaScript":false
+    }
+  }
+ ,{
+    "id":"4614973113299505"
+   ,"Identification":{
+      "Name":"SINCE_DAYS_AGO"
+    }
+   ,"Message":{
+      "Text":"%0 dagen geleden"
+    }
+   ,"Attributes":{
+      "Language":"English (en)"
+     ,"Used in JavaScript":false
+    }
+  }
+]

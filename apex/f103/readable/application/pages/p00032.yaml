@@ -1,0 +1,4215 @@
+---
+# ====== Page: Starter Details ===============================
+id: 32
+identification: 
+  name: Starter Details
+  alias: STARTER-DETAILS
+  title: Starter Details
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js'
+  - 'https://cdn.quilljs.com/1.3.6/quill.js'
+  function-and-global-variable-declaration: var quill1;
+  execute-when-page-loads: |
+    quill1 = new Quill('#editor_agenda', {
+        theme: 'snow',
+        modules: {
+            'syntax': true,
+            'toolbar': [
+              [{ 'size': [] }],
+              [ 'bold', 'italic', 'underline', 'strike' ],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'script': 'super' }, { 'script': 'sub' }],
+              [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+              [ {'direction': 'rtl'}, { 'align': [] }],
+              [ 'link','formula' ],
+              [ 'clean' ]
+            ]
+          }
+    });
+    
+    /* Change striketrhough werd hier aangeroepen */
+
+css: 
+  file-urls: 
+  - 'https://cdn.quilljs.com/1.3.6/quill.snow.css'
+  - null
+  inline: |
+    td[headers="PROFILE_PICTURE"] { 
+        border: 0.5px solid rgba(14, 30, 37, 0.12);
+        padding: 4px; 
+        background-color: transparent;
+        display: flex;
+        width:231px;
+        height:231px;
+        justify-content: center;
+        align-content: center;
+    }
+    td[headers="PROFILE_PICTURE"] * {
+        border-radius: 50%;
+        width:220px;
+        height:220px;
+        object-fit: cover;
+    
+    }
+    
+    
+    #SR_agenda-style[aria-hidden="true"] div {
+        height: 0;
+    }
+    
+    .t-TabsRegion-items {
+        min-height: 0 !important;
+    }
+    
+    #P32_TOKEN_DISPLAY{
+        border:none;
+    }
+    
+    #P32_TOKEN_LABEL{
+        display:none;
+    }
+    
+    .lto4560617908120227_0{
+        height: 48px;
+        margin-top: 8px;
+    
+    }
+    
+    .B4560617908120227{
+            height: 48px;
+        margin-top: 8px;
+    }
+    
+    .ql-image, .ql-video {
+        display: none;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Meldingen ===================================
+  id: 4559051435120211
+  identification: 
+    title: Meldingen
+    type: Static Content
+
+  layout: 
+    sequence: 110
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: meldingen
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: &P32_FIRST_NAME. &P32_LAST_NAME. ============
+  id: 5773194066561325
+  identification: 
+    title: '&P32_FIRST_NAME. &P32_LAST_NAME.'
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: profile_body
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Details =====================================
+  id: 5773375750561327
+  identification: 
+    title: Details
+    type: Form
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT ID,
+             FIRST_NAME,
+             LAST_NAME,
+             COMPANY_ID,
+             POSITION,
+             LANGUAGE,
+             START_DATE,
+             IS_ACTIVE,
+             STREET,
+             HOUSE_NUMBER,
+             CITY_ID,
+             CITY,
+             ZIPCODE,
+             COUNTRY,
+             PERSONAL_EMAIL,
+             BUSINESS_EMAIL,
+             TELEPHONE,
+             CHOICE_LAPTOP,
+             CHOICE_PHONE,
+             AGENDA_CHECKED,
+             PROFILE_PICTURE,
+             MIMETYPE,
+             FILENAME,
+             CREATED_DATE_PIC,
+             INTRODUCTION,
+             FUNCTION_AND_COMPANY,
+             PREVIOUS_EXPERIENCE,
+             HOBBIES,
+             CHILDREN,
+             PETS,
+             TOKEN
+        FROM CF_STARTERS
+
+  layout: 
+    sequence: 30
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: Contactinfo =================================
+  id: 5774810315561342
+  identification: 
+    title: Contactinfo
+    type: Form
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ID,
+             ADDRESS_LINE_1,
+             ADDRESS_LINE_2,
+             CITY,
+             ZIPCODE,
+             COUNTRY,
+             EMAIL,
+             TELEPHONE
+        from CF_STARTERS
+
+  layout: 
+    sequence: 40
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: Starter Information Overview ================
+  id: 5774911933561343
+  identification: 
+    title: Starter Information Overview
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: '&P32_FIRST_NAME. &P32_LAST_NAME.' # 5773194066561325
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 5317427051377835
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Keuzes ======================================
+  id: 5775240487561346
+  identification: 
+    title: Keuzes
+    type: Form
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select 
+             CHOICE_LAPTOP,
+             CHOICE_PHONE
+        from CF_STARTERS
+
+  layout: 
+    sequence: 60
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: keuzes
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: To Do's =====================================
+  id: 5775308864561347
+  identification: 
+    title: To Do's
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: '&P32_FIRST_NAME. &P32_LAST_NAME.' # 5773194066561325
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+
+  appearance: 
+    template: Tabs Container # 5317427051377835
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Profielfoto =================================
+  id: 6590978260658109
+  identification: 
+    title: Profielfoto
+    type: Static Content
+
+  layout: 
+    sequence: 70
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 5303622844377817
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    static-id: profiel-foto-tab
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Profiel Foto ================================
+  id: 6594068327658140
+  identification: 
+    title: Profiel Foto
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT id
+           , DBMS_LOB.GETLENGTH(profile_picture) AS profile_picture
+           , mimetype
+           , filename
+           , created_date_pic
+        FROM cf_starters
+        WHERE id = :P32_ID
+        ORDER BY created_date_pic DESC
+
+  layout: 
+    sequence: 30
+    parent-region: Profielfoto # 6590978260658109
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 4
+
+  appearance: 
+    template: Interactive Report # 5303622844377817
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--noBorders
+    render-components: Above Content
+
+  advanced: 
+    static-id: profile-picture-rgn
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 5342953137377872
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--altRowsDefault
+      - t-Report--rowHighlight
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: None
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ID ==========================================
+    id: 6690772112887510
+    identification: 
+      column-name: ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 10
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: PROFILE_PICTURE =============================
+    id: 6690870795887511
+    identification: 
+      column-name: PROFILE_PICTURE
+      type: Display Image
+
+    heading: 
+      heading: Profiel Foto
+      alignment: center
+
+    layout: 
+      sequence: 20
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: true
+
+    blob-attributes: 
+      table-owner: Parsing Schema
+      table-name: CF_STARTERS
+      blob-column: PROFILE_PICTURE
+      primary-key-column-1: ID
+      mime-type-column: MIMETYPE
+      filename-column: FILENAME
+      last-updated-column: CREATED_DATE_PIC
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+  - # ====== Column: MIMETYPE ====================================
+    id: 6690963247887512
+    identification: 
+      column-name: MIMETYPE
+      type: Hidden Column
+
+    layout: 
+      sequence: 30
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: FILENAME ====================================
+    id: 6691030580887513
+    identification: 
+      column-name: FILENAME
+      type: Hidden Column
+
+    layout: 
+      sequence: 40
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CREATED_DATE_PIC ============================
+    id: 6691179522887514
+    identification: 
+      column-name: CREATED_DATE_PIC
+      type: Hidden Column
+
+    layout: 
+      sequence: 50
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Upload zone =================================
+  id: 6691253976887515
+  identification: 
+    title: Upload zone
+    type: Form
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select
+          dbms_lob.getlength(PROFILE_PICTURE) AS PROFILE_PICTURE,
+             MIMETYPE,
+             FILENAME,
+             CREATED_DATE_PIC
+        from CF_STARTERS
+
+  layout: 
+    sequence: 20
+    parent-region: Profielfoto # 6590978260658109
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: Takenlijst ==================================
+  id: 6763133359779807
+  identification: 
+    title: Takenlijst
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: To Do's # 5775308864561347
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Agenda ======================================
+  id: 7572853882817538
+  identification: 
+    title: Agenda
+    type: Static Content
+
+  layout: 
+    sequence: 80
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: agenda-style
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Agenda Text =================================
+  id: 8142949169844217
+  identification: 
+    title: Agenda Text
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          l_rte_text clob;
+      begin
+      
+          if not :P32_ID is null then
+              select agenda_starter 
+              into l_rte_text
+              from cf_starters
+              where id = :P32_ID;
+          else
+              l_rte_text := null;
+          end if;
+      
+          if l_rte_text is null then
+              htp.p('<div id="editor_agenda"><b><h2>Agenda starter</h2></b><p>Bouw de agenda van de starter op...</p></div>');
+          else 
+              apex_debug_message.log_message(l_rte_text);
+             htp.p('<div id="editor_agenda">' || substr(l_rte_text, 1, 32767) || '</div>');
+              
+          end if;
+      
+      end;
+
+  layout: 
+    sequence: 10
+    parent-region: Agenda # 7572853882817538
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+- # ====== Region: Agenda wie ben ik ===========================
+  id: 8143125701844219
+  identification: 
+    title: Agenda wie ben ik
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Agenda # 7572853882817538
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Wie ben je ==================================
+  id: 9528773283530505
+  identification: 
+    title: Wie ben je
+    type: Static Content
+
+  layout: 
+    sequence: 90
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: wiebenje
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Token =======================================
+  id: 17128959357773810
+  identification: 
+    title: Token
+    type: Static Content
+
+  layout: 
+    sequence: 100
+    parent-region: Starter Information Overview # 5774911933561343
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    static-id: token
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P32_NOTIFICATION_TYPES ===================
+  id: 4560256306120223
+  identification: 
+    name: P32_NOTIFICATION_TYPES
+    type: Popup LOV
+
+  label: 
+    label: Meldingen
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: false
+    manual-entry: false
+    search-as-you-type: true
+    minimum-characters: No minimum (0)
+
+  layout: 
+    sequence: 20
+    region: Meldingen # 4559051435120211
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 8
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      select np.text_message,np.id
+      from cf_notifications_pwa np;
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_ID ===================================
+  id: 5773581572561329
+  identification: 
+    name: P32_ID
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: Details # 5773375750561327
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_FIRST_NAME ===========================
+  id: 5773691197561330
+  identification: 
+    name: P32_FIRST_NAME
+    type: Text Field
+
+  label: 
+    label: Voornaam
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 5377828068377967
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: FIRST_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_LAST_NAME ============================
+  id: 5773752655561331
+  identification: 
+    name: P32_LAST_NAME
+    type: Text Field
+
+  label: 
+    label: Familienaam
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 5377828068377967
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: LAST_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_COMPANY_ID ===========================
+  id: 5773879929561332
+  identification: 
+    name: P32_COMPANY_ID
+    type: Select List
+
+  label: 
+    label: Bedrijf
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 60
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 5377828068377967
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT name, id 
+      FROM CF_COMPANIES
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: COMPANY_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_POSITION =============================
+  id: 5773961584561333
+  identification: 
+    name: P32_POSITION
+    type: Select List
+
+  label: 
+    label: Functie
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 80
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_POSITIONS # 5813093282228557
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: POSITION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_LANGUAGE =============================
+  id: 5774009472561334
+  identification: 
+    name: P32_LANGUAGE
+    type: Select List
+
+  label: 
+    label: Taal
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 90
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_LANGUAGES # 5814530880356995
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: LANGUAGE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_START_DATE ===========================
+  id: 5774160736561335
+  identification: 
+    name: P32_START_DATE
+    type: Date Picker
+
+  label: 
+    label: Startdatum
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: false
+    use-defaults: true
+
+  layout: 
+    sequence: 100
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: DD-MM-YYYY
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: START_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_IS_ACTIVE ============================
+  id: 5774244779561336
+  identification: 
+    name: P32_IS_ACTIVE
+    type: Checkbox
+
+  label: 
+    label: Actief
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 110
+    region: Details # 5773375750561327
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: IS_ACTIVE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_AGENDA_CHECKED =======================
+  id: 5950806752246701
+  identification: 
+    name: P32_AGENDA_CHECKED
+    type: Checkbox
+
+  label: 
+    label: Toon agenda
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 40
+    region: Agenda wie ben ik # 8143125701844219
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: AGENDA_CHECKED
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  default: 
+    type: Static
+    static-value: 0
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_CITY =================================
+  id: 6236645034623309
+  identification: 
+    name: P32_CITY
+    type: Text Field
+
+  label: 
+    label: Stad
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: CITY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_COUNTRY ==============================
+  id: 6236865076623311
+  identification: 
+    name: P32_COUNTRY
+    type: Select List
+
+  label: 
+    label: Land
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 40
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_COUNTRIES # 6905522078879801
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: COUNTRY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_TELEPHONE ============================
+  id: 6237028847623313
+  identification: 
+    name: P32_TELEPHONE
+    type: Text Field
+
+  label: 
+    label: Telefoon
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 100
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 80
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: TELEPHONE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_PROFILE_PICTURE_1 ====================
+  id: 6693264859887535
+  identification: 
+    name: P32_PROFILE_PICTURE_1
+    type: File Browse...
+
+  label: 
+    label: Upload profielfoto
+    alignment: Left
+
+  settings: 
+    display-as: Block Dropzone
+    storage-type: BLOB column specified in Item Source attribute
+    mime-type-column: MIMETYPE
+    filename-column: FILENAME
+    blob-last-updated-column: CREATED_DATE_PIC
+    display-download-link: false
+    file-types: image/*
+    maximum-file-size: 3048
+
+  layout: 
+    sequence: 50
+    region: Upload zone # 6691253976887515
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: PROFILE_PICTURE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_MIMETYPE_1 ===========================
+  id: 6693306317887536
+  identification: 
+    name: P32_MIMETYPE_1
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: Upload zone # 6691253976887515
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: MIMETYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_FILENAME_1 ===========================
+  id: 6693443166887537
+  identification: 
+    name: P32_FILENAME_1
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: Upload zone # 6691253976887515
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_CREATED_DATE_PIC_1 ===================
+  id: 6693521663887538
+  identification: 
+    name: P32_CREATED_DATE_PIC_1
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 80
+    region: Upload zone # 6691253976887515
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: CREATED_DATE_PIC
+    data-type: DATE
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_CHOICE_LAPTOP ========================
+  id: 6773273032876726
+  identification: 
+    name: P32_CHOICE_LAPTOP
+    type: Text Field
+
+  label: 
+    label: Keuze Laptop
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Keuzes # 5775240487561346
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: CHOICE_LAPTOP
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_CHOICE_PHONE =========================
+  id: 6773366998876727
+  identification: 
+    name: P32_CHOICE_PHONE
+    type: Text Field
+
+  label: 
+    label: Keuze Telefoon
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Keuzes # 5775240487561346
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: CHOICE_PHONE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_CITY_CODE ============================
+  id: 6883117060670544
+  identification: 
+    name: P32_CITY_CODE
+    type: Popup LOV
+
+  label: 
+    label: Stad
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: true
+    separator: ':'
+    manual-entry: false
+    search-as-you-type: true
+    minimum-characters: 1
+
+  layout: 
+    sequence: 30
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT ZIPCODE || ' ' || NAME, ID
+      FROM CF_CITIES;
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: CITY_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_ZIPCODE ==============================
+  id: 6883229063670545
+  identification: 
+    name: P32_ZIPCODE
+    type: Number Field
+
+  label: 
+    label: Postcode
+    alignment: Left
+
+  settings: 
+    number-alignment: Left
+
+  layout: 
+    sequence: 60
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 10
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: ZIPCODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_TO_DOS ===============================
+  id: 6909699281278209
+  identification: 
+    name: P32_TO_DOS
+    type: Checkbox Group
+
+  label: 
+    label: To Do's
+    alignment: Left
+
+  settings: 
+    number-of-columns: 1
+
+  layout: 
+    sequence: 10
+    region: Takenlijst # 6763133359779807
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden # 5378593784377969
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--large
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT todo.name as d, todo.id as r
+      FROM CF_TODOS todo
+      LEFT JOIN CF_TODOS_STARTERS ON todo.id = cf_todos_starters.todo_id
+      WHERE STARTER_ID = :P32_ID
+      ORDER BY CHECKED ASC, todo.id asc;
+    display-extra-values: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return colon separated value)
+    sql-query: |
+      SELECT todo_id
+      FROM CF_TODOS_STARTERS
+      WHERE starter_id = :P32_ID AND checked = 1;
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_EMPLOYEES ============================
+  id: 8143042823844218
+  identification: 
+    name: P32_EMPLOYEES
+    type: Popup LOV
+
+  label: 
+    label: Medewerkers
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: true
+    separator: ':'
+    manual-entry: false
+    search-as-you-type: true
+    minimum-characters: No minimum (0)
+
+  layout: 
+    sequence: 30
+    region: Agenda wie ben ik # 8143125701844219
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      select givenname|| ' '||familyname as d, email as r
+      from table (ctb_user_mgmt.idcs_pkg.users)
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return colon separated value)
+    sql-query: |
+      select employee_email
+      from cf_employees
+      where starter_id = :P32_ID;
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_INTRODUCTION =========================
+  id: 8573742592146049
+  identification: 
+    name: P32_INTRODUCTION
+    type: Textarea
+
+  label: 
+    label: Introductie
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 10
+    region: Wie ben je # 9528773283530505
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+    maximum-length: 4000
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: INTRODUCTION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_FUNCTION_AND_COMPANY =================
+  id: 8573867496146050
+  identification: 
+    name: P32_FUNCTION_AND_COMPANY
+    type: Textarea
+
+  label: 
+    label: Functie in het bedrijf
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 10
+    region: Wie ben je # 9528773283530505
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+    maximum-length: 4000
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: FUNCTION_AND_COMPANY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_PREVIOUS_EXPERIENCE ==================
+  id: 9528306290530501
+  identification: 
+    name: P32_PREVIOUS_EXPERIENCE
+    type: Textarea
+
+  label: 
+    label: Voorgaande ervaring
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 10
+    region: Wie ben je # 9528773283530505
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+    maximum-length: 4000
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: PREVIOUS_EXPERIENCE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_HOBBIES ==============================
+  id: 9528490392530502
+  identification: 
+    name: P32_HOBBIES
+    type: Textarea
+
+  label: 
+    label: Hobbies
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 30
+    region: Wie ben je # 9528773283530505
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: HOBBIES
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_CHILDREN =============================
+  id: 9528512991530503
+  identification: 
+    name: P32_CHILDREN
+    type: Number Field
+
+  label: 
+    label: Aantal kinderen
+    alignment: Left
+
+  settings: 
+    number-alignment: Right
+
+  layout: 
+    sequence: 60
+    region: Wie ben je # 9528773283530505
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: CHILDREN
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_PETS =================================
+  id: 9528644418530504
+  identification: 
+    name: P32_PETS
+    type: Textarea
+
+  label: 
+    label: Huisdieren
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 50
+    region: Wie ben je # 9528773283530505
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+    maximum-length: 400
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: PETS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_PERSONAL_EMAIL =======================
+  id: 10011246587417519
+  identification: 
+    name: P32_PERSONAL_EMAIL
+    type: Text Field
+
+  label: 
+    label: Persoonlijke email
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 80
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: PERSONAL_EMAIL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_BUSINESS_EMAIL =======================
+  id: 10011325597417520
+  identification: 
+    name: P32_BUSINESS_EMAIL
+    type: Text Field
+
+  label: 
+    label: Cronos Email
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: BUSINESS_EMAIL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_TOKEN ================================
+  id: 17128765987773808
+  identification: 
+    name: P32_TOKEN
+    type: Text Field
+
+  label: 
+    label: Token
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Token # 17128959357773810
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Above # 5379285218377972
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: TOKEN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_STREET ===============================
+  id: 27406573050195807
+  identification: 
+    name: P32_STREET
+    type: Text Field
+
+  label: 
+    label: Straat
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 9
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 800
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: STREET
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_HOUSE_NUMBER =========================
+  id: 27406603006195808
+  identification: 
+    name: P32_HOUSE_NUMBER
+    type: Text Field
+
+  label: 
+    label: Huisnummer
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Contactinfo # 5774810315561342
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 5377720374377965
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 80
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Details # 5773375750561327
+    column: HOUSE_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+    maintain-session-state: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: TOON_OVERZICHT ==============================
+  id: 4559333119120214
+  identification: 
+    button-name: TOON_OVERZICHT
+    label: Toon Overzicht
+
+  layout: 
+    sequence: 30
+    region: Meldingen # 4559051435120211
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:34:&SESSION.::&DEBUG.:34:P34_HIDDEN_ID:&P32_ID.'
+      page: 34 # Overzicht Meldingen
+      clear-cache: 34
+      values: 
+        p34_hidden_id: '&P32_ID.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: SEND_NOTIFICATION ===========================
+  id: 4560374945120224
+  identification: 
+    button-name: SEND_NOTIFICATION
+    label: Send Notification
+
+  layout: 
+    sequence: 40
+    region: Meldingen # 4559051435120211
+    position: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-envelope-o
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: ADD_NOTIFICATION ============================
+  id: 4560617908120227
+  identification: 
+    button-name: ADD_NOTIFICATION
+    label: Voeg een melding toe
+
+  layout: 
+    sequence: 30
+    region: Meldingen # 4559051435120211
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:35:&SESSION.::&DEBUG.:35::'
+      page: 35 # Melding Toevoegen
+      clear-cache: 35
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: SAVE ========================================
+  id: 6685585785722902
+  identification: 
+    button-name: SAVE
+    label: Wijzigingen opslaan
+
+  layout: 
+    sequence: 230
+    region: '&P32_FIRST_NAME. &P32_LAST_NAME.' # 5773194066561325
+    position: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-check
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+- # ====== Button: CANCEL ======================================
+  id: 7086728901664663
+  identification: 
+    button-name: CANCEL
+    label: Overzicht
+
+  layout: 
+    sequence: 240
+    region: '&P32_FIRST_NAME. &P32_LAST_NAME.' # 5773194066561325
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-arrow-left
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:30:&SESSION.::&DEBUG.:::'
+      page: 30 # Overzicht Starters
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: PREVIEW =====================================
+  id: 8143398154844221
+  identification: 
+    button-name: PREVIEW
+    label: Voorbeeld
+
+  layout: 
+    sequence: 20
+    region: Agenda # 7572853882817538
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:33:&SESSION.::&DEBUG.:33:P33_STARTER_ID,P33_STARTER_NAME:&P32_ID.,&P32_FIRST_NAME.'
+      page: 33 # Voorbeeld agenda
+      clear-cache: 33
+      values: 
+        p33_starter_id: '&P32_ID.'
+        p33_starter_name: '&P32_FIRST_NAME.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DELETE ======================================
+  id: 10010935341417516
+  identification: 
+    button-name: DELETE
+    label: Verwijder
+
+  layout: 
+    sequence: 10
+    region: '&P32_FIRST_NAME. &P32_LAST_NAME.' # 5773194066561325
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 5380692710377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - t-Button--danger
+    icon: fa-trash-o
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: Weet je zeker dat je &P32_FIRST_NAME. &P32_LAST_NAME. wilt verwijderen?
+    style: Warning
+
+- # ====== Button: RESEND_TOKEN ================================
+  id: 17129096131773811
+  identification: 
+    button-name: RESEND_TOKEN
+    label: Herverstuur Token
+
+  layout: 
+    sequence: 20
+    region: Token # 17128959357773810
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 5380542157377976
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: INSERT_NOTIFICATION =================
+  id: 4560463437120225
+  identification: 
+    name: INSERT_NOTIFICATION
+
+  execution-options: 
+    sequence: 70
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SEND_NOTIFICATION # 4560374945120224
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_EXECUTE_PLSQL_CODE ===================
+    id: 4560584829120226
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: 'insert into cf_starters_notifications_pwa(starter_id,notification_id, time_received, seen) values(:P32_ID,:P32_NOTIFICATION_TYPES,sysdate,0);'
+      items-to-submit: 
+      - P32_ID
+      - P32_NOTIFICATION_TYPES
+
+    execution-options: 
+      sequence: 10
+      event: INSERT_NOTIFICATION # 4560463437120225
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 5951454065246707
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: ' apex.message.showPageSuccess("Melding verzonden!" );'
+
+    execution-options: 
+      sequence: 20
+      event: INSERT_NOTIFICATION # 4560463437120225
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: COUNTRY BE  =========================
+  id: 6881437842670527
+  identification: 
+    name: 'COUNTRY BE '
+
+  execution-options: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P32_COUNTRY
+
+  client-side-condition: 
+    type: Item = Value
+    item: P32_COUNTRY
+    value: BE
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 6881513890670528
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P32_CITY_CODE
+
+    execution-options: 
+      sequence: 10
+      event: 'COUNTRY BE ' # 6881437842670527
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 6881645762670529
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P32_CITY
+      - P32_ZIPCODE
+
+    execution-options: 
+      sequence: 20
+      event: 'COUNTRY BE ' # 6881437842670527
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 6909992628278212
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P32_CITY
+      - P32_ZIPCODE
+
+    execution-options: 
+      sequence: 10
+      event: 'COUNTRY BE ' # 6881437842670527
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 6910183952278214
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P32_CITY_CODE
+
+    execution-options: 
+      sequence: 20
+      event: 'COUNTRY BE ' # 6881437842670527
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: CHANGE STRIKETHROUGH ================
+  id: 6910703242278220
+  identification: 
+    name: CHANGE STRIKETHROUGH
+
+  execution-options: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P32_TO_DOS
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 6910822932278221
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var todos = $('#P32_TO_DOS').children();
+        
+        for (var i = 0; i < todos.length; i++){
+            var getInput = $(`#P32_TO_DOS_${i}`)
+            
+            if(getInput.checked == true) {
+                    getInput.next().style='text-decoration: line-through;   font-weight: normal;'
+            } else {
+                    getInput.next().style='text-decoration: none;'
+            }
+        }
+
+    execution-options: 
+      sequence: 10
+      event: CHANGE STRIKETHROUGH # 6910703242278220
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SAVE QUILL ==========================
+  id: 8020918806019275
+  identification: 
+    name: SAVE QUILL
+
+  execution-options: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SAVE # 6685585785722902
+
+  advanced: 
+    event-scope: Static
+
+  configuration: 
+    build-option: Commented Out # 5216523969377659
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 8021351134019284
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var editor1 = apex.server.process( "PROCESS_QUILL", {
+            x01: $v("P32_ID"),
+            x02: "agenda_starter",
+            p_clob_01: quill1.root.innerHTML
+        } );
+        
+        Promise.all([editor1]).then((values) => {
+        apex.page.submit();
+        } );
+
+    execution-options: 
+      sequence: 10
+      event: SAVE QUILL # 8020918806019275
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SAVE QUILL AND EMP COLL =============
+  id: 8448294205695197
+  identification: 
+    name: SAVE QUILL AND EMP COLL
+
+  execution-options: 
+    sequence: 40
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: PREVIEW # 8143398154844221
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 8448679422695200
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.server.process( "UPDATE_COLLECTION", {
+            x01: $v("P32_ID"),
+            x02: "agenda_starter",
+            p_clob_01: quill1.root.innerHTML
+        } );
+        
+        
+        apex.server.process( "UPDATE_COLLECTION", {
+            x01: $v("P32_ID"),
+            x02: "emp_profile_pic",
+            x03: $v("P32_EMPLOYEES"),
+            });
+        
+        
+        
+
+    execution-options: 
+      sequence: 20
+      event: SAVE QUILL AND EMP COLL # 8448294205695197
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: RESEND_MAIL =========================
+  id: 17132650405773847
+  identification: 
+    name: RESEND_MAIL
+
+  execution-options: 
+    sequence: 60
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: RESEND_TOKEN # 17129096131773811
+
+  advanced: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: NATIVE_EXECUTE_PLSQL_CODE ===================
+    id: 17132786261773848
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        declare
+            l_token varchar2(30 CHAR);
+            l_url varchar2(300 CHAR);
+            l_app number := 131;
+            l_session number := v('APP_SESSION');
+        
+        begin
+            --l_url := apex_util.host_url('')||'/ords/r/ctb_centerfield/centerfield-mobile/login?p9999_username='|| :P32_TOKEN||'&P9999_PERSISTENT_AUTH=Y';
+        
+          l_url := APEX_UTIL.HOST_URL('') || 
+                   APEX_PAGE.GET_URL (
+                        p_application => 'CENTERFIELD-MOBILE',
+                        p_page   => 'login',
+                        p_items  => 'p9999_username',
+                        p_values => l_token ); 
+        
+            apex_mail.send (
+                p_to                 => :P32_PERSONAL_EMAIL,
+                p_from               => 'noreply@contribute.be',
+                p_template_static_id => 'EMAIL_STARTER_TOKEN',
+                p_placeholders       => '{' ||
+                '    "NAME":'  || apex_json.stringify( :P32_FIRST_NAME ) ||
+                '   ,"TOKEN":' || apex_json.stringify( :P32_TOKEN ) ||
+                '   ,"URL":' || apex_json.stringify( l_url ) ||
+                '   ,"LOGO_URL":' || apex_json.stringify('https://fieldside.be/wp-content/uploads/2020/11/logo.svg') ||
+        
+                '}' );
+        
+            APEX_MAIL.PUSH_QUEUE;
+            
+        end;
+      items-to-submit: 
+      - P32_FIRST_NAME
+      - P32_TOKEN
+      - P32_PERSONAL_EMAIL
+
+    execution-options: 
+      sequence: 10
+      event: RESEND_MAIL # 17132650405773847
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: NATIVE_JAVASCRIPT_CODE ======================
+    id: 17132888280773849
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: ' apex.message.showPageSuccess("Email verzonden!" );'
+
+    execution-options: 
+      sequence: 20
+      event: RESEND_MAIL # 17132650405773847
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: meldingen tab - SHOW BUTTONS ========
+  id: 22308246889727721
+  identification: 
+    name: meldingen tab - SHOW BUTTONS
+
+  execution-options: 
+    sequence: 120
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_meldingen_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 22308377370727722
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: meldingen tab - SHOW BUTTONS # 22308246889727721
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 22308400947727723
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: meldingen tab - SHOW BUTTONS # 22308246889727721
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: meldingen tab - HIDE BUTTONS ========
+  id: 24613984286020427
+  identification: 
+    name: meldingen tab - HIDE BUTTONS
+
+  execution-options: 
+    sequence: 80
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSIN
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_meldingen_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 24614024377020428
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 20
+      event: meldingen tab - HIDE BUTTONS # 24613984286020427
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 24614185252020429
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 30
+      event: meldingen tab - HIDE BUTTONS # 24613984286020427
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: token tab - HIDE BUTTONS ============
+  id: 24614808990020436
+  identification: 
+    name: token tab - HIDE BUTTONS
+
+  execution-options: 
+    sequence: 110
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSIN
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_token_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 24614986991020437
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: token tab - HIDE BUTTONS # 24614808990020436
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 24615082721020438
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: token tab - HIDE BUTTONS # 24614808990020436
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: token tab - SHOW BUTTONS ============
+  id: 24615147252020439
+  identification: 
+    name: token tab - SHOW BUTTONS
+
+  execution-options: 
+    sequence: 150
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_meldingen_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 24615200219020440
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: token tab - SHOW BUTTONS # 24615147252020439
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 24615309545020441
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: token tab - SHOW BUTTONS # 24615147252020439
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: wiebenje tab - HIDE BUTTONS =========
+  id: 24615482765020442
+  identification: 
+    name: wiebenje tab - HIDE BUTTONS
+
+  execution-options: 
+    sequence: 90
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSIN
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_wiebenje_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 24615556351020443
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: wiebenje tab - HIDE BUTTONS # 24615482765020442
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 24615601589020444
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: wiebenje tab - HIDE BUTTONS # 24615482765020442
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: wiebenje - SHOW BUTTONS =============
+  id: 24615714857020445
+  identification: 
+    name: wiebenje - SHOW BUTTONS
+
+  execution-options: 
+    sequence: 130
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_wiebenje_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 24615806576020446
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: wiebenje - SHOW BUTTONS # 24615714857020445
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 24615961508020447
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: wiebenje - SHOW BUTTONS # 24615714857020445
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: keuzes - HIDE BUTTONS ===============
+  id: 25437049511302601
+  identification: 
+    name: keuzes - HIDE BUTTONS
+
+  execution-options: 
+    sequence: 100
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSIN
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_keuzes_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 25437179098302602
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: keuzes - HIDE BUTTONS # 25437049511302601
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_HIDE =================================
+    id: 25437276270302603
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: keuzes - HIDE BUTTONS # 25437049511302601
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: keuzes - SHOW BUTTONS ===============
+  id: 25437308516302604
+  identification: 
+    name: keuzes - SHOW BUTTONS
+
+  execution-options: 
+    sequence: 140
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: jQuery Selector
+    jquery-selector: li#SR_keuzes_tab a
+
+  advanced: 
+    event-scope: Dynamic
+
+  actions: 
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 25437472632302605
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: SAVE # 6685585785722902
+
+    execution-options: 
+      sequence: 10
+      event: keuzes - SHOW BUTTONS # 25437308516302604
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: NATIVE_SHOW =================================
+    id: 25437525377302606
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: DELETE # 10010935341417516
+
+    execution-options: 
+      sequence: 20
+      event: keuzes - SHOW BUTTONS # 25437308516302604
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+processes: 
+- # ====== Process: Initialize form Starter Details ============
+  id: 5773441390561328
+  identification: 
+    name: Initialize form Starter Details
+    type: Form - Initialization
+    form-region: Details # 5773375750561327
+
+  execution-options: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Submit changes Detail ======================
+  id: 6689922042887502
+  identification: 
+    name: Submit changes Detail
+    type: Form - Automatic Row Processing (DML)
+    form-region: Details # 5773375750561327
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution-options: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Wijzigingen opgeslagen
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Submit changes todos =======================
+  id: 6909827940278211
+  identification: 
+    name: Submit changes todos
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+        checkedlijst varchar2(50 CHAR) := ':' || :P32_TO_DOS || ':';
+      begin
+      
+          update cf_todos_starters
+          set checked = decode(instr(checkedlijst,':'||todo_id||':'),0,0,1)
+          where starter_id = :P32_ID;
+      
+      end;
+
+  execution-options: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SAVE # 6685585785722902
+
+- # ====== Process: PROCESS_QUILL ==============================
+  id: 8021812642022415
+  identification: 
+    name: PROCESS_QUILL
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+      begin
+          if apex_application.g_x02 = 'agenda_starter' then
+              update cf_starters
+              set agenda_starter = apex_application.g_clob_01
+              where id = apex_application.g_x01;
+          end if;
+          htp.p('{}');
+      end;
+
+  execution-options: 
+    sequence: 40
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Submit whoami ==============================
+  id: 8143227163844220
+  identification: 
+    name: Submit whoami
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+        l_chosen_emp varchar2(100 CHAR) :=  :P32_EMPLOYEES;
+      begin
+      
+          delete 
+          from cf_employees
+          where starter_id = :P32_ID;
+          
+          for i in (SELECT trim(regexp_substr(l_chosen_emp, '[^:]+', 1, LEVEL)) email FROM dual CONNECT BY LEVEL <= regexp_count(l_chosen_emp, ':')+1)
+          loop
+              insert into cf_employees(starter_id,employee_email)
+              values (:P32_ID,i.email);
+          end loop;    
+      end;
+
+  execution-options: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Process: Init Quill And Employee Collection =========
+  id: 8432201992389710
+  identification: 
+    name: Init Quill And Employee Collection
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_EMP_AGENDA_COLLECTION';
+          l_agenda clob;
+          l_pic blob;
+          l_email varchar2(50 char);
+          l_mimetype varchar2(50 char);
+          l_filename varchar2(100 char);
+          l_name varchar2(50 char);
+          l_check_emp varchar2(100 char);
+      begin
+          apex_collection.create_or_truncate_collection(
+              p_collection_name => lco_collection_name
+          );
+          
+          if :P32_ID is not null then
+              select
+                  agenda_starter
+              into
+                  l_agenda
+              from cf_starters
+              where id = :P32_ID;
+          end if;
+      
+          apex_collection.add_member(
+              p_collection_name => lco_collection_name,
+              p_c001 => 'agenda_starter',
+              p_clob001 => l_agenda
+          );
+      
+      
+          for i in (select * from cf_employees where starter_id = :P32_ID )
+          loop
+          /* iets is veranderd aan de cv tool's data, even in commentaar gezet
+              if i.employee_email is not null then
+                  select filename, mimetype, content, email, firstname || ' '|| name as name
+                  into l_filename, l_mimetype, l_pic, l_email, l_name
+                  from cf_employees
+                  where email = i.employee_email;
+      
+                  apex_collection.add_member(
+                  p_collection_name => lco_collection_name,
+                  p_c001 => 'emp_profile_pic',
+                  p_c002 => l_filename,
+                  p_c003 => l_mimetype,
+                  p_c004 => l_email,
+                  p_c005 => l_name,
+                  p_blob001 => l_pic
+          );
+          end if;
+              */
+              null;
+          end loop;
+      end;
+
+  execution-options: 
+    sequence: 50
+    point: After Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: UPDATE_COLLECTION ==========================
+  id: 8436534207599237
+  identification: 
+    name: UPDATE_COLLECTION
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_EMP_AGENDA_COLLECTION';
+          l_chosen_emp varchar2(100 CHAR) :=  :P32_EMPLOYEES;
+          l_pic blob;
+          l_email varchar2(50 char);
+          l_name varchar2(50 char);
+          l_mimetype varchar2(50 char);
+          l_filename varchar2(100 char);
+          l_seq_emp number;
+      begin
+      
+          --call the max seq_id in case for gaps after delete;
+          select max(seq_id) +1 into l_seq_emp from APEX_COLLECTIONS where COLLECTION_NAME ='QUILL_EMP_AGENDA_COLLECTION';
+      
+          if apex_application.g_x02 = 'agenda_starter' then
+              apex_collection.update_member(
+                  p_collection_name => lco_collection_name,
+                  p_seq => '1',
+                  p_c001 =>'agenda_starter',
+                  p_clob001 => apex_application.g_clob_01
+              );
+      
+          elsif apex_application.g_x02 = 'emp_profile_pic' then
+                  --remove all blobs with seq id > 1
+                  for i in (select seq_id from apex_collections where collection_name ='QUILL_EMP_AGENDA_COLLECTION')
+                  loop
+                      if i.seq_id > 1 then 
+                              APEX_COLLECTION.DELETE_MEMBER(
+                              p_collection_name => 'QUILL_EMP_AGENDA_COLLECTION',
+                              p_seq => i.seq_id);
+                      end if;
+                  end loop;
+                  
+                  if apex_application.g_x03 is not null then
+                  --loop over chosen values and update collection
+                  for i in (SELECT trim(regexp_substr(apex_application.g_x03, '[^:]+', 1, LEVEL)) email FROM dual CONNECT BY LEVEL <= regexp_count(apex_application.g_x03, ':')+1)
+                  loop
+              
+                      select filename, mimetype, content, employee_email, givenname || ' '|| familyname as name
+                      into l_filename, l_mimetype, l_pic, l_email, l_name
+                      from cf_employees emp
+                        JOIN cf_v_employees vemp ON (vemp.internalid = emp.user_mgm_id)
+                      where employee_email = i.email;
+      
+                      apex_collection.add_member(
+                      p_collection_name => lco_collection_name,
+                      p_c001 => 'emp_profile_pic',
+                      p_c002 => l_filename,
+                      p_c003 => l_mimetype,
+                      p_c004 => l_email,
+                      p_c005 => l_name,
+                      p_blob001 => l_pic
+                      );
+      
+                      l_seq_emp := l_seq_emp +1;
+                  end loop;
+                  end if;
+      
+          end if;
+      
+      
+          htp.p('{}');
+      end;
+
+  execution-options: 
+    sequence: 50
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
+
+  configuration: 
+    build-option: Commented Out # 5216523969377659
+
+- # ====== Process: Delete row =================================
+  id: 24612008769020408
+  identification: 
+    name: Delete row
+    type: Execute Code
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+      begin
+          delete 
+          from cf_notifications_pwa_history
+          where starter_id = :P32_ID;
+      
+          delete
+          from cf_starters_notifications_pwa
+          where starter_id = :P32_ID;
+      
+          delete 
+          from cf_notifications
+          where starter_id = :P32_ID;
+      
+          delete
+          from cf_employees
+          where starter_id = :P32_ID;
+      
+          delete 
+          from cf_todos_starters
+          where starter_id = :P32_ID;
+      
+          delete 
+          from cf_starters 
+          where id = :P32_ID;
+      
+          commit;
+      end;
+
+  execution-options: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: DELETE # 10010935341417516
+
+branches: 
+- # ====== Branch: Go To Page 32 ===============================
+  id: 6691321659887516
+  identification: 
+    name: Go To Page 32
+
+  execution-options: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:32:&SESSION.::&DEBUG.::P32_ID:&P32_ID.&success_msg=#SUCCESS_MSG#'
+      page: 32 # Starter Details
+      values: 
+        p32_id: '&P32_ID.'
+

@@ -1,0 +1,27 @@
+[
+  {
+    "id":"15225272779258757"
+   ,"Identification":{
+      "Name":"Commented Out"
+    }
+   ,"Status":{
+      "Status":"Exclude"
+     ,"Default on Export":"Same as Current Status"
+     ,"On Upgrade Keep Status":false
+    }
+  }
+ ,{
+    "id":"15416218202259080"
+   ,"Identification":{
+      "Name":"Feature: Theme Style Selection"
+    }
+   ,"Status":{
+      "Status":"Include"
+     ,"Default on Export":"Same as Current Status"
+     ,"On Upgrade Keep Status":false
+    }
+   ,"Comments":{
+      "Comments":"Allow administrators to select a default color scheme (theme style) for the application. Administrators can also choose to allow end users to choose their own theme style. "
+    }
+  }
+]

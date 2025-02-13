@@ -1,0 +1,364 @@
+{
+  "id":"21"
+ ,"Identification":{
+    "Name":"Notification-modal"
+   ,"Alias":"NOTIFICATION-MODAL"
+   ,"Title":"Meldingen"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Modal Dialog"
+   ,"Dialog Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Dialog":{
+    "Chained":true
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"CSS":{
+    "Inline":"\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n.notification-header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n}\n.notification-header:after {\n    display: inline-block;\n    margin: 0 0 8px 20px;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n.notification-header:before {\n    display: inline-block;\n    margin: 0 20px 8px 0;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n\n\/*Mark as read button*\/\n.mark-as-read{\n    background-color: var(--ut-link-text-color);\n    color:#fff;\n    font-weight: bold;\n}\n\n\/*Notification list css*\/\n.t-notification-header{\n    border-bottom:#121212 1px solid;\n    color:#121212;\n}\n\na:hover .t-notification-header{\n    border-bottom:var(--ut-link-text-color)1px solid;\n    color:var(--ut-link-text-color);\n}\n.notification-container{\n    display: flex;\n    justify-content: space-between;\n}\n\n.t-Alert-wrap{\n    width: 100%;\n}\n.t-Alert-content{\n    width: 100%;\n}\n.t-Alert-body{\n    color:#121212;\n    font-size: 14px;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    white-space: nowrap;\n    width: 50%;\n}\n.t-Alert-buttons{\n    color:#585656;\n    font-size: 12px;\n    margin-left:20px;\n}\n.t-notification-header{\n    margin:0;\n    font-size:16px;\n}\n\n@media only screen and (max-width: 500px) {\n    .notification-header{\n        margin-top: 20px;\n        font-size: 20px;\n    }\n    \n}\n\n.nodatafound{\n    font-size: 24px;\n    color:#474747;\n    text-align: center;\n    margin: auto;\n    padding: 30px;\n\n}\n\n\n.show-all-button{\n    margin-left:17px;\n    margin-bottom: 20px;\n}\n\n.mark-as-read{\n    margin-right:17px;\n    margin-bottom: 20px;\n    float: right;\n}\n\n\n\n@media (max-width: 479px){\n    .col-6{\n        max-width: 50% !important;\n    }\n    div.row{\n        justify-content: space-between;\n    }\n}\n\n"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"10257861766362078"
+     ,"Identification":{
+        "Title":"Notificaties"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select np.text_message as NOTIFICATION_MESSAGE, np.type as NOTIFICATION_TYPE, snp.time_received as NOTIFICATION_RECEIVED\nfrom cf_starters_notifications_pwa snp\njoin cf_starters s on snp.starter_id = s.id\njoin cf_notifications_pwa np on np.id = snp.notification_id\nwhere s.token = :APP_USER\n\n"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":3
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Notification List (3693550614204206)"
+         ,"Template Options":[
+            "#DEFAULT#"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"No Pagination (Show All Rows)"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Messages":{
+          "When No Data Found":"geen meldingen..."
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"7121112758917069"
+         ,"Identification":{
+            "Column Name":"NOTIFICATION_MESSAGE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Notification Message"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":10
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"7121593361917069"
+         ,"Identification":{
+            "Column Name":"NOTIFICATION_TYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Notification Type"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":20
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"7121967731917070"
+         ,"Identification":{
+            "Column Name":"NOTIFICATION_RECEIVED"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Notification Received"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":30
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Appearance":{
+            "Format Mask":"SINCE"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"5951586216246708"
+     ,"Identification":{
+        "Button Name":"VIEW_ALL"
+       ,"Label":"View All"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Left center"
+      }
+     ,"Appearance":{
+        "Button Template":"Text with Icon (15389328762259006)"
+       ,"Hot":true
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--iconLeft"
+        ]
+       ,"CSS Classes":[
+          "show-all-button"
+        ]
+       ,"Icon":"fa-bell-o"
+      }
+     ,"Behavior":{
+        "Action":"Redirect to Page in this Application"
+       ,"Target":{
+          "url":"f?p=\u0026APP_ID.:20:\u0026SESSION.::\u0026DEBUG.:20::"
+         ,"Page":"20"
+         ,"Clear Cache":"20"
+        }
+       ,"Warn on Unsaved Changes":"Do Not Check"
+      }
+    }
+   ,{
+      "id":"5951671178246709"
+     ,"Identification":{
+        "Button Name":"MARK_AS_READ"
+       ,"Label":"Mark As Read"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":false
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Left center"
+      }
+     ,"Appearance":{
+        "Button Template":"Icon (15388536592259004)"
+       ,"Hot":true
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"CSS Classes":[
+          "mark-as-read"
+        ]
+       ,"Icon":"fa-trash-o"
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"7159014369981734"
+     ,"Identification":{
+        "Name":"Remove notifications"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"MARK_AS_READ (5951671178246709)"
+      }
+     ,"Advanced":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"7159455776981744"
+         ,"Identification":{
+            "Action":"Execute Server-side Code"
+          }
+         ,"Settings":{
+            "Language":"PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D"
+           ,"PL\/SQL Code":"declare\n    l_starter_id number;\nbegin\n\n    select id\n    into l_starter_id\n    from cf_starters\n    where token = :APP_USER;\n\n    delete\n    from cf_starters_notifications_pwa\n    where starter_id = l_starter_id;\nend;"
+           ,"Items to Submit":[
+              "P20_HIDDEN_STARTER_ID"
+            ]
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"Remove notifications (7159014369981734)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+           ,"Stop Execution On Error":true
+           ,"Wait For Result":true
+          }
+        }
+       ,{
+          "id":"7159925032981748"
+         ,"Identification":{
+            "Action":"Refresh"
+          }
+         ,"Affected Elements":{
+            "Selection Type":"Region"
+          }
+         ,"Execution Options":{
+            "Sequence":20
+           ,"Event":"Remove notifications (7159014369981734)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+---
+# ====== Page: Overzicht Meldingen ===========================
+id: 34
+identification: 
+  name: Overzicht Meldingen
+  alias: OVERZICHT-MELDINGEN
+  title: Overzicht Meldingen
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .notification-header {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .notification-header:after {
+        display: inline-block;
+        margin: 0 0 8px 20px;
+        height: 3px;
+        content: " ";
+        text-shadow: none;
+        background-color: var(--ut-link-text-color);
+        width: 25%;
+    }
+    .notification-header:before {
+        display: inline-block;
+        margin: 0 20px 8px 0;
+        height: 3px;
+        content: " ";
+        text-shadow: none;
+        background-color: var(--ut-link-text-color);
+        width: 25%;
+    }
+    
+    
+    /*Notification list css*/
+    .t-notification-header{
+        border-bottom:#121212 1px solid;
+        color:#121212;
+    }
+    
+    a:hover .t-notification-header{
+        border-bottom:var(--ut-link-text-color)1px solid;
+        color:var(--ut-link-text-color);
+    }
+    .notification-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .t-Alert-body{
+        color:#121212;
+        font-size: 14px;
+    }
+    .t-Alert-buttons{
+        color:#585656;
+        font-size: 12px;
+        margin-left:20px;
+    }
+    .t-notification-header{
+        margin:0;
+        font-size:16px;
+    }
+    
+    @media only screen and (max-width: 500px) {
+        .notification-header{
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        
+    }
+    
+    .nodatafound{
+        font-size: 24px;
+        color:#474747;
+        text-align: center;
+        margin: auto;
+        padding: 30px;
+    
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Header ======================================
+  id: 4559447532120215
+  identification: 
+    title: Header
+    type: Static Content
+
+  source: 
+    html-code: <h1 class="notification-header">Meldingen</h1>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Overzicht Meldingen =========================
+  id: 5636966161775633
+  identification: 
+    title: Overzicht Meldingen
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select np.text_message as NOTIFICATION_MESSAGE, np.type as NOTIFICATION_TYPE, snp.time_received as NOTIFICATION_RECEIVED
+      from cf_starters_notifications_pwa snp
+      join cf_starters s on snp.starter_id = s.id
+      join cf_notifications_pwa np on np.id = snp.notification_id
+      where s.id = :P34_HIDDEN_ID
+      order by snp.time_received desc
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 50
+
+    appearance: 
+      template-type: Theme
+      template: Notification List # 5639836004782533
+      template-options: 
+      - '#DEFAULT#'
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 500
+
+    messages: 
+      when-no-data-found: no data found
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: NOTIFICATION_MESSAGE ========================
+    id: 5637364107775634
+    identification: 
+      column-name: NOTIFICATION_MESSAGE
+      type: Plain Text
+
+    heading: 
+      heading: Notification Message
+      alignment: start
+
+    layout: 
+      sequence: 1
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NOTIFICATION_TYPE ===========================
+    id: 5637797658775635
+    identification: 
+      column-name: NOTIFICATION_TYPE
+      type: Plain Text
+
+    heading: 
+      heading: Notification Type
+      alignment: start
+
+    layout: 
+      sequence: 2
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NOTIFICATION_RECEIVED =======================
+    id: 5638195814775635
+    identification: 
+      column-name: NOTIFICATION_RECEIVED
+      type: Plain Text
+
+    heading: 
+      heading: Notification Received
+      alignment: center
+
+    layout: 
+      sequence: 3
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: SINCE
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+page-items: 
+- # ====== Page Item: P34_HIDDEN_ID ============================
+  id: 4559277795120213
+  identification: 
+    name: P34_HIDDEN_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+

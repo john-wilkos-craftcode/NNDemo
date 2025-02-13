@@ -1,0 +1,146 @@
+---
+# ====== Page: Voorbeeld =====================================
+id: 52
+identification: 
+  name: Voorbeeld
+  alias: VOORBEELD
+  title: Voorbeeld
+
+appearance: 
+  user-interface: Desktop # 5405277273378058
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .ql-video{
+        width:100% !important;
+        height: 350px !important;
+    }
+    
+    .ql-align-justify img{
+        width:25%;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Report 1 ====================================
+  id: 7666698960065068
+  identification: 
+    title: Report 1
+    type: PL/SQL Dynamic Content
+
+  source: 
+    pl/sql-code: |
+      declare
+          lco_collection_name constant varchar2(30 char) := 'QUILL_COMPANY_COLLECTION';
+          l_rte_start_m clob;
+          l_rte_start_e clob;
+          l_rte_welcome clob;
+      begin 
+          select clob001 
+          into l_rte_start_m
+          from apex_collections
+          where collection_name =lco_collection_name and seq_id = 1;
+      
+          select clob001 
+          into l_rte_start_e
+          from apex_collections
+          where collection_name =lco_collection_name and seq_id = 2;
+      
+          select clob001 
+          into l_rte_welcome
+          from apex_collections
+          where collection_name =lco_collection_name and seq_id = 3;
+      
+          htp.p(l_rte_start_m);
+          htp.p('<h1 style="border-bottom:1px solid #121212"></p>');
+          htp.p(l_rte_start_e);
+          htp.p('<h1 style="border-bottom:1px solid #121212"></p>');
+          htp.p(l_rte_welcome);
+      end;
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 5307945050377822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+page-items: 
+- # ====== Page Item: P52_ID ===================================
+  id: 7661543863926808
+  identification: 
+    name: P52_ID
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: Report 1 # 7666698960065068
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+    maintain-session-state: Per Session (Disk)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+

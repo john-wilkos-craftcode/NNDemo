@@ -1,0 +1,471 @@
+{
+  "id":"20"
+ ,"Identification":{
+    "Name":"Notifications"
+   ,"Alias":"NOTIFICATIONS"
+   ,"Title":"Notifications"
+  }
+ ,"Appearance":{
+    "User Interface":"Desktop (15413981414259052)"
+   ,"Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"CSS":{
+    "Inline":"\/*mobile navigation*\/\n#leesvoer-navigation{\n    position:fixed;\n    bottom:0;\n    left:0;\n    width:100%!important;\n    margin-bottom:0 !important;\n}\n.col col-12{\n    width:100%;\n}\n.nav{\n    border-top: 1px solid #7a7a7a;\n    height:60px;\n    background-color: #fff;\n    display: flex;\n    align-items: stretch;\n    overflow-x: auto;\n    width: 100%;\n}\n\n.nav-link{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;;\n    flex-grow:1;\n    min-width: 50px;\n    overflow:hidden;\n    white-space: nowrap;\n    font-family: sans-serif;\n    transition: background-color 0.1s ease-in-out;\n}\n\n.active{\n    color:var(--ut-link-text-color);\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\n}\n.nav-link:hover{\n    background-color: #eeeeee;\n}\n\nfooter{\n    display:none!important;\n}\n.notification-header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n}\n.notification-header:after {\n    display: inline-block;\n    margin: 0 0 8px 20px;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n.notification-header:before {\n    display: inline-block;\n    margin: 0 20px 8px 0;\n    height: 3px;\n    content: \" \";\n    text-shadow: none;\n    background-color: var(--ut-link-text-color);\n    width: 25%;\n}\n\n\/*Mark as read button*\/\n.mark-as-read{\n    background-color: var(--ut-link-text-color);\n    color:#fff;\n    font-weight: bold;\n}\n\n\/*Notification list css*\/\n.t-notification-header{\n    border-bottom:#121212 1px solid;\n    color:#121212;\n}\n\na:hover .t-notification-header{\n    border-bottom:var(--ut-link-text-color)1px solid;\n    color:var(--ut-link-text-color);\n}\n.notification-container{\n    display: flex;\n    justify-content: space-between;\n}\n\n.t-Alert-body{\n    color:#121212;\n    font-size: 14px;\n}\n.t-Alert-buttons{\n    color:#585656;\n    font-size: 12px;\n    margin-left:20px;\n}\n.t-notification-header{\n    margin:0;\n    font-size:16px;\n}\n\n@media only screen and (max-width: 500px) {\n    .notification-header{\n        margin-top: 20px;\n        font-size: 20px;\n    }\n    \n}\n\n.nodatafound{\n    font-size: 24px;\n    color:#474747;\n    text-align: center;\n    margin: auto;\n    padding: 30px;\n\n}\n.mark-as-read{\n    margin-right: 5px;\n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Arguments Must Have Checksum"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"3137005046445014"
+     ,"Identification":{
+        "Title":"Notificaties"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select np.text_message as NOTIFICATION_MESSAGE, np.type as NOTIFICATION_TYPE, snp.time_received as NOTIFICATION_RECEIVED\nfrom cf_starters_notifications_pwa snp\njoin cf_starters s on snp.starter_id = s.id\njoin cf_notifications_pwa np on np.id = snp.notification_id\nwhere s.token = :APP_USER\norder by snp.time_received desc;\n"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noBorder"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":15
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Notification List (3693550614204206)"
+         ,"Template Options":[
+            "#DEFAULT#"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"No Pagination (Show All Rows)"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Messages":{
+          "When No Data Found":"geen meldingen..."
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"3139084621445034"
+         ,"Identification":{
+            "Column Name":"NOTIFICATION_MESSAGE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Notification Message"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":10
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3139196498445035"
+         ,"Identification":{
+            "Column Name":"NOTIFICATION_TYPE"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Notification Type"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":20
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"3139278597445036"
+         ,"Identification":{
+            "Column Name":"NOTIFICATION_RECEIVED"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Notification Received"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":30
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Appearance":{
+            "Format Mask":"SINCE"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"3139407045445038"
+     ,"Identification":{
+        "Title":"Meldingen"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ch1 class=\"notification-header\"\u003EMeldingen\u003C\/h1\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"35455467558434413"
+     ,"Identification":{
+        "Title":"Bottom Navigation"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cnav class=\"nav\"\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:1:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-home\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EHome\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:30:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-building-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EOver\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:40:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-calendar-o\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003EAgenda\u003C\/span\u003E\n    \u003C\/a\u003E\n    \u003Ca href=\"f?p=\u0026APP_ID.:50:\u0026SESSION.\" class=\"nav-link\"\u003E\n        \u003Ci class=\"nav-icons fa fa-rss\"\u003E\u003C\/i\u003E\n        \u003Cspan class=\"nav-text\"\u003ENieuws\u003C\/span\u003E\n    \u003C\/a\u003E\n\u003C\/nav\u003E"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (15316662930258915)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--removeHeader js-removeLandmark"
+         ,"t-Region--noUI"
+         ,"t-Region--scrollBody"
+         ,"t-Form--stretchInputs"
+         ,"margin-top-none"
+         ,"margin-bottom-none"
+         ,"margin-left-none"
+         ,"margin-right-sm"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"leesvoer-navigation"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"3139828068445042"
+     ,"Identification":{
+        "Name":"P20_HIDDEN_STARTER_ID"
+       ,"Type":"Hidden"
+      }
+     ,"Settings":{
+        "Value Protected":true
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Region":"No Parent"
+       ,"Position":"BODY"
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"SQL Query (return single value)"
+       ,"SQL Query":"select id\nfrom cf_starters\nwhere token = :APP_USER;"
+       ,"Used":"Only when current value in session state is null"
+       ,"Maintain Session State":"Per Session (Disk)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":true
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"3139567711445039"
+     ,"Identification":{
+        "Button Name":"MARK_AS_READ"
+       ,"Label":"markeer-als-gelezen"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Meldingen (3139407045445038)"
+       ,"Position":"CREATE"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Button Template":"Icon (15388536592259004)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"CSS Classes":[
+          "mark-as-read"
+        ]
+       ,"Icon":"fa-trash-o"
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+       ,"Database Action":"SQL DELETE action"
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"3139655959445040"
+     ,"Identification":{
+        "Name":"Remove notifications"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"MARK_AS_READ (3139567711445039)"
+      }
+     ,"Advanced":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"3139753946445041"
+         ,"Identification":{
+            "Action":"Execute Server-side Code"
+          }
+         ,"Settings":{
+            "Language":"PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D"
+           ,"PL\/SQL Code":"declare\nbegin\n delete\n from cf_starters_notifications_pwa\n where starter_id = :P20_HIDDEN_STARTER_ID;\nend;"
+           ,"Items to Submit":[
+              "P20_HIDDEN_STARTER_ID"
+            ]
+          }
+         ,"Execution Options":{
+            "Sequence":10
+           ,"Event":"Remove notifications (3139655959445040)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+           ,"Stop Execution On Error":true
+           ,"Wait For Result":true
+          }
+        }
+       ,{
+          "id":"3139968619445043"
+         ,"Identification":{
+            "Action":"Refresh"
+          }
+         ,"Affected Elements":{
+            "Selection Type":"Region"
+           ,"Region":"Notificaties (3137005046445014)"
+          }
+         ,"Execution Options":{
+            "Sequence":20
+           ,"Event":"Remove notifications (3139655959445040)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"4558841042120209"
+     ,"Identification":{
+        "Name":"mark notifications read"
+       ,"Type":"Execute Code"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\n l_starter_id number;\nbegin\n    select id\n    into l_starter_id\n    from cf_starters\n    where token = :APP_USER;\n    \n    update cf_starters_notifications_pwa\n    set seen = 1\n    where starter_id = l_starter_id;\n\nend;"
+      }
+     ,"Execution Options":{
+        "Sequence":10
+       ,"Point":"After Header"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

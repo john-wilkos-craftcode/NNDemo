@@ -1,0 +1,92 @@
+[
+  {
+    "id":"7116518616901764"
+   ,"Identification":{
+      "Name":"CF_STARTERS.TOKEN"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Type":"Table \/ View"
+     ,"Table Owner":"Parsing Schema"
+     ,"Table Name":"CF_STARTERS"
+    }
+   ,"Column Mapping":{
+      "Return":"ID"
+     ,"Display":"TOKEN"
+     ,"Default Sort":"TOKEN"
+     ,"Sort Direction":"Ascending (Nulls Last)"
+    }
+  }
+ ,{
+    "id":"7116854409901770"
+   ,"Identification":{
+      "Name":"CF_NOTIFICATIONS_PWA.TEXT_MESSAGE"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Type":"Table \/ View"
+     ,"Table Owner":"Parsing Schema"
+     ,"Table Name":"CF_NOTIFICATIONS_PWA"
+    }
+   ,"Column Mapping":{
+      "Return":"ID"
+     ,"Display":"TEXT_MESSAGE"
+     ,"Default Sort":"TEXT_MESSAGE"
+     ,"Sort Direction":"Ascending (Nulls Last)"
+    }
+  }
+ ,{
+    "id":"15418949005259107"
+   ,"Identification":{
+      "Name":"LOGIN_REMEMBER_USERNAME"
+    }
+   ,"Source":{
+      "Location":"Static Values"
+    }
+   ,"Entries":[
+      {
+        "id":"15419371985259109"
+       ,"Entry":{
+          "Sequence":10
+         ,"Display":"Token onthouden?"
+         ,"Return":"Y"
+        }
+      }
+    ]
+  }
+ ,{
+    "id":"15427323802259160"
+   ,"Identification":{
+      "Name":"DESKTOP THEME STYLES"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Type":"SQL Query"
+     ,"SQL Query":"select s.name d,\n       s.theme_style_id r\n  from apex_application_theme_styles s,\n       apex_application_themes t\n where s.application_id = :app_id\n   and t.application_id = s.application_id\n   and t.theme_number   = s.theme_number\n   and t.ui_type_name   = \u0027DESKTOP\u0027\n   and t.is_current     = \u0027Yes\u0027\n order by 1"
+    }
+   ,"Column Mapping":{
+      "Return":"R"
+     ,"Display":"D"
+     ,"Default Sort":"Use Order By from Query"
+    }
+  }
+ ,{
+    "id":"15428017318259173"
+   ,"Identification":{
+      "Name":"USER_THEME_PREFERENCE"
+    }
+   ,"Source":{
+      "Location":"Static Values"
+    }
+   ,"Entries":[
+      {
+        "id":"15428354080259174"
+       ,"Entry":{
+          "Sequence":1
+         ,"Display":"Allow End Users to choose Theme Style"
+         ,"Return":"Yes"
+        }
+      }
+    ]
+  }
+]

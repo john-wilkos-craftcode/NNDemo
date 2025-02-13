@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Tables -->
+    <changeSet id="cf_cities" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_cities.sql" />
+    </changeSet>
+    <changeSet id="cf_companies" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_companies.sql" />
+    </changeSet>
+    <changeSet id="cf_lov_domains" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_lov_domains.sql" />
+    </changeSet>
+    <changeSet id="cf_lov_values" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_lov_values.sql" />
+    </changeSet>
+    <changeSet id="cf_lov_values_alter" author="Gijs Catsberg" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_lov_values_alter.sql" />
+    </changeSet>
+    <changeSet id="cf_companies_alter_active" author="Kelly van Loon" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_companies_alter_active.sql" />
+    </changeSet>
+
+    <!-- Sequences -->
+
+    <!-- Views -->
+    <changeSet id="cf_v_lovs" author="Kelly van Loon" runAlways="false" runOnChange="true">
+        <sqlFile splitStatements="false" path="install/views/cf_v_lovs.sql" />
+    </changeSet>     
+
+</databaseChangeLog>
