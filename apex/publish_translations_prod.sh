@@ -1,0 +1,1 @@
+sql nndemo@//89.168.86.190:1521/CTBDEMOP.subnet.vcn.oraclevcn.com @publish_translations.sql

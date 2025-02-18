@@ -37,5 +37,26 @@
   <changeSet id="cf_cities_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
     <sqlFile splitStatements="false" path="latest/triggers/cf_cities_briu_trg.sql" />
   </changeSet> 
-  
+  <changeSet id="cf_starters_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_starters_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_starters_notifications_pwa_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_starters_notifications_pwa_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_starters_token_brui_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_starters_token_brui_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_c_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_c_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_starters_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_starters_briu_trg.sql" />
+  </changeSet> 
+  <changeSet id="cf_todos_starters_c_briu_trg" author="Filip Huysmans" runAlways="false" runOnChange="true">
+    <sqlFile splitStatements="false" path="latest/triggers/cf_todos_starters_c_briu_trg.sql" />
+  </changeSet> 
+
 </databaseChangeLog>
