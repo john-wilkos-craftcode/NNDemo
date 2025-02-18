@@ -43,8 +43,10 @@
     <changeSet id="insert_lov_domains" author="Filip Huysmans" runAlways="false" runOnChange="false">
         <sqlFile splitStatements="true" path="data/insert_lov_domains.sql" />
     </changeSet>
-        <changeSet id="insert_lov_values" author="Filip Huysmans" runAlways="false" runOnChange="false">
+    <changeSet id="insert_lov_values" author="Filip Huysmans" runAlways="false" runOnChange="false">
         <sqlFile splitStatements="true" path="data/insert_lov_values.sql" />
     </changeSet>
-
+    <changeSet id="insert_todos" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile splitStatements="true" path="data/insert_todos.sql" />
+    </changeSet>
 </databaseChangeLog>

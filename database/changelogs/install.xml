@@ -17,14 +17,44 @@
     <changeSet id="cf_lov_values_alter" author="Gijs Catsberg" runAlways="false" runOnChange="false">
         <sqlFile path="install/tables/cf_lov_values_alter.sql" />
     </changeSet>
-    <changeSet id="cf_companies_alter_active" author="Kelly van Loon" runAlways="false" runOnChange="false">
-        <sqlFile path="install/tables/cf_companies_alter_active.sql" />
+    <changeSet id="cf_starters" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_starters.sql" />
+    </changeSet>
+    <changeSet id="cf_todos" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_todos.sql" />
+    </changeSet>
+    <changeSet id="cf_todos_starters" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_todos_starters.sql" />
+    </changeSet>
+    <changeSet id="cf_starters_employees" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_starters_employees.sql" />
+    </changeSet>
+    <changeSet id="cf_notifications" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_notifications.sql" />
+    </changeSet>
+    <changeSet id="cf_starters_alter" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_starters_alter.sql" />
+    </changeSet>
+    <changeSet id="cf_starter_alter_country" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_starter_alter_country.sql" />
+    </changeSet>
+    <changeSet id="cf_starters_employees_alter" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_starters_employees_alter.sql" />
+    </changeSet>
+    <changeSet id="cf_notifications_pwa" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_notifications_pwa.sql" />
+    </changeSet>
+    <changeSet id="cf_starters_notifications_pwa" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_starters_notifications_pwa.sql" />
+    </changeSet>
+    <changeSet id="cf_notifications_pwa_history" author="Filip Huysmans" runAlways="false" runOnChange="false">
+        <sqlFile path="install/tables/cf_notifications_pwa_history.sql" />
     </changeSet>
 
     <!-- Sequences -->
 
     <!-- Views -->
-    <changeSet id="cf_v_lovs" author="Kelly van Loon" runAlways="false" runOnChange="true">
+    <changeSet id="cf_v_lovs" author="Filip Huysmans" runAlways="false" runOnChange="true">
         <sqlFile splitStatements="false" path="install/views/cf_v_lovs.sql" />
     </changeSet>     
 
