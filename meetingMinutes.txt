@@ -3,3 +3,4 @@ John: Uh oh git merge conflict!
 Maxime: Nice Course!
 Maxime: test123
 Quinten: Hai.
+John: Thanks Dad.
