@@ -1,2 +1,2 @@
-John: Hello we're learn git!
+John: Hello we're learn git! --conflict 
 David
